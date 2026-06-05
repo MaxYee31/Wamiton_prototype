@@ -24,7 +24,6 @@
   --co2: #241910;
   --pp: #0a0604;
   --stage: #3D1F0F;
-
   --fd: 'Archivo Black', sans-serif;
   --fs: 'Manrope', sans-serif;
   --fm: 'JetBrains Mono', monospace;
@@ -32,10 +31,13 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { height: 100%; -webkit-font-smoothing: antialiased; }
+html, body { height: 100%; -webkit-font-smoothing: antialiased; }
+
+/* ============================================================
+   BODY — MOBILE = plein écran, DESKTOP = fond neutre
+============================================================ */
 body {
-  min-height: 100%;
-  background: var(--pp);
+  background: #0a0604;
   font-family: var(--fs);
   font-weight: 300;
   color: var(--cr);
@@ -43,189 +45,141 @@ body {
 }
 
 /* ============================================================
-   LAYOUT — SHELL RESPONSIVE
+   DEVICE WRAPPER
+   Mobile  → occupe tout l'écran (pas de frame)
+   Desktop → frame 390×844 centré avec notch et shadow
 ============================================================ */
-.app-shell {
-  display: flex;
-  min-height: 100vh;
-  align-items: flex-start;
-  justify-content: center;
-  background: var(--pp);
-  position: relative;
-}
-
-/* Desktop: side-nav + phone frame */
-@media (min-width: 768px) {
-  .app-shell {
-    flex-direction: row;
-    align-items: stretch;
-    gap: 0;
-  }
-}
-
-/* ============================================================
-   SIDE NAV (desktop only)
-============================================================ */
-.side-nav {
-  display: none;
-}
-@media (min-width: 768px) {
-  .side-nav {
-    display: flex;
-    flex-direction: column;
-    width: 260px;
-    min-height: 100vh;
-    background: var(--co2);
-    border-right: 1px solid rgba(245,236,215,.07);
-    padding: 32px 24px;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow-y: auto;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-}
-
-.side-nav .brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(245,236,215,.08);
-  margin-bottom: 16px;
-}
-
-.side-nav .brand svg { color: var(--cr); }
-.side-nav .brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--oc); }
-
-.side-nav .section-label {
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.35);
-  padding: 12px 0 6px 8px;
-}
-
-.side-nav .nav-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: var(--fm);
-  font-size: 11px;
-  letter-spacing: .06em;
-  color: rgba(245,236,215,.55);
-  transition: all .15s ease;
-  border: none;
-  background: none;
-  text-align: left;
-  width: 100%;
-}
-.side-nav .nav-item:hover {
-  background: rgba(245,236,215,.05);
-  color: var(--cr);
-}
-.side-nav .nav-item.active {
-  background: rgba(193,125,60,.15);
-  color: var(--oc);
-}
-.side-nav .nav-item .num {
-  font-size: 9px;
-  opacity: .6;
-  min-width: 20px;
-}
-
-/* ============================================================
-   MAIN AREA
-============================================================ */
-.main-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-  min-height: 100vh;
-}
-
-@media (min-width: 768px) {
-  .main-area {
-    padding: 40px 40px;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-}
-
-/* ============================================================
-   PHONE FRAME (desktop only wrapper)
-============================================================ */
-.phone-wrapper {
-  width: 100%;
-  position: relative;
-}
-
-@media (min-width: 768px) {
-  .phone-wrapper {
-    width: 375px;
-    min-height: 812px;
-    background: var(--pp);
-    border-radius: 44px;
-    border: 1.5px solid rgba(255,255,255,.08);
-    box-shadow: 0 0 0 1px rgba(0,0,0,.5), 0 32px 80px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.05);
-    overflow: hidden;
-    position: relative;
-  }
-}
-
-/* Status bar (desktop frame only) */
-.status-bar {
-  display: none;
-}
-@media (min-width: 768px) {
-  .status-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 24px 0;
-    font-family: var(--fm);
-    font-size: 11px;
-    color: rgba(245,236,215,.6);
-    position: relative;
-    z-index: 10;
-  }
-  .status-bar .notch {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 30px;
-    background: #000;
-    border-radius: 0 0 20px 20px;
-  }
-}
-
-/* ============================================================
-   SCREENS
-============================================================ */
-.screen {
-  display: none;
+#device {
   width: 100%;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  background: var(--co);
+}
+
+@media (min-width: 700px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 20px 60px;
+    min-height: 100vh;
+    background: #0a0604;
+  }
+
+  /* Barre de navigation prototype — uniquement desktop */
+  #proto-bar {
+    display: flex !important;
+  }
+
+  #device {
+    width: 390px;
+    min-height: 844px;
+    height: 844px;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.07),
+      0 0 0 10px #111,
+      0 40px 100px rgba(0,0,0,.8);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* Notch */
+  #device::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 126px; height: 34px;
+    background: #000;
+    border-radius: 0 0 22px 22px;
+    z-index: 9999;
+  }
+
+  /* Status bar simulée */
+  #status-bar { display: flex !important; }
+}
+
+/* ============================================================
+   PROTOTYPE NAV BAR (desktop uniquement — pour l'équipe)
+   Petite barre discrète AU-DESSUS du phone pour switcher
+============================================================ */
+#proto-bar {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+#proto-bar button {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: .14em;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(245,236,215,.12);
+  background: rgba(245,236,215,.04);
+  color: rgba(245,236,215,.45);
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+#proto-bar button:hover { background: rgba(245,236,215,.1); color: var(--cr); }
+#proto-bar button.active { background: rgba(193,125,60,.2); color: var(--oc); border-color: rgba(193,125,60,.4); }
+#proto-bar .sep {
+  width: 1px; height: 16px;
+  background: rgba(245,236,215,.1);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   STATUS BAR (desktop frame)
+============================================================ */
+#status-bar {
+  display: none;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 44px;
+  padding: 14px 28px 0;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--fm);
+  font-size: 11px;
+  color: rgba(245,236,215,.6);
+  z-index: 200;
+  pointer-events: none;
+}
+
+/* ============================================================
+   SCREENS — toujours plein écran dans #device
+============================================================ */
+.screen {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
   flex-direction: column;
 }
-.screen.active { display: flex; }
+.screen::-webkit-scrollbar { display: none; }
+.screen.active {
+  display: flex;
+  animation: fadeIn .22s ease-out;
+}
 
-@media (min-width: 768px) {
-  .screen {
-    min-height: 780px;
-    height: auto;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================================
@@ -236,2700 +190,1265 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
-
-#s1 .splash-bg {
+.splash-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 70%, rgba(193,125,60,.18) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 55% at 50% 65%, rgba(193,125,60,.2) 0%, transparent 70%);
+  pointer-events: none;
 }
-
-#s1 .splash-zan {
+.splash-zan {
   position: relative;
   z-index: 2;
-  margin-bottom: -40px;
+  margin-bottom: -20px;
   animation: zanFloat 3s ease-in-out infinite;
 }
-
 @keyframes zanFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
 }
-
-#s1 .splash-logo {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 60px;
-}
-
-#s1 .splash-tap {
-  position: absolute;
-  bottom: 48px;
-  left: 0; right: 0;
+.splash-logo { position: relative; z-index: 2; margin-bottom: 64px; }
+.splash-tap {
+  position: absolute; bottom: 52px; left: 0; right: 0;
   text-align: center;
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.35);
-  z-index: 2;
-  animation: pulse 2s ease-in-out infinite;
+  font-family: var(--fm); font-size: 10px; letter-spacing: .22em;
+  text-transform: uppercase; color: rgba(245,236,215,.35); z-index: 2;
+  animation: blink 2s ease-in-out infinite;
 }
-
-@keyframes pulse {
-  0%, 100% { opacity: .35; }
-  50% { opacity: .7; }
-}
+@keyframes blink { 0%,100% { opacity:.35; } 50% { opacity:.7; } }
 
 /* ============================================================
-   S2 — ONBOARDING (swipe)
+   S2 — ONBOARDING
 ============================================================ */
-#s2 { background: var(--co); }
-
-.onboarding-slides {
-  flex: 1;
+#s2 { background: var(--co); overflow: hidden; }
+.ob-viewport { flex: 1; position: relative; overflow: hidden; }
+.ob-track {
   display: flex;
-  overflow: hidden;
-  position: relative;
+  width: 300%;
+  height: 100%;
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
 }
-
 .ob-slide {
-  min-width: 100%;
+  width: calc(100% / 3);
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding: 0 32px 40px;
-  transition: transform .4s cubic-bezier(.4,0,.2,1);
+  padding: 0 32px 32px;
+  position: relative;
 }
-
-.ob-slide .ob-img {
+.ob-img {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 55%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  bottom: 40%;
+  display: flex; align-items: center; justify-content: center;
 }
-
-.ob-slide .ob-body {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  margin-top: auto;
-}
-
-.ob-slide .ob-chip {
+.ob-body { position: relative; z-index: 2; text-align: center; width: 100%; }
+.ob-chip {
   display: inline-block;
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--oc);
-  border: 1px solid rgba(193,125,60,.4);
-  padding: 5px 12px;
-  border-radius: 99px;
-  margin-bottom: 16px;
+  font-family: var(--fm); font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--oc);
+  border: 1px solid rgba(193,125,60,.4); padding: 5px 12px;
+  border-radius: 99px; margin-bottom: 14px;
 }
-
-.ob-slide h2 {
-  font-family: var(--fd);
-  font-size: 32px;
-  line-height: .95;
-  letter-spacing: -.01em;
-  color: var(--cr);
-  margin-bottom: 12px;
+.ob-body h2 {
+  font-family: var(--fd); font-size: 34px; line-height: .95;
+  letter-spacing: -.01em; color: var(--cr); margin-bottom: 10px;
 }
-
-.ob-slide p {
-  font-size: 14px;
-  color: rgba(245,236,215,.65);
-  line-height: 1.6;
-  max-width: 28ch;
-  margin: 0 auto 28px;
-  font-weight: 300;
+.ob-body p {
+  font-size: 14px; color: rgba(245,236,215,.6); line-height: 1.65;
+  max-width: 28ch; margin: 0 auto 24px; font-weight: 300;
 }
-
-.ob-dots {
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-
+.ob-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 20px; }
 .ob-dot {
-  width: 6px; height: 6px;
-  border-radius: 3px;
-  background: rgba(245,236,215,.2);
-  transition: all .3s;
+  width: 6px; height: 6px; border-radius: 3px;
+  background: rgba(245,236,215,.2); transition: all .3s;
 }
-.ob-dot.active {
-  width: 24px;
-  background: var(--oc);
-}
-
-.ob-footer {
-  padding: 0 24px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+.ob-dot.active { width: 24px; background: var(--oc); }
+.ob-footer { padding: 0 24px max(32px, env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; }
 
 /* ============================================================
    S3 — RÔLE
 ============================================================ */
-#s3 {
-  background: var(--co);
-  padding: 60px 24px 40px;
+#s3 { background: var(--co); padding: 60px 24px 40px; }
+#s3 .role-eyebrow {
+  font-family: var(--fm); font-size: 10px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--oc); margin-bottom: 10px;
 }
-
-#s3 .role-header {
-  margin-bottom: 40px;
+#s3 h2 {
+  font-family: var(--fd); font-size: 36px; line-height: .95;
+  color: var(--cr); margin-bottom: 36px;
 }
-
-#s3 .role-header .eyebrow {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--oc);
-  margin-bottom: 12px;
-}
-
-#s3 .role-header h2 {
-  font-family: var(--fd);
-  font-size: 36px;
-  line-height: .95;
-  color: var(--cr);
-}
-
-#s3 .role-header h2 em {
-  font-family: var(--fi);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--oc);
-  display: block;
-}
-
+#s3 h2 em { font-family: var(--fi); font-style: italic; font-weight: 400; color: var(--oc); display: block; }
 .role-card {
-  background: var(--co2);
-  border: 1.5px solid rgba(245,236,215,.08);
-  border-radius: 16px;
-  padding: 24px;
-  cursor: pointer;
-  transition: all .2s ease;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
+  background: var(--co2); border: 1.5px solid rgba(245,236,215,.08);
+  border-radius: 16px; padding: 22px; cursor: pointer;
+  transition: all .2s; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 18px;
+  -webkit-tap-highlight-color: transparent;
 }
-.role-card:hover, .role-card:active {
-  border-color: var(--oc);
-  background: rgba(193,125,60,.08);
+.role-card:active { transform: scale(.98); border-color: var(--oc); background: rgba(193,125,60,.08); }
+.role-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: rgba(193,125,60,.14); display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0;
 }
-.role-card .icon {
-  width: 52px; height: 52px;
-  border-radius: 12px;
-  background: rgba(193,125,60,.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.role-card .title {
-  font-family: var(--fd);
-  font-size: 16px;
-  color: var(--cr);
-  margin-bottom: 4px;
-}
-.role-card .desc {
-  font-size: 12.5px;
-  color: rgba(245,236,215,.55);
-  line-height: 1.5;
-}
+.role-title { font-family: var(--fd); font-size: 16px; color: var(--cr); margin-bottom: 3px; }
+.role-desc { font-size: 12.5px; color: rgba(245,236,215,.5); line-height: 1.5; }
+.role-arr { margin-left: auto; color: rgba(245,236,215,.25); flex-shrink: 0; }
 
 /* ============================================================
-   S4 — AUTH (téléphone)
+   S4 — AUTH
 ============================================================ */
-#s4 {
-  background: var(--co);
-  padding: 60px 24px 40px;
-  flex-direction: column;
+#s4 { background: var(--co); padding: 60px 24px 40px; }
+.back-btn {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--fm); font-size: 11px; letter-spacing: .1em;
+  color: rgba(245,236,215,.5); cursor: pointer; margin-bottom: 28px;
+  border: none; background: none; padding: 0; -webkit-tap-highlight-color: transparent;
 }
-
-.auth-header {
-  margin-bottom: 36px;
-}
-.auth-header .back-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--fm);
-  font-size: 11px;
-  letter-spacing: .1em;
-  color: rgba(245,236,215,.5);
-  cursor: pointer;
-  margin-bottom: 28px;
-  border: none;
-  background: none;
-  padding: 0;
-}
-
-.auth-header h2 {
-  font-family: var(--fd);
-  font-size: 30px;
-  line-height: .95;
-  color: var(--cr);
-  margin-bottom: 10px;
-}
-.auth-header p {
-  font-size: 14px;
-  color: rgba(245,236,215,.6);
-  line-height: 1.6;
-}
-
-.phone-input-group {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
+.auth-head { margin-bottom: 32px; }
+.auth-head h2 { font-family: var(--fd); font-size: 30px; line-height: .95; color: var(--cr); margin-bottom: 8px; }
+.auth-head p { font-size: 14px; color: rgba(245,236,215,.6); line-height: 1.6; }
+.phone-row { display: flex; gap: 10px; margin-bottom: 12px; }
 .flag-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 14px;
-  background: var(--co2);
-  border: 1.5px solid rgba(245,236,215,.12);
-  border-radius: 12px;
-  font-family: var(--fm);
-  font-size: 13px;
-  color: var(--cr);
-  cursor: pointer;
-  white-space: nowrap;
-  flex-shrink: 0;
+  display: flex; align-items: center; gap: 6px; padding: 0 14px;
+  background: var(--co2); border: 1.5px solid rgba(245,236,215,.12);
+  border-radius: 12px; font-family: var(--fm); font-size: 13px;
+  color: var(--cr); cursor: pointer; white-space: nowrap; flex-shrink: 0; height: 52px;
 }
-
 .txt-input {
-  flex: 1;
-  background: var(--co2);
-  border: 1.5px solid rgba(245,236,215,.12);
-  border-radius: 12px;
-  padding: 15px 16px;
-  font-family: var(--fs);
-  font-size: 15px;
-  color: var(--cr);
-  outline: none;
-  transition: border-color .2s;
+  flex: 1; background: var(--co2); border: 1.5px solid rgba(245,236,215,.12);
+  border-radius: 12px; padding: 15px 16px; font-family: var(--fs);
+  font-size: 15px; color: var(--cr); outline: none; transition: border-color .2s; width: 100%;
 }
 .txt-input:focus { border-color: var(--oc); }
 .txt-input::placeholder { color: rgba(245,236,215,.3); }
-
-.input-note {
-  font-size: 12px;
-  color: rgba(245,236,215,.4);
-  margin-bottom: 32px;
-  line-height: 1.5;
-}
+.input-note { font-size: 12px; color: rgba(245,236,215,.35); margin-bottom: 32px; line-height: 1.6; }
+.btn-push { margin-top: auto; }
 
 /* ============================================================
    S5 — OTP
 ============================================================ */
-#s5 {
-  background: var(--co);
-  padding: 60px 24px 40px;
-}
-
-.otp-grid {
-  display: flex;
-  gap: 10px;
-  margin: 28px 0 14px;
-}
-
+#s5 { background: var(--co); padding: 60px 24px 40px; }
+.otp-grid { display: flex; gap: 10px; margin: 28px 0 14px; }
 .otp-box {
-  flex: 1;
-  height: 56px;
-  background: var(--co2);
-  border: 1.5px solid rgba(245,236,215,.12);
-  border-radius: 12px;
-  font-family: var(--fd);
-  font-size: 24px;
-  color: var(--cr);
-  text-align: center;
-  outline: none;
-  transition: border-color .2s;
+  flex: 1; height: 58px; background: var(--co2);
+  border: 1.5px solid rgba(245,236,215,.12); border-radius: 12px;
+  font-family: var(--fd); font-size: 26px; color: var(--cr);
+  text-align: center; outline: none; transition: border-color .2s;
 }
 .otp-box:focus { border-color: var(--oc); }
 .otp-box.filled { border-color: rgba(193,125,60,.5); }
-
-.otp-resend {
-  font-size: 13px;
-  color: rgba(245,236,215,.5);
-  text-align: center;
-  margin-bottom: 32px;
-}
-.otp-resend span {
-  color: var(--oc);
-  cursor: pointer;
-  text-decoration: underline;
-}
+.otp-resend { font-size: 13px; color: rgba(245,236,215,.45); text-align: center; margin-bottom: 32px; }
+.otp-resend span { color: var(--oc); cursor: pointer; text-decoration: underline; }
 
 /* ============================================================
    S6 — ACCUEIL
 ============================================================ */
-#s6 {
-  background: var(--co);
-  display: flex;
-  flex-direction: column;
+#s6 { background: var(--co); display: flex; flex-direction: column; }
+.home-top { padding: 52px 20px 0; flex-shrink: 0; }
+.home-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+.logo-pill { display: flex; align-items: center; gap: 8px; }
+.logo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--oc); }
+.avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(193,125,60,.15); border: 1.5px solid rgba(193,125,60,.35);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fm); font-size: 11px; color: var(--oc); cursor: pointer;
 }
-
-.home-header {
-  padding: 52px 20px 0;
-  position: relative;
+.greet { font-family: var(--fi); font-style: italic; font-size: 26px; line-height: 1.2; color: var(--cr); margin-bottom: 3px; }
+.greet strong { font-family: var(--fd); font-style: normal; color: var(--oc); }
+.greet-sub { font-family: var(--fm); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(245,236,215,.35); margin-bottom: 18px; }
+.search-bar {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--co2); border: 1.5px solid rgba(245,236,215,.08);
+  border-radius: 12px; padding: 12px 16px; margin-bottom: 16px;
 }
-
-.home-topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.home-topbar .logo-area {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.home-topbar .logo-area .dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--oc);
-}
-
-.home-topbar .avatar {
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: rgba(193,125,60,.2);
-  border: 1.5px solid rgba(193,125,60,.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--fm);
-  font-size: 11px;
-  color: var(--oc);
-  cursor: pointer;
-}
-
-.home-hero {
-  margin-bottom: 24px;
-}
-.home-hero .greet {
-  font-family: var(--fi);
-  font-style: italic;
-  font-size: 26px;
-  line-height: 1.2;
-  color: var(--cr);
-  margin-bottom: 4px;
-}
-.home-hero .greet strong {
-  font-family: var(--fd);
-  font-style: normal;
-  color: var(--oc);
-}
-
-.home-search {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--co2);
-  border: 1.5px solid rgba(245,236,215,.08);
-  border-radius: 12px;
-  padding: 12px 16px;
-  margin-bottom: 20px;
-  cursor: text;
-}
-.home-search input {
-  background: none;
-  border: none;
-  outline: none;
-  font-family: var(--fs);
-  font-size: 14px;
-  color: var(--cr);
-  flex: 1;
-}
-.home-search input::placeholder { color: rgba(245,236,215,.3); }
-
-.filter-chips {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: none;
-  margin-bottom: 4px;
-}
-.filter-chips::-webkit-scrollbar { display: none; }
-
+.search-bar input { background: none; border: none; outline: none; font-family: var(--fs); font-size: 14px; color: var(--cr); flex: 1; }
+.search-bar input::placeholder { color: rgba(245,236,215,.3); }
+.chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
 .chip {
-  flex-shrink: 0;
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  padding: 7px 14px;
-  border-radius: 99px;
-  cursor: pointer;
-  transition: all .15s;
-  white-space: nowrap;
+  flex-shrink: 0; font-family: var(--fm); font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; padding: 7px 14px; border-radius: 99px;
+  cursor: pointer; white-space: nowrap; transition: all .15s; border: none;
+  -webkit-tap-highlight-color: transparent;
 }
-.chip.active {
-  background: var(--oc);
-  color: var(--co);
+.chip.on { background: var(--oc); color: var(--co); }
+.chip.off { background: rgba(245,236,215,.06); border: 1px solid rgba(245,236,215,.12); color: rgba(245,236,215,.55); }
+.home-scroll { flex: 1; overflow-y: auto; padding: 16px 20px 90px; scrollbar-width: none; }
+.home-scroll::-webkit-scrollbar { display: none; }
+.sec-label {
+  font-family: var(--fm); font-size: 10px; letter-spacing: .22em;
+  text-transform: uppercase; color: rgba(245,236,215,.4);
+  margin-bottom: 12px; margin-top: 22px;
 }
-.chip:not(.active) {
-  background: rgba(245,236,215,.06);
-  border: 1px solid rgba(245,236,215,.12);
-  color: rgba(245,236,215,.6);
-}
+.sec-label:first-child { margin-top: 0; }
 
-.home-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px 20px 80px;
-  scrollbar-width: none;
-}
-.home-content::-webkit-scrollbar { display: none; }
-
-.section-title {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.45);
-  margin-bottom: 14px;
-  margin-top: 24px;
-}
-.section-title:first-child { margin-top: 0; }
-
-/* Event card */
+/* Event cards */
 .ev-card {
-  background: var(--co2);
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 14px;
-  cursor: pointer;
-  transition: transform .15s;
-  border: 1px solid rgba(245,236,215,.05);
+  background: var(--co2); border-radius: 16px; overflow: hidden;
+  margin-bottom: 12px; cursor: pointer;
+  border: 1px solid rgba(245,236,215,.05); transition: transform .15s;
+  -webkit-tap-highlight-color: transparent;
 }
 .ev-card:active { transform: scale(.98); }
-
-.ev-card .ev-img {
-  height: 160px;
-  background: var(--stage);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+.ev-img {
+  height: 164px; position: relative;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
-
-.ev-card .ev-img .ev-badge {
-  position: absolute;
-  top: 12px; left: 12px;
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  background: var(--oc);
-  color: var(--co);
-  padding: 5px 10px;
-  border-radius: 99px;
+.ev-badge {
+  position: absolute; top: 12px; left: 12px;
+  font-family: var(--fm); font-size: 9px; letter-spacing: .2em;
+  text-transform: uppercase; background: var(--oc); color: var(--co);
+  padding: 5px 10px; border-radius: 99px;
 }
-
-.ev-card .ev-body {
-  padding: 14px 16px 16px;
+.ev-body { padding: 14px 16px 16px; }
+.ev-date { font-family: var(--fm); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--oc); margin-bottom: 5px; }
+.ev-title { font-family: var(--fd); font-size: 17px; line-height: 1.05; color: var(--cr); margin-bottom: 8px; }
+.ev-foot { display: flex; justify-content: space-between; align-items: center; }
+.ev-loc { font-size: 12px; color: rgba(245,236,215,.45); display: flex; align-items: center; gap: 4px; }
+.ev-price { font-family: var(--fd); font-size: 14px; color: var(--oc); }
+.ev-row {
+  display: flex; background: var(--co2); border-radius: 14px;
+  overflow: hidden; margin-bottom: 10px; cursor: pointer;
+  border: 1px solid rgba(245,236,215,.05); transition: transform .15s;
+  -webkit-tap-highlight-color: transparent;
 }
-
-.ev-card .ev-date {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--oc);
-  margin-bottom: 6px;
-}
-
-.ev-card .ev-title {
-  font-family: var(--fd);
-  font-size: 17px;
-  line-height: 1.05;
-  color: var(--cr);
-  margin-bottom: 8px;
-}
-
-.ev-card .ev-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.ev-card .ev-location {
-  font-size: 12px;
-  color: rgba(245,236,215,.5);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.ev-card .ev-price {
-  font-family: var(--fd);
-  font-size: 14px;
-  color: var(--oc);
-}
-
-/* Featured card (horizontal) */
-.ev-card-h {
-  display: flex;
-  background: var(--co2);
-  border-radius: 14px;
-  overflow: hidden;
-  margin-bottom: 10px;
-  cursor: pointer;
-  border: 1px solid rgba(245,236,215,.05);
-  transition: transform .15s;
-}
-.ev-card-h:active { transform: scale(.98); }
-
-.ev-card-h .ev-img-h {
-  width: 80px;
-  flex-shrink: 0;
-  background: var(--stage);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ev-card-h .ev-body-h {
-  padding: 12px 14px;
-  flex: 1;
-}
-.ev-card-h .ev-date-h {
-  font-family: var(--fm);
-  font-size: 9.5px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--oc);
-  margin-bottom: 4px;
-}
-.ev-card-h .ev-title-h {
-  font-family: var(--fd);
-  font-size: 14px;
-  line-height: 1.1;
-  color: var(--cr);
-  margin-bottom: 6px;
-}
-.ev-card-h .ev-price-h {
-  font-family: var(--fm);
-  font-size: 11px;
-  color: rgba(245,236,215,.5);
-}
-.ev-card-h .ev-price-h span {
-  color: var(--oc);
-  font-weight: 500;
-}
+.ev-row:active { transform: scale(.98); }
+.ev-row-img { width: 80px; flex-shrink: 0; background: var(--stage); display: flex; align-items: center; justify-content: center; }
+.ev-row-body { padding: 12px 14px; flex: 1; }
+.ev-row-date { font-family: var(--fm); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--oc); margin-bottom: 4px; }
+.ev-row-title { font-family: var(--fd); font-size: 14px; line-height: 1.1; color: var(--cr); margin-bottom: 5px; }
+.ev-row-price { font-family: var(--fm); font-size: 11px; color: rgba(245,236,215,.45); }
+.ev-row-price span { color: var(--oc); }
+.ev-row-arr { display: flex; align-items: center; padding-right: 14px; color: rgba(245,236,215,.2); }
 
 /* Bottom nav */
-.bottom-nav {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: rgba(26,18,8,.95);
-  backdrop-filter: blur(20px);
+.bnav {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(26,18,8,.96); backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(245,236,215,.08);
-  display: flex;
-  justify-content: space-around;
+  border-top: 1px solid rgba(245,236,215,.07);
+  display: flex; justify-content: space-around;
   padding: 10px 0 max(14px, env(safe-area-inset-bottom));
   z-index: 100;
 }
-
-@media (min-width: 768px) {
-  .bottom-nav {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-  }
+.bn-item {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  cursor: pointer; padding: 4px 16px; border: none; background: none;
+  -webkit-tap-highlight-color: transparent;
 }
-
-.bnav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-  padding: 4px 16px;
-  border: none;
-  background: none;
-}
-
-.bnav-icon {
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(245,236,215,.35);
-}
-.bnav-item.active .bnav-icon { color: var(--oc); }
-
-.bnav-label {
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.35);
-}
-.bnav-item.active .bnav-label { color: var(--oc); }
+.bn-ico { color: rgba(245,236,215,.3); display: flex; align-items: center; }
+.bn-lbl { font-family: var(--fm); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: rgba(245,236,215,.3); }
+.bn-item.on .bn-ico { color: var(--oc); }
+.bn-item.on .bn-lbl { color: var(--oc); }
 
 /* ============================================================
-   S7 — FICHE ÉVÉNEMENT
+   S7 — ÉVÉNEMENT
 ============================================================ */
-#s7 {
-  background: var(--co);
-  display: flex;
-  flex-direction: column;
-}
-
+#s7 { background: var(--co); flex-direction: column; }
 .ev-hero {
-  height: 260px;
-  background: var(--stage);
-  position: relative;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  height: 260px; background: var(--stage); position: relative; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
-
-.ev-hero-back {
-  position: absolute;
-  top: 16px; left: 16px;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(26,18,8,.7);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  border: none;
-  color: var(--cr);
+.hero-back, .hero-share {
+  position: absolute; top: 16px; width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(26,18,8,.7); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; border: none; color: var(--cr);
+  -webkit-tap-highlight-color: transparent;
 }
-
-.ev-hero-share {
-  position: absolute;
-  top: 16px; right: 16px;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(26,18,8,.7);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: none;
-  color: var(--cr);
-}
-
-.ev-detail {
-  flex: 1;
-  overflow-y: auto;
-  scrollbar-width: none;
-  padding: 24px 20px 100px;
-}
+.hero-back { left: 16px; }
+.hero-share { right: 16px; }
+.ev-detail { flex: 1; overflow-y: auto; padding: 22px 20px 100px; scrollbar-width: none; }
 .ev-detail::-webkit-scrollbar { display: none; }
-
-.ev-detail .ev-cat {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--oc);
-  margin-bottom: 8px;
-}
-
-.ev-detail .ev-name {
-  font-family: var(--fd);
-  font-size: 28px;
-  line-height: .97;
-  color: var(--cr);
-  margin-bottom: 16px;
-}
-
-.ev-detail .ev-artist {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.ev-detail .ev-artist .artist-av {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: var(--stage);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ev-detail .ev-artist .artist-name {
-  font-size: 14px;
-  color: var(--cr);
-  font-weight: 400;
-}
-.ev-detail .ev-artist .artist-role {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.4);
-}
-
-.ev-info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.ev-info-cell {
-  background: var(--co2);
-  border-radius: 12px;
-  padding: 14px;
-}
-.ev-info-cell .k {
-  font-family: var(--fm);
-  font-size: 9.5px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.4);
-  margin-bottom: 5px;
-}
-.ev-info-cell .v {
-  font-family: var(--fd);
-  font-size: 14px;
-  color: var(--cr);
-  line-height: 1.1;
-}
-
-.ev-desc {
-  font-size: 14px;
-  color: rgba(245,236,215,.65);
-  line-height: 1.75;
-  margin-bottom: 20px;
-  font-weight: 300;
-}
-
-.ev-bottom-bar {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: rgba(26,18,8,.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+.ev-cat { font-family: var(--fm); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--oc); margin-bottom: 7px; }
+.ev-name { font-family: var(--fd); font-size: 27px; line-height: .97; color: var(--cr); margin-bottom: 16px; }
+.ev-artist { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.artist-av { width: 36px; height: 36px; border-radius: 50%; background: var(--stage); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.artist-name { font-size: 14px; color: var(--cr); font-weight: 400; }
+.artist-role { font-family: var(--fm); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,236,215,.4); }
+.ev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+.ev-cell { background: var(--co2); border-radius: 12px; padding: 13px; }
+.ev-cell .k { font-family: var(--fm); font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: rgba(245,236,215,.4); margin-bottom: 4px; }
+.ev-cell .v { font-family: var(--fd); font-size: 14px; color: var(--cr); line-height: 1.1; }
+.ev-desc-text { font-size: 14px; color: rgba(245,236,215,.65); line-height: 1.75; margin-bottom: 18px; font-weight: 300; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag { font-family: var(--fm); font-size: 10px; letter-spacing: .12em; padding: 5px 12px; border-radius: 99px; background: rgba(245,236,215,.07); color: rgba(245,236,215,.5); }
+.ev-cta-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(26,18,8,.96); backdrop-filter: blur(20px);
   border-top: 1px solid rgba(245,236,215,.08);
   padding: 16px 20px max(20px, env(safe-area-inset-bottom));
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  z-index: 100;
+  display: flex; align-items: center; gap: 16px; z-index: 100;
 }
-
-@media (min-width: 768px) {
-  .ev-bottom-bar { position: absolute; }
-}
-
-.ev-bottom-bar .price-block .price-label {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.45);
-}
-.ev-bottom-bar .price-block .price-val {
-  font-family: var(--fd);
-  font-size: 20px;
-  color: var(--oc);
-}
+.price-block .price-lbl { font-family: var(--fm); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: rgba(245,236,215,.4); }
+.price-block .price-val { font-family: var(--fd); font-size: 20px; color: var(--oc); }
 
 /* ============================================================
-   S8 — ACHAT / SÉLECTION BILLET
+   S8 — ACHAT
 ============================================================ */
-#s8 {
-  background: var(--co);
-  padding: 60px 20px 100px;
+#s8 { background: var(--co); padding: 56px 20px 20px; }
+.page-hd { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.page-back {
+  width: 36px; height: 36px; border-radius: 10px; background: var(--co2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; border: none; color: var(--cr); flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
 }
-
-.ticket-type {
-  background: var(--co2);
-  border: 1.5px solid rgba(245,236,215,.08);
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  transition: all .2s;
+.page-back:active { background: rgba(193,125,60,.15); }
+.page-title { font-family: var(--fd); font-size: 18px; color: var(--cr); }
+.eyebrow { font-family: var(--fm); font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--oc); margin-bottom: 16px; }
+.tt-card {
+  background: var(--co2); border: 1.5px solid rgba(245,236,215,.08);
+  border-radius: 16px; padding: 18px; margin-bottom: 10px; cursor: pointer;
+  transition: border-color .2s; -webkit-tap-highlight-color: transparent;
 }
-.ticket-type:hover { border-color: rgba(193,125,60,.4); }
-.ticket-type.selected {
-  border-color: var(--oc);
-  background: rgba(193,125,60,.08);
-}
-
-.ticket-type .tt-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 8px;
-}
-.ticket-type .tt-name {
-  font-family: var(--fd);
-  font-size: 16px;
-  color: var(--cr);
-}
-.ticket-type .tt-price {
-  font-family: var(--fd);
-  font-size: 18px;
-  color: var(--oc);
-}
-.ticket-type .tt-desc {
-  font-size: 12.5px;
-  color: rgba(245,236,215,.5);
-  line-height: 1.5;
-  margin-bottom: 12px;
-}
-.ticket-type .tt-qty {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
+.tt-card.sel { border-color: var(--oc); background: rgba(193,125,60,.07); }
+.tt-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+.tt-name { font-family: var(--fd); font-size: 16px; color: var(--cr); }
+.tt-price { font-family: var(--fd); font-size: 18px; color: var(--oc); }
+.tt-desc { font-size: 12.5px; color: rgba(245,236,215,.5); line-height: 1.5; margin-bottom: 12px; }
+.qty-row { display: flex; align-items: center; gap: 14px; }
 .qty-btn {
-  width: 32px; height: 32px;
-  border-radius: 8px;
-  background: rgba(245,236,215,.08);
-  border: 1px solid rgba(245,236,215,.12);
-  color: var(--cr);
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background .15s;
-  font-family: var(--fd);
-  line-height: 1;
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(245,236,215,.07); border: 1px solid rgba(245,236,215,.12);
+  color: var(--cr); font-size: 18px; display: flex; align-items: center;
+  justify-content: center; cursor: pointer; font-family: var(--fd); line-height: 1;
+  -webkit-tap-highlight-color: transparent; transition: background .15s;
 }
-.qty-btn:hover { background: rgba(193,125,60,.2); }
-.qty-num {
-  font-family: var(--fd);
-  font-size: 18px;
-  color: var(--cr);
-  min-width: 20px;
-  text-align: center;
-}
-
-.order-summary {
-  background: var(--co2);
-  border-radius: 16px;
-  padding: 18px;
-  margin: 20px 0;
-}
-.order-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  color: rgba(245,236,215,.65);
-  margin-bottom: 8px;
-}
-.order-row.total {
-  border-top: 1px dashed rgba(245,236,215,.1);
-  padding-top: 10px;
-  margin-top: 4px;
-  color: var(--cr);
-}
-.order-row.total .val {
-  font-family: var(--fd);
-  font-size: 16px;
-  color: var(--oc);
-}
+.qty-btn:active { background: rgba(193,125,60,.25); }
+.qty-num { font-family: var(--fd); font-size: 18px; color: var(--cr); min-width: 20px; text-align: center; }
+.order-box { background: var(--co2); border-radius: 14px; padding: 16px; margin: 18px 0; }
+.order-row { display: flex; justify-content: space-between; font-size: 13px; color: rgba(245,236,215,.6); margin-bottom: 8px; }
+.order-row.tot { border-top: 1px dashed rgba(245,236,215,.1); padding-top: 10px; margin-top: 4px; color: var(--cr); margin-bottom: 0; }
+.order-row.tot .v { font-family: var(--fd); font-size: 16px; color: var(--oc); }
 
 /* ============================================================
-   S9 — PAIEMENT KKIAPAY
+   S9 — PAIEMENT
 ============================================================ */
-#s9 {
-  background: var(--co);
-  padding: 60px 20px 40px;
+#s9 { background: var(--co); padding: 56px 20px 32px; }
+.pay-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.pay-item {
+  background: var(--co2); border: 1.5px solid rgba(245,236,215,.08);
+  border-radius: 14px; padding: 15px 16px;
+  display: flex; align-items: center; gap: 14px; cursor: pointer;
+  transition: border-color .2s; -webkit-tap-highlight-color: transparent;
 }
-
-.payment-methods {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
+.pay-item.sel { border-color: var(--oc); background: rgba(193,125,60,.07); }
+.pay-item:active { transform: scale(.99); }
+.pay-ico { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+.pay-name { font-family: var(--fd); font-size: 14px; color: var(--cr); margin-bottom: 2px; }
+.pay-sub { font-size: 12px; color: rgba(245,236,215,.4); }
+.pay-check {
+  margin-left: auto; width: 20px; height: 20px; border-radius: 50%;
+  border: 1.5px solid rgba(245,236,215,.2); flex-shrink: 0; position: relative;
 }
-
-.pay-method {
-  background: var(--co2);
-  border: 1.5px solid rgba(245,236,215,.08);
-  border-radius: 14px;
-  padding: 16px 18px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  cursor: pointer;
-  transition: all .2s;
-}
-.pay-method.selected {
-  border-color: var(--oc);
-  background: rgba(193,125,60,.08);
-}
-.pay-method .pm-icon {
-  width: 40px; height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 20px;
-}
-.pay-method .pm-name {
-  font-family: var(--fd);
-  font-size: 14px;
-  color: var(--cr);
-  margin-bottom: 2px;
-}
-.pay-method .pm-sub {
-  font-size: 12px;
-  color: rgba(245,236,215,.45);
-}
-.pay-method .pm-check {
-  margin-left: auto;
-  width: 20px; height: 20px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(245,236,215,.2);
-  flex-shrink: 0;
-  transition: all .2s;
-}
-.pay-method.selected .pm-check {
-  background: var(--oc);
-  border-color: var(--oc);
-  position: relative;
-}
-.pay-method.selected .pm-check::after {
-  content: '';
-  position: absolute;
-  top: 4px; left: 6px;
-  width: 6px; height: 9px;
-  border-right: 2px solid var(--co);
-  border-bottom: 2px solid var(--co);
+.pay-item.sel .pay-check { background: var(--oc); border-color: var(--oc); }
+.pay-item.sel .pay-check::after {
+  content: ''; position: absolute; top: 4px; left: 6px;
+  width: 6px; height: 9px; border-right: 2.5px solid var(--co); border-bottom: 2.5px solid var(--co);
   transform: rotate(40deg);
 }
-
-.pay-phone-input {
-  margin-bottom: 20px;
-}
-.pay-phone-input label {
-  display: block;
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.45);
-  margin-bottom: 8px;
-}
-
-.security-note {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: rgba(245,236,215,.4);
-  margin-bottom: 24px;
-  padding: 12px 16px;
-  background: rgba(245,236,215,.03);
-  border-radius: 10px;
+.pay-phone-lbl { font-family: var(--fm); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(245,236,215,.4); margin-bottom: 8px; display: block; }
+.sec-note {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: rgba(245,236,215,.4);
+  margin: 14px 0; padding: 12px 14px;
+  background: rgba(245,236,215,.03); border-radius: 10px;
   border: 1px solid rgba(245,236,215,.07);
 }
+.pay-total { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid rgba(245,236,215,.07); margin-bottom: 16px; }
+.pay-total span:first-child { font-size: 14px; color: rgba(245,236,215,.6); }
+.pay-total span:last-child { font-family: var(--fd); font-size: 20px; color: var(--oc); }
 
 /* ============================================================
    S10 — TRAITEMENT
 ============================================================ */
-#s10 {
-  background: var(--pp);
-  align-items: center;
-  justify-content: center;
-}
-
-.processing-zan {
-  position: relative;
-  margin-bottom: 40px;
-}
-
-.processing-ring {
-  position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  border-top-color: var(--oc);
+#s10 { background: var(--pp); align-items: center; justify-content: center; }
+.proc-wrap { display: flex; flex-direction: column; align-items: center; gap: 0; }
+.proc-zan { position: relative; margin-bottom: 48px; }
+.proc-ring {
+  position: absolute; inset: -22px; border-radius: 50%;
+  border: 2px solid transparent; border-top-color: var(--oc);
   animation: spin 1.2s linear infinite;
 }
-.processing-ring-2 {
-  position: absolute;
-  inset: -34px;
-  border-radius: 50%;
-  border: 1.5px solid transparent;
-  border-top-color: rgba(193,125,60,.3);
+.proc-ring2 {
+  position: absolute; inset: -38px; border-radius: 50%;
+  border: 1.5px solid transparent; border-top-color: rgba(193,125,60,.25);
   animation: spin 2s linear infinite reverse;
 }
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.processing-label {
-  font-family: var(--fd);
-  font-size: 22px;
-  color: var(--cr);
-  margin-bottom: 10px;
-  text-align: center;
-}
-.processing-sub {
-  font-size: 14px;
-  color: rgba(245,236,215,.5);
-  text-align: center;
-  max-width: 26ch;
-}
+@keyframes spin { to { transform: rotate(360deg); } }
+.proc-title { font-family: var(--fd); font-size: 22px; color: var(--cr); margin-bottom: 8px; text-align: center; }
+.proc-sub { font-size: 14px; color: rgba(245,236,215,.45); text-align: center; max-width: 26ch; line-height: 1.6; }
 
 /* ============================================================
    S11 — CONFIRMATION
 ============================================================ */
-#s11 {
-  background: var(--co);
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px 24px;
+#s11 { background: var(--co); align-items: center; justify-content: center; text-align: center; padding: 32px 24px; overflow-y: auto; }
+.conf-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(193,125,60,.18) 0%, transparent 70%); pointer-events: none; }
+.conf-inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
+.conf-zan { margin-bottom: 6px; animation: popIn .5s cubic-bezier(.34,1.56,.64,1); }
+@keyframes popIn { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.conf-chip {
+  display: inline-block; font-family: var(--fm); font-size: 9px; letter-spacing: .22em;
+  text-transform: uppercase; background: rgba(193,125,60,.14); color: var(--oc);
+  border: 1px solid rgba(193,125,60,.3); padding: 6px 14px; border-radius: 99px; margin-bottom: 14px;
 }
-
-.confirm-bg {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(193,125,60,.2) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.confirm-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.confirm-zan {
-  margin-bottom: 8px;
-  animation: zanBounce .6s ease-out;
-}
-
-@keyframes zanBounce {
-  0% { transform: scale(.8) translateY(20px); opacity: 0; }
-  60% { transform: scale(1.05) translateY(-5px); }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
-}
-
-.confirm-chip {
-  display: inline-block;
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  background: rgba(193,125,60,.15);
-  color: var(--oc);
-  border: 1px solid rgba(193,125,60,.3);
-  padding: 6px 14px;
-  border-radius: 99px;
-  margin-bottom: 16px;
-}
-
-.confirm-title {
-  font-family: var(--fd);
-  font-size: 34px;
-  line-height: .95;
-  color: var(--cr);
-  margin-bottom: 10px;
-}
-.confirm-title em {
-  font-family: var(--fi);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--oc);
-  display: block;
-}
-
-.confirm-sub {
-  font-size: 14px;
-  color: rgba(245,236,215,.6);
-  line-height: 1.6;
-  max-width: 26ch;
-  margin-bottom: 28px;
-}
-
-.confirm-info {
-  background: var(--co2);
-  border-radius: 14px;
-  padding: 16px 20px;
-  width: 100%;
-  margin-bottom: 28px;
-  text-align: left;
-}
-.confirm-info .ci-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(245,236,215,.06);
-}
-.confirm-info .ci-row:last-child { border-bottom: none; }
-.confirm-info .ci-k { color: rgba(245,236,215,.5); }
-.confirm-info .ci-v { font-family: var(--fm); font-size: 12px; color: var(--cr); }
+.conf-title { font-family: var(--fd); font-size: 32px; line-height: .95; color: var(--cr); margin-bottom: 8px; }
+.conf-title em { font-family: var(--fi); font-style: italic; font-weight: 400; color: var(--oc); display: block; }
+.conf-sub { font-size: 14px; color: rgba(245,236,215,.6); line-height: 1.65; max-width: 26ch; margin-bottom: 24px; }
+.conf-info { background: var(--co2); border-radius: 14px; padding: 14px 18px; width: 100%; margin-bottom: 22px; text-align: left; }
+.ci-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px solid rgba(245,236,215,.06); }
+.ci-row:last-child { border-bottom: none; }
+.ci-k { color: rgba(245,236,215,.45); }
+.ci-v { font-family: var(--fm); font-size: 12px; color: var(--cr); }
 
 /* ============================================================
    S12 — MES BILLETS
 ============================================================ */
-#s12 {
-  background: var(--co);
-  display: flex;
-  flex-direction: column;
+#s12 { background: var(--co); flex-direction: column; }
+.billets-top { padding: 52px 20px 12px; flex-shrink: 0; }
+.billets-top h1 { font-family: var(--fd); font-size: 28px; color: var(--cr); margin-bottom: 4px; }
+.billets-top .sub { font-family: var(--fi); font-style: italic; font-size: 17px; color: rgba(245,236,215,.45); }
+.tabs { display: flex; margin: 14px 20px 0; background: var(--co2); border-radius: 10px; padding: 3px; gap: 0; flex-shrink: 0; }
+.tab-btn {
+  flex: 1; padding: 9px; text-align: center;
+  font-family: var(--fm); font-size: 11px; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(245,236,215,.4);
+  border-radius: 8px; cursor: pointer; transition: all .2s;
+  border: none; background: none; -webkit-tap-highlight-color: transparent;
 }
-
-.billets-header {
-  padding: 52px 20px 16px;
+.tab-btn.on { background: var(--oc); color: var(--co); }
+.blist { flex: 1; overflow-y: auto; padding: 14px 20px 90px; scrollbar-width: none; }
+.blist::-webkit-scrollbar { display: none; }
+.billet-row {
+  background: var(--co2); border-radius: 14px; overflow: hidden;
+  margin-bottom: 10px; display: flex; cursor: pointer;
+  border: 1px solid rgba(245,236,215,.05); transition: transform .15s;
+  -webkit-tap-highlight-color: transparent;
 }
-
-.billets-header h1 {
-  font-family: var(--fd);
-  font-size: 28px;
-  color: var(--cr);
-  margin-bottom: 4px;
-}
-
-.billets-header .subtitle {
-  font-family: var(--fi);
-  font-style: italic;
-  font-size: 18px;
-  color: rgba(245,236,215,.5);
-}
-
-.tabs {
-  display: flex;
-  gap: 0;
-  margin: 16px 20px 0;
-  background: var(--co2);
-  border-radius: 10px;
-  padding: 3px;
-}
-
-.tab {
-  flex: 1;
-  padding: 9px;
-  text-align: center;
-  font-family: var(--fm);
-  font-size: 11px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.45);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all .2s;
-  border: none;
-  background: none;
-}
-.tab.active {
-  background: var(--oc);
-  color: var(--co);
-}
-
-.billets-list {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px 20px 80px;
-  scrollbar-width: none;
-}
-.billets-list::-webkit-scrollbar { display: none; }
-
-.billet-mini {
-  background: var(--co2);
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 12px;
-  display: flex;
-  cursor: pointer;
-  border: 1px solid rgba(245,236,215,.05);
-  transition: transform .15s;
-}
-.billet-mini:active { transform: scale(.98); }
-
-.billet-mini .bm-color {
-  width: 6px;
-  background: var(--oc);
-  flex-shrink: 0;
-}
-.billet-mini.past .bm-color { background: rgba(245,236,215,.15); }
-
-.billet-mini .bm-body {
-  padding: 14px 14px 14px 16px;
-  flex: 1;
-}
-.billet-mini .bm-date {
-  font-family: var(--fm);
-  font-size: 9.5px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--oc);
-  margin-bottom: 5px;
-}
-.billet-mini.past .bm-date { color: rgba(245,236,215,.4); }
-
-.billet-mini .bm-title {
-  font-family: var(--fd);
-  font-size: 15px;
-  color: var(--cr);
-  margin-bottom: 6px;
-  line-height: 1.1;
-}
-.billet-mini.past .bm-title { color: rgba(245,236,215,.5); }
-
-.billet-mini .bm-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.billet-mini .bm-type {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .1em;
-  color: rgba(245,236,215,.4);
-}
-.billet-mini .bm-status {
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 99px;
-}
-.bm-status.active { background: rgba(193,125,60,.15); color: var(--oc); }
-.bm-status.past { background: rgba(245,236,215,.07); color: rgba(245,236,215,.35); }
-
-.billet-mini .bm-arr {
-  display: flex;
-  align-items: center;
-  padding-right: 14px;
-  color: rgba(245,236,215,.2);
-}
+.billet-row:active { transform: scale(.98); }
+.br-stripe { width: 5px; background: var(--oc); flex-shrink: 0; }
+.billet-row.past .br-stripe { background: rgba(245,236,215,.12); }
+.br-body { padding: 13px 13px 13px 15px; flex: 1; }
+.br-date { font-family: var(--fm); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--oc); margin-bottom: 4px; }
+.billet-row.past .br-date { color: rgba(245,236,215,.35); }
+.br-title { font-family: var(--fd); font-size: 15px; color: var(--cr); margin-bottom: 6px; line-height: 1.1; }
+.billet-row.past .br-title { color: rgba(245,236,215,.45); }
+.br-foot { display: flex; justify-content: space-between; align-items: center; }
+.br-type { font-family: var(--fm); font-size: 10px; letter-spacing: .1em; color: rgba(245,236,215,.35); }
+.br-status { font-family: var(--fm); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; }
+.br-status.live { background: rgba(193,125,60,.14); color: var(--oc); }
+.br-status.done { background: rgba(245,236,215,.07); color: rgba(245,236,215,.3); }
+.br-arr { display: flex; align-items: center; padding-right: 13px; color: rgba(245,236,215,.2); }
 
 /* ============================================================
    S13 — BILLET QR
 ============================================================ */
-#s13 {
-  background: var(--co);
-  padding: 52px 20px 40px;
-}
-
-.ticket-card {
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 16px 48px rgba(0,0,0,.5);
-}
-
-.ticket-top {
-  background: var(--oc);
-  padding: 24px 22px 20px;
-  position: relative;
-}
-
-.ticket-top .tt-eyebrow {
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  color: rgba(26,18,8,.55);
-  margin-bottom: 8px;
-}
-
-.ticket-top .tt-title {
-  font-family: var(--fd);
-  font-size: 22px;
-  line-height: 1;
-  color: var(--co);
-  margin-bottom: 4px;
-}
-
-.ticket-top .tt-sub {
-  font-family: var(--fm);
-  font-size: 11px;
-  letter-spacing: .1em;
-  color: rgba(26,18,8,.65);
-}
-
-.ticket-top .tt-zan {
-  position: absolute;
-  right: 16px;
-  bottom: 0;
-}
-
-.ticket-sep {
-  background: var(--cr2);
-  position: relative;
-  height: 20px;
-  display: flex;
-  align-items: center;
-}
-.ticket-sep::before {
-  content: '';
-  position: absolute;
-  left: -12px;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  background: var(--co);
-}
-.ticket-sep::after {
-  content: '';
-  position: absolute;
-  right: -12px;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  background: var(--co);
-}
-.ticket-sep .sep-line {
-  flex: 1;
-  border-top: 2px dashed rgba(26,18,8,.2);
-  margin: 0 16px;
-}
-
-.ticket-mid {
-  background: var(--cr2);
-  padding: 18px 22px 20px;
-}
-
-.ticket-mid .tm-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-.ticket-mid .tm-field .tf-label {
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(26,18,8,.45);
-  margin-bottom: 4px;
-}
-.ticket-mid .tm-field .tf-val {
-  font-family: var(--fd);
-  font-size: 13px;
-  color: var(--co);
-  line-height: 1.1;
-}
-
-.qr-zone {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.qr-label {
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(26,18,8,.45);
-}
-
-/* SVG QR Code */
-.qr-svg {
-  border: 3px solid var(--co);
-  border-radius: 10px;
-  background: var(--cr2);
-}
-
-.ticket-bot {
-  background: var(--co);
-  padding: 14px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.ticket-bot .tb-brand {
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.45);
-}
-.ticket-bot .tb-brand span { color: var(--oc); }
-
-.ticket-bot .tb-offline {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--fm);
-  font-size: 9px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,.35);
-}
-.tb-offline-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #4CAF50;
-  box-shadow: 0 0 6px #4CAF50;
-}
-
-.ref-code {
-  margin-top: 16px;
-  text-align: center;
-  font-family: var(--fm);
-  font-size: 12px;
-  letter-spacing: .18em;
-  color: rgba(245,236,215,.4);
-  background: var(--co2);
-  border-radius: 8px;
-  padding: 10px;
-}
+#s13 { background: var(--co); padding: 52px 20px 40px; overflow-y: auto; }
+.ticket-card { border-radius: 20px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.55); }
+.t-top { background: var(--oc); padding: 22px 20px 18px; position: relative; min-height: 106px; }
+.t-eyebrow { font-family: var(--fm); font-size: 9px; letter-spacing: .24em; text-transform: uppercase; color: rgba(26,18,8,.5); margin-bottom: 6px; }
+.t-name { font-family: var(--fd); font-size: 22px; line-height: 1; color: var(--co); margin-bottom: 3px; }
+.t-sub { font-family: var(--fm); font-size: 11px; letter-spacing: .1em; color: rgba(26,18,8,.6); }
+.t-zan-dec { position: absolute; right: 14px; bottom: 0; }
+.t-sep { background: var(--cr2); position: relative; height: 20px; display: flex; align-items: center; }
+.t-sep::before { content: ''; position: absolute; left: -11px; width: 22px; height: 22px; border-radius: 50%; background: var(--co); }
+.t-sep::after  { content: ''; position: absolute; right: -11px; width: 22px; height: 22px; border-radius: 50%; background: var(--co); }
+.t-dash { flex: 1; border-top: 2px dashed rgba(26,18,8,.18); margin: 0 14px; }
+.t-mid { background: var(--cr2); padding: 16px 20px 18px; }
+.t-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.t-field .tf-l { font-family: var(--fm); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: rgba(26,18,8,.4); margin-bottom: 3px; }
+.t-field .tf-v { font-family: var(--fd); font-size: 13px; color: var(--co); line-height: 1.1; }
+.qr-area { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.qr-lbl { font-family: var(--fm); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: rgba(26,18,8,.4); }
+.t-bot { background: var(--co); padding: 13px 20px; display: flex; justify-content: space-between; align-items: center; }
+.t-bot-brand { font-family: var(--fm); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: rgba(245,236,215,.4); }
+.t-bot-brand span { color: var(--oc); }
+.t-offline { display: flex; align-items: center; gap: 5px; font-family: var(--fm); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: rgba(245,236,215,.3); }
+.offline-dot { width: 6px; height: 6px; border-radius: 50%; background: #4CAF50; box-shadow: 0 0 6px #4CAF50; }
+.ref-tag { margin-top: 14px; text-align: center; font-family: var(--fm); font-size: 12px; letter-spacing: .16em; color: rgba(245,236,215,.35); background: var(--co2); border-radius: 8px; padding: 10px; }
 
 /* ============================================================
    S14 — BILLET PASSÉ
 ============================================================ */
-#s14 .ticket-top { background: rgba(245,236,215,.12); filter: grayscale(.6); }
-#s14 .ticket-top .tt-title { color: rgba(245,236,215,.55); }
-#s14 .ticket-mid { background: rgba(239,227,197,.15); }
-#s14 .ticket-mid .tf-val { color: rgba(26,18,8,.55); }
-#s14 .ticket-mid .tf-label { color: rgba(26,18,8,.35); }
-#s14 .qr-svg { opacity: .35; filter: grayscale(1); }
-
+#s14 { background: var(--co); padding: 52px 20px 40px; overflow-y: auto; }
 .past-stamp {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%) rotate(-18deg);
-  font-family: var(--fd);
-  font-size: 28px;
-  color: rgba(200,57,43,.5);
-  border: 3px solid rgba(200,57,43,.35);
-  border-radius: 8px;
-  padding: 4px 12px;
-  letter-spacing: .1em;
-  white-space: nowrap;
-  pointer-events: none;
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%) rotate(-16deg);
+  font-family: var(--fd); font-size: 28px;
+  color: rgba(200,57,43,.55); border: 3px solid rgba(200,57,43,.4);
+  border-radius: 8px; padding: 4px 14px; letter-spacing: .1em; white-space: nowrap; pointer-events: none;
 }
 
 /* ============================================================
-   BUTTONS (global)
+   GLOBAL BUTTONS
 ============================================================ */
-.btn-primary {
-  display: block;
-  width: 100%;
-  background: var(--oc);
-  color: var(--co);
-  font-family: var(--fd);
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  padding: 16px 20px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  transition: background .15s, transform .1s, box-shadow .15s;
-  -webkit-tap-highlight-color: transparent;
-  position: relative;
-  overflow: hidden;
-  user-select: none;
-}
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0);
-  transition: background .1s;
-}
-.btn-primary:hover { background: #d48a44; }
-.btn-primary:active {
-  transform: scale(.97);
-  box-shadow: 0 2px 8px rgba(0,0,0,.4);
-}
-.btn-primary:active::after { background: rgba(0,0,0,.12); }
-
-.btn-secondary {
-  display: block;
-  width: 100%;
-  background: rgba(245,236,215,.06);
-  color: rgba(245,236,215,.7);
-  font-family: var(--fs);
-  font-size: 14px;
-  font-weight: 400;
-  padding: 15px 20px;
-  border-radius: 12px;
-  border: 1.5px solid rgba(245,236,215,.14);
-  cursor: pointer;
-  text-align: center;
+.btn-p {
+  display: block; width: 100%;
+  background: var(--oc); color: var(--co);
+  font-family: var(--fd); font-size: 13px; text-transform: uppercase;
+  letter-spacing: .04em; padding: 16px 20px; border-radius: 12px;
+  border: none; cursor: pointer; text-align: center;
   transition: background .15s, transform .1s;
   -webkit-tap-highlight-color: transparent;
+  user-select: none; position: relative; overflow: hidden;
 }
-.btn-secondary:hover { background: rgba(245,236,215,.1); }
-.btn-secondary:active { transform: scale(.97); }
+.btn-p:active { transform: scale(.97); background: #aa6c33; }
 
-/* ============================================================
-   UTILS
-============================================================ */
-.page-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 28px;
+.btn-s {
+  display: block; width: 100%;
+  background: rgba(245,236,215,.06); color: rgba(245,236,215,.65);
+  font-family: var(--fs); font-size: 14px; font-weight: 400;
+  padding: 15px 20px; border-radius: 12px;
+  border: 1.5px solid rgba(245,236,215,.14); cursor: pointer;
+  text-align: center; transition: background .15s, transform .1s;
+  -webkit-tap-highlight-color: transparent;
 }
-
-.page-header .back {
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  background: rgba(245,236,215,.06);
-  border: 1px solid rgba(245,236,215,.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  color: var(--cr);
-  border: none;
-  background: var(--co2);
-}
-
-.page-header .ph-title {
-  font-family: var(--fd);
-  font-size: 18px;
-  color: var(--cr);
-}
-
-.eyebrow {
-  font-family: var(--fm);
-  font-size: 10px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--oc);
-  margin-bottom: 8px;
-}
-
-/* ============================================================
-   INFO PANEL (desktop)
-============================================================ */
-.info-panel {
-  display: none;
-}
-@media (min-width: 1100px) {
-  .info-panel {
-    display: flex;
-    flex-direction: column;
-    width: 280px;
-    padding: 40px 32px;
-    flex-shrink: 0;
-  }
-  .info-panel .ip-badge {
-    font-family: var(--fm);
-    font-size: 9px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--oc);
-    border: 1px solid rgba(193,125,60,.3);
-    padding: 5px 12px;
-    border-radius: 99px;
-    display: inline-block;
-    margin-bottom: 24px;
-  }
-  .info-panel .ip-title {
-    font-family: var(--fd);
-    font-size: 20px;
-    color: var(--cr);
-    margin-bottom: 8px;
-    line-height: 1;
-  }
-  .info-panel .ip-desc {
-    font-size: 13px;
-    color: rgba(245,236,215,.5);
-    line-height: 1.6;
-    margin-bottom: 24px;
-  }
-  .info-panel .ip-divider {
-    height: 1px;
-    background: rgba(245,236,215,.07);
-    margin-bottom: 20px;
-  }
-  .info-panel .ip-meta {
-    font-family: var(--fm);
-    font-size: 10px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: rgba(245,236,215,.3);
-    line-height: 2;
-  }
-}
-
-/* ============================================================
-   TRANSITIONS
-============================================================ */
-.screen {
-  animation: fadeSlide .25s ease-out;
-}
-
-@keyframes fadeSlide {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+.btn-s:active { transform: scale(.97); background: rgba(245,236,215,.1); }
 
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     SVG DEFS
-============================================================ -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-<defs>
-
-<!-- Wordmark -->
+<!-- SVG DEFS -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="wm" viewBox="0 0 1320 200">
   <g fill="currentColor">
-    <path d="M4 8 L50 8 L78 138 L102 50 L138 50 L162 138 L190 8 L236 8 L198 192 L154 192 L120 78 L86 192 L42 192 Z"/>
-    <g transform="translate(256 0)"><path d="M0 192 L60 8 Q64 0 72 0 L108 0 Q116 0 120 8 L180 192 L134 192 L122 152 L58 152 L46 192 Z M70 116 L110 116 L90 52 Z"/></g>
-    <g transform="translate(452 0)"><path d="M0 192 L0 18 Q0 8 10 8 L50 8 L100 122 L150 8 L190 8 Q200 8 200 18 L200 192 L158 192 L158 86 L122 168 L78 168 L42 86 L42 192 Z"/></g>
+    <path d="M4 8L50 8L78 138L102 50L138 50L162 138L190 8L236 8L198 192L154 192L120 78L86 192L42 192Z"/>
+    <g transform="translate(256 0)"><path d="M0 192L60 8Q64 0 72 0L108 0Q116 0 120 8L180 192L134 192L122 152L58 152L46 192ZM70 116L110 116L90 52Z"/></g>
+    <g transform="translate(452 0)"><path d="M0 192L0 18Q0 8 10 8L50 8L100 122L150 8L190 8Q200 8 200 18L200 192L158 192L158 86L122 168L78 168L42 86L42 192Z"/></g>
     <g transform="translate(672 0)"><rect x="0" y="8" width="48" height="184" rx="10"/></g>
-    <g transform="translate(736 0)"><path d="M0 8 L168 8 Q178 8 178 18 L178 44 Q178 54 168 54 L112 54 L112 192 L66 192 L66 54 L10 54 Q0 54 0 44 L0 18 Q0 8 10 8 Z"/></g>
-    <g transform="translate(932 0)"><path fill-rule="evenodd" d="M100 0 Q200 0 200 100 Q200 200 100 200 Q0 200 0 100 Q0 0 100 0 Z M100 50 Q50 50 50 100 Q50 150 100 150 Q150 150 150 100 Q150 50 100 50 Z"/></g>
-    <g transform="translate(1152 0)"><path d="M0 192 L0 18 Q0 8 10 8 L50 8 L122 124 L122 18 Q122 8 132 8 L158 8 Q168 8 168 18 L168 182 Q168 192 158 192 L118 192 L46 76 L46 182 Q46 192 36 192 L10 192 Q0 192 0 192 Z"/></g>
+    <g transform="translate(736 0)"><path d="M0 8L168 8Q178 8 178 18L178 44Q178 54 168 54L112 54L112 192L66 192L66 54L10 54Q0 54 0 44L0 18Q0 8 10 8Z"/></g>
+    <g transform="translate(932 0)"><path fill-rule="evenodd" d="M100 0Q200 0 200 100Q200 200 100 200Q0 200 0 100Q0 0 100 0ZM100 50Q50 50 50 100Q50 150 100 150Q150 150 150 100Q150 50 100 50Z"/></g>
+    <g transform="translate(1152 0)"><path d="M0 192L0 18Q0 8 10 8L50 8L122 124L122 18Q122 8 132 8L158 8Q168 8 168 18L168 182Q168 192 158 192L118 192L46 76L46 182Q46 192 36 192L10 192Q0 192 0 192Z"/></g>
   </g>
 </symbol>
-
-<!-- Zan gris (z-gr) — splash/onboarding -->
+<!-- Zan gris — splash / onboarding / legal. Corps #C2B49A, yeux ochre (brandbook v2) -->
 <symbol id="z-gr" viewBox="0 0 240 320">
   <g fill="#C2B49A">
-    <path d="M92 8L76 96l28-4Z"/>
-    <path d="M148 8l16 88-28-4Z"/>
-    <path d="M88 80q-6 0-4 16L38 268q-6 18 12 22h140q18-4 12-22L156 96q2-16-4-16Z"/>
+    <path d="M 92 8 L 76 96 L 104 92 Z"/>
+    <path d="M 148 8 L 164 96 L 136 92 Z"/>
+    <path d="M 88 80 Q 82 80 84 96 L 38 268 Q 32 286 50 290 L 190 290 Q 208 286 202 268 L 156 96 Q 158 80 152 80 Z"/>
     <ellipse cx="86" cy="298" rx="14" ry="8"/>
     <ellipse cx="154" cy="298" rx="14" ry="8"/>
   </g>
-  <circle cx="100" cy="142" r="14" fill="#C8392B"/>
-  <circle cx="140" cy="142" r="14" fill="#C8392B"/>
-  <circle cx="100" cy="142" r="5" fill="#1A1208"/>
-  <circle cx="140" cy="142" r="5" fill="#1A1208"/>
-  <path d="M108 178 Q120 188 132 178" stroke="#1A1208" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- yeux ochre (plus rouge depuis v2) -->
+  <circle cx="100" cy="142" r="11" fill="#C17D3C"/>
+  <circle cx="140" cy="142" r="11" fill="#C17D3C"/>
+  <circle cx="100" cy="143" r="3.5" fill="#1A1208"/>
+  <circle cx="140" cy="143" r="3.5" fill="#1A1208"/>
+  <!-- sourire doux canon -->
+  <path d="M 108 182 Q 120 192 132 182" stroke="#1A1208" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- bande déco -->
   <g fill="#1A1208">
-    <rect x="116" y="200" width="8" height="6" rx="2"/>
-    <rect x="116" y="210" width="8" height="6" rx="2"/>
-    <rect x="116" y="220" width="8" height="6" rx="2"/>
+    <rect x="46" y="216" width="148" height="10" rx="3"/>
+    <path d="M 116 226 L 124 240 L 116 254 L 124 254 L 132 240 L 124 226 Z M 124 226 L 116 240 L 124 254 L 132 254 L 124 240 L 132 226 Z" opacity=".75"/>
   </g>
-  <rect x="46" y="240" width="148" height="10" rx="3" fill="#1A1208"/>
 </symbol>
 
-<!-- Zan ochre (z-oc) — accueil/billets -->
+<!-- Zan ochre — accueil hero / mes billets. Corps ochre, yeux ochre clair -->
 <symbol id="z-oc" viewBox="0 0 240 320">
   <g fill="#C17D3C">
-    <path d="M92 8L76 96l28-4Z"/>
-    <path d="M148 8l16 88-28-4Z"/>
-    <path d="M88 80q-6 0-4 16L38 268q-6 18 12 22h140q18-4 12-22L156 96q2-16-4-16Z"/>
+    <path d="M 92 8 L 76 96 L 104 92 Z"/>
+    <path d="M 148 8 L 164 96 L 136 92 Z"/>
+    <path d="M 88 80 Q 82 80 84 96 L 38 268 Q 32 286 50 290 L 190 290 Q 208 286 202 268 L 156 96 Q 158 80 152 80 Z"/>
     <ellipse cx="86" cy="298" rx="14" ry="8"/>
     <ellipse cx="154" cy="298" rx="14" ry="8"/>
   </g>
-  <circle cx="100" cy="142" r="14" fill="#C8392B"/>
-  <circle cx="140" cy="142" r="14" fill="#C8392B"/>
-  <circle cx="100" cy="142" r="5" fill="#1A1208"/>
-  <circle cx="140" cy="142" r="5" fill="#1A1208"/>
-  <path d="M108 178 Q120 188 132 178" stroke="#1A1208" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <circle cx="100" cy="142" r="11" fill="#F5ECD7"/>
+  <circle cx="140" cy="142" r="11" fill="#F5ECD7"/>
+  <circle cx="100" cy="143" r="3.5" fill="#1A1208"/>
+  <circle cx="140" cy="143" r="3.5" fill="#1A1208"/>
+  <path d="M 108 182 Q 120 192 132 182" stroke="#1A1208" stroke-width="4" stroke-linecap="round" fill="none"/>
   <g fill="#1A1208">
-    <rect x="116" y="200" width="8" height="6" rx="2"/>
-    <rect x="116" y="210" width="8" height="6" rx="2"/>
-    <rect x="116" y="220" width="8" height="6" rx="2"/>
+    <rect x="46" y="216" width="148" height="10" rx="3"/>
+    <path d="M 116 226 L 124 240 L 116 254 L 124 254 L 132 240 L 124 226 Z M 124 226 L 116 240 L 124 254 L 132 254 L 124 240 L 132 226 Z" opacity=".75"/>
   </g>
-  <rect x="46" y="240" width="148" height="10" rx="3" fill="#1A1208"/>
 </symbol>
 
-<!-- Zan dark (z-dk) — billet top -->
+<!-- Zan dark — billet top (sur fond ochre). Corps cocoa, yeux cream -->
 <symbol id="z-dk" viewBox="0 0 240 320">
   <g fill="#1A1208">
-    <path d="M92 8L76 96l28-4Z"/>
-    <path d="M148 8l16 88-28-4Z"/>
-    <path d="M88 80q-6 0-4 16L38 268q-6 18 12 22h140q18-4 12-22L156 96q2-16-4-16Z"/>
+    <path d="M 92 8 L 76 96 L 104 92 Z"/>
+    <path d="M 148 8 L 164 96 L 136 92 Z"/>
+    <path d="M 88 80 Q 82 80 84 96 L 38 268 Q 32 286 50 290 L 190 290 Q 208 286 202 268 L 156 96 Q 158 80 152 80 Z"/>
     <ellipse cx="86" cy="298" rx="14" ry="8"/>
     <ellipse cx="154" cy="298" rx="14" ry="8"/>
   </g>
-  <circle cx="100" cy="142" r="14" fill="#F5ECD7"/>
-  <circle cx="140" cy="142" r="14" fill="#F5ECD7"/>
-  <circle cx="100" cy="142" r="5" fill="#1A1208"/>
-  <circle cx="140" cy="142" r="5" fill="#1A1208"/>
-  <path d="M108 178 Q120 188 132 178" stroke="#F5ECD7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <circle cx="100" cy="142" r="11" fill="#F5ECD7"/>
+  <circle cx="140" cy="142" r="11" fill="#F5ECD7"/>
+  <circle cx="100" cy="143" r="3.5" fill="#1A1208"/>
+  <circle cx="140" cy="143" r="3.5" fill="#1A1208"/>
+  <path d="M 108 182 Q 120 192 132 182" stroke="#F5ECD7" stroke-width="4" stroke-linecap="round" fill="none"/>
 </symbol>
 
-<!-- Zan bras levés (z-cry) — confirmation -->
+<!-- Zan bras levés — confirmation succès. Corps ochre, bras levés horizontaux -->
 <symbol id="z-cry" viewBox="0 0 320 320">
   <g fill="#C17D3C">
-    <path d="M132 8L116 96l28-4Z"/>
-    <path d="M188 8l16 88-28-4Z"/>
-    <path d="M128 80q-6 0-4 16L78 268q-6 18 12 22h140q18-4 12-22L196 96q2-16-4-16Z"/>
+    <path d="M 132 8 L 116 96 L 144 92 Z"/>
+    <path d="M 188 8 L 204 96 L 176 92 Z"/>
+    <path d="M 128 80 Q 122 80 124 96 L 78 268 Q 72 286 90 290 L 230 290 Q 248 286 242 268 L 196 96 Q 198 80 192 80 Z"/>
     <ellipse cx="126" cy="298" rx="14" ry="8"/>
     <ellipse cx="194" cy="298" rx="14" ry="8"/>
-    <!-- bras gauche levé -->
-    <rect x="40" y="120" width="88" height="16" rx="8"/>
-    <!-- bras droit levé -->
-    <rect x="192" y="120" width="88" height="16" rx="8"/>
+    <!-- bras levés (brandbook V2 CRIER) -->
+    <rect x="8" y="170" width="120" height="16" rx="8"/>
+    <rect x="192" y="170" width="120" height="16" rx="8"/>
   </g>
-  <circle cx="142" cy="142" r="14" fill="#C8392B"/>
-  <circle cx="180" cy="142" r="14" fill="#C8392B"/>
-  <circle cx="142" cy="142" r="5" fill="#1A1208"/>
-  <circle cx="180" cy="142" r="5" fill="#1A1208"/>
-  <path d="M149 178 Q161 192 173 178" stroke="#1A1208" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <circle cx="142" cy="142" r="11" fill="#F5ECD7"/>
+  <circle cx="180" cy="142" r="11" fill="#F5ECD7"/>
+  <circle cx="146" cy="141" r="3.5" fill="#1A1208"/>
+  <circle cx="184" cy="141" r="3.5" fill="#1A1208"/>
+  <path d="M 146 184 Q 161 196 176 184" stroke="#1A1208" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <g fill="#1A1208"><rect x="86" y="220" width="148" height="10" rx="3"/></g>
 </symbol>
-
-</defs>
-</svg>
+</defs></svg>
 
 <!-- ============================================================
-     APP SHELL
+     PROTO BAR (desktop, équipe)
 ============================================================ -->
-<div class="app-shell">
+<div id="proto-bar">
+  <button onclick="nav('s1')" id="pb-s1">S1 Splash</button>
+  <button onclick="nav('s2')" id="pb-s2">S2 Onboarding</button>
+  <button onclick="nav('s3')" id="pb-s3">S3 Rôle</button>
+  <button onclick="nav('s4')" id="pb-s4">S4 Auth</button>
+  <button onclick="nav('s5')" id="pb-s5">S5 OTP</button>
+  <div class="sep"></div>
+  <button onclick="nav('s6')" id="pb-s6">S6 Accueil</button>
+  <button onclick="nav('s7')" id="pb-s7">S7 Événement</button>
+  <button onclick="nav('s8')" id="pb-s8">S8 Achat</button>
+  <button onclick="nav('s9')" id="pb-s9">S9 Paiement</button>
+  <button onclick="nav('s10')" id="pb-s10">S10 Process</button>
+  <button onclick="nav('s11')" id="pb-s11">S11 Confirm</button>
+  <div class="sep"></div>
+  <button onclick="nav('s12')" id="pb-s12">S12 Billets</button>
+  <button onclick="nav('s13')" id="pb-s13">S13 QR</button>
+  <button onclick="nav('s14')" id="pb-s14">S14 Passé</button>
+</div>
 
-  <!-- Side Nav (desktop) -->
-  <nav class="side-nav" id="sideNav">
-    <div class="brand">
-      <svg width="80" height="12" viewBox="0 0 1320 200"><use href="#wm"/></svg>
-      <div class="dot"></div>
-    </div>
-    <div class="section-label">Onboarding</div>
-    <button class="nav-item active" onclick="goTo('s1')" id="nav-s1"><span class="num">S1</span> Splash</button>
-    <button class="nav-item" onclick="goTo('s2')" id="nav-s2"><span class="num">S2</span> Onboarding</button>
-    <button class="nav-item" onclick="goTo('s3')" id="nav-s3"><span class="num">S3</span> Rôle</button>
-    <button class="nav-item" onclick="goTo('s4')" id="nav-s4"><span class="num">S4</span> Téléphone</button>
-    <button class="nav-item" onclick="goTo('s5')" id="nav-s5"><span class="num">S5</span> OTP</button>
-    <div class="section-label">Acheteur</div>
-    <button class="nav-item" onclick="goTo('s6')" id="nav-s6"><span class="num">S6</span> Accueil</button>
-    <button class="nav-item" onclick="goTo('s7')" id="nav-s7"><span class="num">S7</span> Événement</button>
-    <button class="nav-item" onclick="goTo('s8')" id="nav-s8"><span class="num">S8</span> Achat</button>
-    <button class="nav-item" onclick="goTo('s9')" id="nav-s9"><span class="num">S9</span> Paiement</button>
-    <button class="nav-item" onclick="goTo('s10')" id="nav-s10"><span class="num">S10</span> Traitement</button>
-    <button class="nav-item" onclick="goTo('s11')" id="nav-s11"><span class="num">S11</span> Confirmation</button>
-    <div class="section-label">Billets</div>
-    <button class="nav-item" onclick="goTo('s12')" id="nav-s12"><span class="num">S12</span> Mes billets</button>
-    <button class="nav-item" onclick="goTo('s13')" id="nav-s13"><span class="num">S13</span> Billet QR</button>
-    <button class="nav-item" onclick="goTo('s14')" id="nav-s14"><span class="num">S14</span> Billet passé</button>
-  </nav>
+<!-- ============================================================
+     DEVICE
+============================================================ -->
+<div id="device">
 
-  <!-- Main Area -->
-  <div class="main-area">
-    <div class="phone-wrapper">
+  <!-- Status bar (desktop frame) -->
+  <div id="status-bar">
+    <span>9:41</span>
+    <span style="letter-spacing:.1em;">●●●●</span>
+  </div>
 
-      <!-- Status bar (desktop only) -->
-      <div class="status-bar">
-        <span>9:41</span>
-        <div class="notch"></div>
-        <span>●●●●</span>
-      </div>
-
-      <!-- ================================================
-           S1 — SPLASH
-      ================================================ -->
-      <div class="screen active" id="s1" onclick="goTo('s2')">
-        <div class="splash-bg"></div>
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;position:relative;z-index:2;">
-          <div class="splash-zan">
-            <svg width="180" viewBox="0 0 240 320"><use href="#z-gr"/></svg>
-          </div>
-          <div class="splash-logo">
-            <svg width="160" height="24" viewBox="0 0 1320 200" color="var(--cr)"><use href="#wm"/></svg>
-          </div>
-        </div>
-        <div class="splash-tap">Appuie pour commencer</div>
-      </div>
-
-      <!-- ================================================
-           S2 — ONBOARDING
-      ================================================ -->
-      <div class="screen" id="s2" style="overflow:hidden;">
-        <div class="onboarding-slides" id="obSlider">
-          <!-- Slide 1 -->
-          <div class="ob-slide" style="background:var(--co);">
-            <div class="ob-img">
-              <svg width="160" viewBox="0 0 240 320"><use href="#z-gr" style="color:#C2B49A"/></svg>
-            </div>
-            <div class="ob-body">
-              <span class="ob-chip">Découvre</span>
-              <h2>Toute ta<br>culture<br>ici</h2>
-              <p>Concerts, festivals, expos — tous les événements culturels de Cotonou et au-delà.</p>
-            </div>
-          </div>
-          <!-- Slide 2 -->
-          <div class="ob-slide" style="background:var(--co);">
-            <div class="ob-img">
-              <svg width="200" viewBox="0 0 320 320"><use href="#z-cry" style="color:#C17D3C"/></svg>
-            </div>
-            <div class="ob-body">
-              <span class="ob-chip">Achète</span>
-              <h2>Ton billet<br>en 2<br>minutes</h2>
-              <p>Paiement Mobile Money, MTN, Moov ou Orange. Simple, rapide, certifié.</p>
-            </div>
-          </div>
-          <!-- Slide 3 -->
-          <div class="ob-slide" style="background:var(--co);">
-            <div class="ob-img">
-              <svg width="160" viewBox="0 0 240 320"><use href="#z-oc" style="color:#C17D3C"/></svg>
-            </div>
-            <div class="ob-body">
-              <span class="ob-chip">Vis</span>
-              <h2>QR garanti<br>anti-fraude</h2>
-              <p>Ton QR est émis quelques heures avant le show. Disponible même sans connexion.</p>
-            </div>
-          </div>
-        </div>
-        <div style="padding:0 24px;">
-          <div class="ob-dots" id="obDots">
-            <div class="ob-dot active"></div>
-            <div class="ob-dot"></div>
-            <div class="ob-dot"></div>
-          </div>
-        </div>
-        <div class="ob-footer">
-          <button class="btn-primary" id="obNext" onclick="obNextSlide()">Suivant</button>
-          <button class="btn-secondary" onclick="goTo('s3')">Passer</button>
-        </div>
-      </div>
-
-      <!-- ================================================
-           S3 — RÔLE
-      ================================================ -->
-      <div class="screen" id="s3">
-        <div class="role-header">
-          <div class="eyebrow">Bienvenue</div>
-          <h2>Tu es<br><em>qui,</em> toi ?</h2>
-        </div>
-        <div class="role-card" onclick="goTo('s4')">
-          <div class="icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--oc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-          <div>
-            <div class="title">Acheteur</div>
-            <div class="desc">Je cherche des événements et j'achète mes billets.</div>
-          </div>
-          <svg style="margin-left:auto;color:rgba(245,236,215,.3)" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-        <div class="role-card" onclick="goTo('s4')">
-          <div class="icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--oc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/>
-              <path d="M9 21V9"/>
-            </svg>
-          </div>
-          <div>
-            <div class="title">Organisateur</div>
-            <div class="desc">Je publie des événements et gère mes billets vendus.</div>
-          </div>
-          <svg style="margin-left:auto;color:rgba(245,236,215,.3)" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-        <p style="font-size:12px;color:rgba(245,236,215,.35);text-align:center;margin-top:24px;line-height:1.6;">Tu pourras changer ça dans tes paramètres.</p>
-      </div>
-
-      <!-- ================================================
-           S4 — AUTH TÉLÉPHONE
-      ================================================ -->
-      <div class="screen" id="s4">
-        <div class="auth-header">
-          <button class="back-btn" onclick="goTo('s3')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            Retour
-          </button>
-          <h2>Ton<br>numéro</h2>
-          <p>On t'envoie un code pour confirmer que c'est bien toi.</p>
-        </div>
-        <div class="phone-input-group">
-          <button class="flag-btn">🇧🇯 +229</button>
-          <input type="tel" class="txt-input" placeholder="97 00 00 00" inputmode="numeric">
-        </div>
-        <p class="input-note">Tes données sont protégées. On ne partage rien.</p>
-        <button class="btn-primary" onclick="goTo('s5')" style="margin-top:auto;">Recevoir le code</button>
-      </div>
-
-      <!-- ================================================
-           S5 — OTP
-      ================================================ -->
-      <div class="screen" id="s5">
-        <div class="auth-header">
-          <button class="back-btn" onclick="goTo('s4')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            Retour
-          </button>
-          <h2>Code reçu ?</h2>
-          <p>On a envoyé un SMS au <strong style="color:var(--cr);font-weight:600;">+229 97 00 00 00</strong></p>
-        </div>
-        <div class="otp-grid">
-          <input type="text" class="otp-box" maxlength="1" inputmode="numeric" id="otp1">
-          <input type="text" class="otp-box" maxlength="1" inputmode="numeric" id="otp2">
-          <input type="text" class="otp-box" maxlength="1" inputmode="numeric" id="otp3">
-          <input type="text" class="otp-box" maxlength="1" inputmode="numeric" id="otp4">
-        </div>
-        <p class="otp-resend">Pas reçu ? <span onclick="void(0)">Renvoyer le code</span> (30s)</p>
-        <button class="btn-primary" onclick="goTo('s6')" style="margin-top:auto;">Confirmer</button>
-      </div>
-
-      <!-- ================================================
-           S6 — ACCUEIL
-      ================================================ -->
-      <div class="screen" id="s6">
-        <div class="home-header">
-          <div class="home-topbar">
-            <div class="logo-area">
-              <svg width="90" height="14" viewBox="0 0 1320 200" color="var(--cr)"><use href="#wm"/></svg>
-              <div class="dot"></div>
-            </div>
-            <div class="avatar" onclick="void(0)">KK</div>
-          </div>
-          <div class="home-hero">
-            <div class="greet">Bonsoir, <strong>Kofi</strong> 👋</div>
-            <div style="font-size:13px;color:rgba(245,236,215,.45);font-family:var(--fm);letter-spacing:.1em;text-transform:uppercase;">Cotonou · Vendredi 5 juin</div>
-          </div>
-          <div class="home-search">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(245,236,215,.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" placeholder="Artiste, lieu, événement…">
-          </div>
-          <div class="filter-chips">
-            <div class="chip active">Tout</div>
-            <div class="chip">Musique</div>
-            <div class="chip">Théâtre</div>
-            <div class="chip">Expo</div>
-            <div class="chip">Festival</div>
-            <div class="chip">Danse</div>
-          </div>
-        </div>
-        <div class="home-content">
-          <div class="section-title">À la une</div>
-          <div class="ev-card" onclick="goTo('s7')">
-            <div class="ev-img" style="background:linear-gradient(135deg,#3D1F0F 0%,#6B2F0A 100%);">
-              <svg width="100" viewBox="0 0 240 320" style="opacity:.4"><use href="#z-gr"/></svg>
-              <span class="ev-badge">Ce week-end</span>
-            </div>
-            <div class="ev-body">
-              <div class="ev-date">Sam 7 juin · 20h00</div>
-              <div class="ev-title">VAUDOU NIGHTS — Édition Spéciale</div>
-              <div class="ev-meta">
-                <div class="ev-location">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  Champ de Foire, Cotonou
-                </div>
-                <div class="ev-price">2 500 XOF</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="section-title">Prochainement</div>
-          <div class="ev-card-h" onclick="goTo('s7')">
-            <div class="ev-img-h">
-              <svg width="40" viewBox="0 0 240 320" style="opacity:.5"><use href="#z-oc" style="color:#C17D3C"/></svg>
-            </div>
-            <div class="ev-body-h">
-              <div class="ev-date-h">Ven 13 Juin · 19h30</div>
-              <div class="ev-title-h">Jazz au Bénin — Orchestre National</div>
-              <div class="ev-price-h">Dès <span>1 500 XOF</span></div>
-            </div>
-            <svg style="align-self:center;margin-right:14px;color:rgba(245,236,215,.2)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div class="ev-card-h" onclick="goTo('s7')">
-            <div class="ev-img-h">
-              <svg width="40" viewBox="0 0 240 320" style="opacity:.5"><use href="#z-gr"/></svg>
-            </div>
-            <div class="ev-body-h">
-              <div class="ev-date-h">Dim 15 Juin · 16h00</div>
-              <div class="ev-title-h">Expo Tissu — Art Textile Africain</div>
-              <div class="ev-price-h">Dès <span>500 XOF</span></div>
-            </div>
-            <svg style="align-self:center;margin-right:14px;color:rgba(245,236,215,.2)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-          <div class="ev-card-h" onclick="goTo('s7')">
-            <div class="ev-img-h">
-              <svg width="40" viewBox="0 0 240 320" style="opacity:.5"><use href="#z-oc" style="color:#C17D3C"/></svg>
-            </div>
-            <div class="ev-body-h">
-              <div class="ev-date-h">Sam 21 Juin · 21h00</div>
-              <div class="ev-title-h">AfroBeats Fever — Open Air</div>
-              <div class="ev-price-h">Dès <span>3 000 XOF</span></div>
-            </div>
-            <svg style="align-self:center;margin-right:14px;color:rgba(245,236,215,.2)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </div>
-
-        <!-- Bottom nav -->
-        <div class="bottom-nav">
-          <button class="bnav-item active" onclick="void(0)">
-            <div class="bnav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-            <span class="bnav-label">Accueil</span>
-          </button>
-          <button class="bnav-item" onclick="goTo('s6')">
-            <div class="bnav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-            <span class="bnav-label">Explorer</span>
-          </button>
-          <button class="bnav-item" onclick="goTo('s12')">
-            <div class="bnav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
-            <span class="bnav-label">Billets</span>
-          </button>
-          <button class="bnav-item" onclick="void(0)">
-            <div class="bnav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-            <span class="bnav-label">Profil</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- ================================================
-           S7 — FICHE ÉVÉNEMENT
-      ================================================ -->
-      <div class="screen" id="s7">
-        <div class="ev-hero">
-          <svg width="120" viewBox="0 0 240 320" style="opacity:.3"><use href="#z-gr"/></svg>
-          <button class="ev-hero-back" onclick="goTo('s6')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button class="ev-hero-share">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-          </button>
-        </div>
-        <div class="ev-detail">
-          <div class="ev-cat">Musique · Traditionnel</div>
-          <div class="ev-name">VAUDOU NIGHTS<br>— Édition Spéciale</div>
-          <div class="ev-artist">
-            <div class="artist-av">
-              <svg width="20" viewBox="0 0 240 320" style="opacity:.7"><use href="#z-oc" style="color:#C17D3C"/></svg>
-            </div>
-            <div>
-              <div class="artist-name">Gangbé Brass Band</div>
-              <div class="artist-role">Artiste principal</div>
-            </div>
-          </div>
-          <div class="ev-info-grid">
-            <div class="ev-info-cell">
-              <div class="k">Date</div>
-              <div class="v">Sam 7 Juin</div>
-            </div>
-            <div class="ev-info-cell">
-              <div class="k">Heure</div>
-              <div class="v">20h00</div>
-            </div>
-            <div class="ev-info-cell">
-              <div class="k">Lieu</div>
-              <div class="v">Champ de Foire</div>
-            </div>
-            <div class="ev-info-cell">
-              <div class="k">Disponible</div>
-              <div class="v" style="color:var(--oc)">142 places</div>
-            </div>
-          </div>
-          <div class="ev-desc">
-            Le Gangbé Brass Band revient pour une nuit exceptionnelle au cœur du patrimoine vodoun. Cuivres, percussions et chants traditionnels dans une mise en scène inédite. Une expérience sensorielle unique à ne pas manquer.
-          </div>
-          <div style="font-family:var(--fm);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,236,215,.4);margin-bottom:14px;">Catégories</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <span style="font-family:var(--fm);font-size:10px;letter-spacing:.12em;padding:5px 12px;border-radius:99px;background:rgba(245,236,215,.07);color:rgba(245,236,215,.55);">MUSIQUE LIVE</span>
-            <span style="font-family:var(--fm);font-size:10px;letter-spacing:.12em;padding:5px 12px;border-radius:99px;background:rgba(245,236,215,.07);color:rgba(245,236,215,.55);">VODOUN</span>
-            <span style="font-family:var(--fm);font-size:10px;letter-spacing:.12em;padding:5px 12px;border-radius:99px;background:rgba(245,236,215,.07);color:rgba(245,236,215,.55);">BRASS BAND</span>
-          </div>
-        </div>
-        <div class="ev-bottom-bar">
-          <div class="price-block">
-            <div class="price-label">À partir de</div>
-            <div class="price-val">2 500 XOF</div>
-          </div>
-          <button class="btn-primary" onclick="goTo('s8')" style="flex:1;">Choisir mes billets</button>
-        </div>
-      </div>
-
-      <!-- ================================================
-           S8 — ACHAT
-      ================================================ -->
-      <div class="screen" id="s8">
-        <div class="page-header">
-          <button class="back" onclick="goTo('s7')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <div class="ph-title">Mes billets</div>
-        </div>
-
-        <div class="eyebrow">VAUDOU NIGHTS · Sam 7 Juin</div>
-
-        <div class="ticket-type selected" onclick="selectTicket(this)">
-          <div class="tt-head">
-            <div class="tt-name">Standard</div>
-            <div class="tt-price">2 500 XOF</div>
-          </div>
-          <div class="tt-desc">Accès général, placement libre. Inclut l'entrée et le programme officiel.</div>
-          <div class="tt-qty">
-            <button class="qty-btn" onclick="changeQty(event,-1,'qty1','total1',2500)">−</button>
-            <span class="qty-num" id="qty1">1</span>
-            <button class="qty-btn" onclick="changeQty(event,1,'qty1','total1',2500)">+</button>
-            <span style="font-size:12px;color:rgba(245,236,215,.4);margin-left:8px;">max 4</span>
-          </div>
-        </div>
-
-        <div class="ticket-type" onclick="selectTicket(this)">
-          <div class="tt-head">
-            <div class="tt-name">VIP</div>
-            <div class="tt-price">6 000 XOF</div>
-          </div>
-          <div class="tt-desc">Accès zone VIP, placement prioritaire, boissons et snacks offerts.</div>
-          <div class="tt-qty">
-            <button class="qty-btn" onclick="changeQty(event,-1,'qty2','total2',6000)">−</button>
-            <span class="qty-num" id="qty2">0</span>
-            <button class="qty-btn" onclick="changeQty(event,1,'qty2','total2',6000)">+</button>
-          </div>
-        </div>
-
-        <div class="order-summary">
-          <div class="order-row"><span>1× Standard</span><span>2 500 XOF</span></div>
-          <div class="order-row"><span>Frais de service</span><span>100 XOF</span></div>
-          <div class="order-row total"><span>Total</span><span class="val" id="grandTotal">2 600 XOF</span></div>
-        </div>
-
-        <button class="btn-primary" onclick="goTo('s9')">Passer au paiement</button>
-      </div>
-
-      <!-- ================================================
-           S9 — PAIEMENT KKIAPAY
-      ================================================ -->
-      <div class="screen" id="s9">
-        <div class="page-header">
-          <button class="back" onclick="goTo('s8')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <div class="ph-title">Paiement</div>
-        </div>
-
-        <div class="eyebrow" style="margin-bottom:18px;">Choisis ton moyen de paiement</div>
-
-        <div class="payment-methods">
-          <div class="pay-method selected" onclick="selectPay(this)">
-            <div class="pm-icon" style="background:rgba(255,204,0,.1);">📱</div>
-            <div>
-              <div class="pm-name">MTN Mobile Money</div>
-              <div class="pm-sub">Paiement instantané</div>
-            </div>
-            <div class="pm-check"></div>
-          </div>
-          <div class="pay-method" onclick="selectPay(this)">
-            <div class="pm-icon" style="background:rgba(0,133,66,.1);">📱</div>
-            <div>
-              <div class="pm-name">Moov Money</div>
-              <div class="pm-sub">Paiement instantané</div>
-            </div>
-            <div class="pm-check"></div>
-          </div>
-          <div class="pay-method" onclick="selectPay(this)">
-            <div class="pm-icon" style="background:rgba(255,102,0,.1);">📱</div>
-            <div>
-              <div class="pm-name">Orange Money</div>
-              <div class="pm-sub">Paiement instantané</div>
-            </div>
-            <div class="pm-check"></div>
-          </div>
-          <div class="pay-method" onclick="selectPay(this)">
-            <div class="pm-icon" style="background:rgba(30,100,200,.1);">💳</div>
-            <div>
-              <div class="pm-name">Carte Visa / Mastercard</div>
-              <div class="pm-sub">Débit ou crédit</div>
-            </div>
-            <div class="pm-check"></div>
-          </div>
-        </div>
-
-        <div class="pay-phone-input">
-          <label>Numéro MTN MoMo</label>
-          <input type="tel" class="txt-input" value="+229 97 00 00 00" style="width:100%;" inputmode="numeric">
-        </div>
-
-        <div class="security-note">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(245,236,215,.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Paiement sécurisé via KkiaPay. Tes données bancaires ne sont jamais stockées.
-        </div>
-
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px solid rgba(245,236,215,.07);margin-bottom:16px;">
-          <span style="font-size:14px;color:rgba(245,236,215,.6)">Total à payer</span>
-          <span style="font-family:var(--fd);font-size:20px;color:var(--oc);">2 600 XOF</span>
-        </div>
-
-        <button class="btn-primary" onclick="goTo('s10')">Payer maintenant</button>
-      </div>
-
-      <!-- ================================================
-           S10 — TRAITEMENT
-      ================================================ -->
-      <div class="screen" id="s10">
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;">
-          <div class="processing-zan">
-            <div class="processing-ring"></div>
-            <div class="processing-ring-2"></div>
-            <svg width="100" viewBox="0 0 240 320"><use href="#z-gr"/></svg>
-          </div>
-          <div style="margin-top:40px;">
-            <div class="processing-label">Traitement en cours…</div>
-            <div class="processing-sub">Zan vérifie ton paiement.<br>Ça prend quelques secondes.</div>
-          </div>
-          <button class="btn-secondary" onclick="goTo('s11')" style="margin-top:48px;max-width:260px;">Simuler succès →</button>
-        </div>
-      </div>
-
-      <!-- ================================================
-           S11 — CONFIRMATION
-      ================================================ -->
-      <div class="screen" id="s11" style="position:relative;">
-        <div class="confirm-bg"></div>
-        <div class="confirm-content" style="padding:60px 24px 40px;">
-          <div class="confirm-zan">
-            <svg width="160" viewBox="0 0 320 320"><use href="#z-cry" style="color:#C17D3C"/></svg>
-          </div>
-          <span class="confirm-chip">✓ Paiement confirmé</span>
-          <div class="confirm-title">C'est dans<br><em>ta poche !</em></div>
-          <p class="confirm-sub">Ton billet est réservé. Le QR code sera disponible quelques heures avant l'événement.</p>
-          <div class="confirm-info">
-            <div class="ci-row"><span class="ci-k">Événement</span><span class="ci-v">VAUDOU NIGHTS</span></div>
-            <div class="ci-row"><span class="ci-k">Date</span><span class="ci-v">Sam 7 Juin · 20h00</span></div>
-            <div class="ci-row"><span class="ci-k">Billet</span><span class="ci-v">1× Standard</span></div>
-            <div class="ci-row"><span class="ci-k">Montant</span><span class="ci-v">2 600 XOF</span></div>
-            <div class="ci-row"><span class="ci-k">Réf.</span><span class="ci-v">WMT-2026-4821</span></div>
-          </div>
-          <button class="btn-primary" onclick="goTo('s12')" style="margin-bottom:10px;">Voir mes billets</button>
-          <button class="btn-secondary" onclick="goTo('s6')">Retour à l'accueil</button>
-        </div>
-      </div>
-
-      <!-- ================================================
-           S12 — MES BILLETS
-      ================================================ -->
-      <div class="screen" id="s12">
-        <div class="billets-header">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-            <svg width="36" viewBox="0 0 240 320"><use href="#z-oc" style="color:#C17D3C"/></svg>
-            <div>
-              <h1>Mes billets</h1>
-              <div class="subtitle">Tes événements</div>
-            </div>
-          </div>
-        </div>
-        <div class="tabs">
-          <button class="tab active" onclick="switchTab(this,'upcoming')">À venir</button>
-          <button class="tab" onclick="switchTab(this,'past')">Passés</button>
-        </div>
-        <div class="billets-list" id="upcomingList">
-          <div style="height:14px;"></div>
-          <div class="billet-mini" onclick="goTo('s13')">
-            <div class="bm-color"></div>
-            <div class="bm-body">
-              <div class="bm-date">Sam 7 Juin · 20h00</div>
-              <div class="bm-title">VAUDOU NIGHTS — Édition Spéciale</div>
-              <div class="bm-meta">
-                <div class="bm-type">1× Standard · Champ de Foire</div>
-                <div class="bm-status active">QR dispo</div>
-              </div>
-            </div>
-            <div class="bm-arr">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
-          </div>
-          <div class="billet-mini" onclick="goTo('s13')">
-            <div class="bm-color"></div>
-            <div class="bm-body">
-              <div class="bm-date">Ven 13 Juin · 19h30</div>
-              <div class="bm-title">Jazz au Bénin — Orchestre National</div>
-              <div class="bm-meta">
-                <div class="bm-type">2× Standard · Palais des Congrès</div>
-                <div class="bm-status active" style="background:rgba(245,236,215,.08);color:rgba(245,236,215,.45);">Réservé</div>
-              </div>
-            </div>
-            <div class="bm-arr">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
-          </div>
-        </div>
-        <div class="billets-list" id="pastList" style="display:none;">
-          <div style="height:14px;"></div>
-          <div class="billet-mini past" onclick="goTo('s14')">
-            <div class="bm-color"></div>
-            <div class="bm-body">
-              <div class="bm-date">Sam 17 Mai · 21h00</div>
-              <div class="bm-title">AfroFusion — Nuit de la Musique</div>
-              <div class="bm-meta">
-                <div class="bm-type">1× VIP · Fondation Zinsou</div>
-                <div class="bm-status past">Terminé</div>
-              </div>
-            </div>
-            <div class="bm-arr">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
-          </div>
-        </div>
-        <div class="bottom-nav">
-          <button class="bnav-item" onclick="goTo('s6')">
-            <div class="bnav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-            <span class="bnav-label">Accueil</span>
-          </button>
-          <button class="bnav-item" onclick="goTo('s6')">
-            <div class="bnav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-            <span class="bnav-label">Explorer</span>
-          </button>
-          <button class="bnav-item active" onclick="void(0)">
-            <div class="bnav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
-            <span class="bnav-label">Billets</span>
-          </button>
-          <button class="bnav-item" onclick="void(0)">
-            <div class="bnav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-            <span class="bnav-label">Profil</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- ================================================
-           S13 — BILLET QR
-      ================================================ -->
-      <div class="screen" id="s13" style="overflow-y:auto;padding-bottom:40px;">
-        <div class="page-header" style="margin-bottom:16px;">
-          <button class="back" onclick="goTo('s12')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <div class="ph-title">Mon billet</div>
-        </div>
-
-        <div class="ticket-card">
-          <!-- TOP -->
-          <div class="ticket-top" style="min-height:110px;">
-            <div class="tt-eyebrow">Wamiton · Billet Certifié</div>
-            <div class="tt-title">VAUDOU NIGHTS</div>
-            <div class="tt-sub">Édition Spéciale · Sam 7 Juin 2026</div>
-            <div class="tt-zan">
-              <svg width="80" viewBox="0 0 240 320"><use href="#z-dk"/></svg>
-            </div>
-          </div>
-          <!-- SEP -->
-          <div class="ticket-sep"><div class="sep-line"></div></div>
-          <!-- MID -->
-          <div class="ticket-mid">
-            <div class="tm-grid">
-              <div class="tm-field"><div class="tf-label">Heure</div><div class="tf-val">20h00</div></div>
-              <div class="tm-field"><div class="tf-label">Lieu</div><div class="tf-val">Champ de Foire</div></div>
-              <div class="tm-field"><div class="tf-label">Catégorie</div><div class="tf-val">Standard</div></div>
-            </div>
-            <!-- QR SVG -->
-            <div class="qr-zone">
-              <div class="qr-label">Scanne à l'entrée</div>
-              <svg class="qr-svg" width="160" height="160" viewBox="0 0 160 160">
-                <!-- QR pattern décoratif brand-fidèle -->
-                <rect width="160" height="160" fill="#EFE3C5"/>
-                <!-- Finder patterns -->
-                <rect x="10" y="10" width="44" height="44" rx="4" fill="#1A1208"/>
-                <rect x="14" y="14" width="36" height="36" rx="2" fill="#EFE3C5"/>
-                <rect x="18" y="18" width="28" height="28" rx="1" fill="#1A1208"/>
-                <!-- top right -->
-                <rect x="106" y="10" width="44" height="44" rx="4" fill="#1A1208"/>
-                <rect x="110" y="14" width="36" height="36" rx="2" fill="#EFE3C5"/>
-                <rect x="114" y="18" width="28" height="28" rx="1" fill="#1A1208"/>
-                <!-- bottom left -->
-                <rect x="10" y="106" width="44" height="44" rx="4" fill="#1A1208"/>
-                <rect x="14" y="110" width="36" height="36" rx="2" fill="#EFE3C5"/>
-                <rect x="18" y="114" width="28" height="28" rx="1" fill="#1A1208"/>
-                <!-- Data dots -->
-                <rect x="64" y="10" width="8" height="8" fill="#1A1208"/>
-                <rect x="74" y="10" width="8" height="8" fill="#1A1208"/>
-                <rect x="84" y="10" width="8" height="8" fill="#1A1208"/>
-                <rect x="64" y="20" width="8" height="8" fill="#1A1208"/>
-                <rect x="84" y="20" width="8" height="8" fill="#1A1208"/>
-                <rect x="74" y="30" width="8" height="8" fill="#1A1208"/>
-                <rect x="64" y="40" width="8" height="8" fill="#1A1208"/>
-                <rect x="84" y="40" width="8" height="8" fill="#1A1208"/>
-                <rect x="10" y="64" width="8" height="8" fill="#1A1208"/>
-                <rect x="20" y="64" width="8" height="8" fill="#1A1208"/>
-                <rect x="30" y="74" width="8" height="8" fill="#1A1208"/>
-                <rect x="40" y="64" width="8" height="8" fill="#1A1208"/>
-                <rect x="10" y="84" width="8" height="8" fill="#1A1208"/>
-                <rect x="30" y="84" width="8" height="8" fill="#1A1208"/>
-                <rect x="40" y="74" width="8" height="8" fill="#1A1208"/>
-                <rect x="64" y="64" width="8" height="8" fill="#1A1208"/>
-                <rect x="74" y="74" width="8" height="8" fill="#1A1208"/>
-                <rect x="84" y="64" width="8" height="8" fill="#1A1208"/>
-                <rect x="64" y="84" width="8" height="8" fill="#1A1208"/>
-                <rect x="84" y="84" width="8" height="8" fill="#1A1208"/>
-                <rect x="94" y="64" width="8" height="8" fill="#1A1208"/>
-                <rect x="94" y="84" width="8" height="8" fill="#1A1208"/>
-                <rect x="106" y="64" width="8" height="8" fill="#1A1208"/>
-                <rect x="116" y="74" width="8" height="8" fill="#1A1208"/>
-                <rect x="126" y="64" width="8" height="8" fill="#1A1208"/>
-                <rect x="136" y="74" width="8" height="8" fill="#1A1208"/>
-                <rect x="106" y="84" width="8" height="8" fill="#1A1208"/>
-                <rect x="126" y="84" width="8" height="8" fill="#1A1208"/>
-                <rect x="64" y="94" width="8" height="8" fill="#1A1208"/>
-                <rect x="84" y="94" width="8" height="8" fill="#1A1208"/>
-                <rect x="74" y="104" width="8" height="8" fill="#1A1208"/>
-                <rect x="64" y="114" width="8" height="8" fill="#1A1208"/>
-                <rect x="84" y="114" width="8" height="8" fill="#1A1208"/>
-                <rect x="64" y="124" width="8" height="8" fill="#1A1208"/>
-                <rect x="74" y="124" width="8" height="8" fill="#1A1208"/>
-                <rect x="84" y="134" width="8" height="8" fill="#1A1208"/>
-                <rect x="94" y="94" width="8" height="8" fill="#1A1208"/>
-                <rect x="104" y="104" width="8" height="8" fill="#1A1208"/>
-                <rect x="114" y="94" width="8" height="8" fill="#1A1208"/>
-                <rect x="124" y="104" width="8" height="8" fill="#1A1208"/>
-                <rect x="134" y="94" width="8" height="8" fill="#1A1208"/>
-                <rect x="144" y="104" width="8" height="8" fill="#1A1208"/>
-                <rect x="104" y="114" width="8" height="8" fill="#1A1208"/>
-                <rect x="124" y="114" width="8" height="8" fill="#1A1208"/>
-                <rect x="134" y="124" width="8" height="8" fill="#1A1208"/>
-                <rect x="144" y="134" width="8" height="8" fill="#1A1208"/>
-                <!-- Centre Zan motif -->
-                <rect x="70" y="70" width="20" height="20" rx="3" fill="rgba(193,125,60,.3)"/>
-              </svg>
-            </div>
-          </div>
-          <!-- BOT -->
-          <div class="ticket-bot">
-            <div class="tb-brand">Vérifié par <span>Wamiton</span></div>
-            <div class="tb-offline">
-              <div class="tb-offline-dot"></div>
-              Hors connexion
-            </div>
-          </div>
-        </div>
-
-        <div class="ref-code">WMT-2026-4821 · 1× Standard</div>
-      </div>
-
-      <!-- ================================================
-           S14 — BILLET PASSÉ
-      ================================================ -->
-      <div class="screen" id="s14" style="overflow-y:auto;padding-bottom:40px;">
-        <div class="page-header" style="margin-bottom:16px;">
-          <button class="back" onclick="goTo('s12')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <div class="ph-title">Billet passé</div>
-        </div>
-
-        <div class="ticket-card">
-          <div class="ticket-top" style="background:rgba(245,236,215,.12);min-height:110px;">
-            <div class="tt-eyebrow" style="color:rgba(26,18,8,.4);">Wamiton · Billet Certifié</div>
-            <div class="tt-title" style="color:rgba(245,236,215,.4);">AFROFUSION</div>
-            <div class="tt-sub" style="color:rgba(245,236,215,.3);">Nuit de la Musique · Sam 17 Mai 2026</div>
-          </div>
-          <div class="ticket-sep">
-            <div class="sep-line" style="border-color:rgba(26,18,8,.1);"></div>
-          </div>
-          <div class="ticket-mid" style="position:relative;">
-            <div class="tm-grid">
-              <div class="tm-field"><div class="tf-label" style="color:rgba(26,18,8,.35);">Heure</div><div class="tf-val" style="color:rgba(26,18,8,.45);">21h00</div></div>
-              <div class="tm-field"><div class="tf-label" style="color:rgba(26,18,8,.35);">Lieu</div><div class="tf-val" style="color:rgba(26,18,8,.45);">Fondation Zinsou</div></div>
-              <div class="tm-field"><div class="tf-label" style="color:rgba(26,18,8,.35);">Catégorie</div><div class="tf-val" style="color:rgba(26,18,8,.45);">VIP</div></div>
-            </div>
-            <div class="qr-zone">
-              <div class="qr-label" style="color:rgba(26,18,8,.35);">Événement terminé</div>
-              <svg class="qr-svg" width="160" height="160" viewBox="0 0 160 160" style="opacity:.25;filter:grayscale(1);">
-                <rect width="160" height="160" fill="#EFE3C5"/>
-                <rect x="10" y="10" width="44" height="44" rx="4" fill="#1A1208"/>
-                <rect x="14" y="14" width="36" height="36" rx="2" fill="#EFE3C5"/>
-                <rect x="18" y="18" width="28" height="28" rx="1" fill="#1A1208"/>
-                <rect x="106" y="10" width="44" height="44" rx="4" fill="#1A1208"/>
-                <rect x="110" y="14" width="36" height="36" rx="2" fill="#EFE3C5"/>
-                <rect x="114" y="18" width="28" height="28" rx="1" fill="#1A1208"/>
-                <rect x="10" y="106" width="44" height="44" rx="4" fill="#1A1208"/>
-                <rect x="14" y="110" width="36" height="36" rx="2" fill="#EFE3C5"/>
-                <rect x="18" y="114" width="28" height="28" rx="1" fill="#1A1208"/>
-              </svg>
-              <div class="past-stamp">UTILISÉ</div>
-            </div>
-          </div>
-          <div class="ticket-bot">
-            <div class="tb-brand" style="color:rgba(245,236,215,.3);">Vérifié par <span style="color:rgba(245,236,215,.35);">Wamiton</span></div>
-            <div class="tb-offline" style="color:rgba(245,236,215,.25);">
-              <div class="tb-offline-dot" style="background:rgba(245,236,215,.2);box-shadow:none;"></div>
-              Archivé
-            </div>
-          </div>
-        </div>
-        <div class="ref-code" style="color:rgba(245,236,215,.25);">WMT-2026-3104 · 1× VIP</div>
-      </div>
-
-    </div><!-- end phone-wrapper -->
-
-    <!-- Info panel desktop -->
-    <div class="info-panel">
-      <div class="ip-badge">Prototype v1 · Juin 2026</div>
-      <div class="ip-title" id="panelTitle">Splash Screen</div>
-      <div class="ip-desc" id="panelDesc">Écran d'accueil animé. Zan flotte doucement. Un tap démarre l'onboarding.</div>
-      <div class="ip-divider"></div>
-      <div class="ip-meta" id="panelMeta">
-        Parcours · Acheteur<br>
-        État · Onboarding<br>
-        Screen · S1 / 14
+  <!-- S1 — SPLASH -->
+  <div class="screen active" id="s1" onclick="nav('s2')">
+    <div class="splash-bg"></div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;">
+      <div class="splash-zan">
+        <svg width="240" viewBox="0 0 240 320"><use href="#z-gr"/></svg>
       </div>
     </div>
+    <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:14px;padding-bottom:52px;">
+      <svg width="140" height="21" viewBox="0 0 1320 200" color="rgba(245,236,215,.65)"><use href="#wm"/></svg>
+      <div class="splash-tap" style="position:static;">Appuie pour commencer</div>
+    </div>
+  </div>
 
-  </div><!-- end main-area -->
-</div><!-- end app-shell -->
+  <!-- ====================================================
+       S2 — ONBOARDING
+  ==================================================== -->
+  <div class="screen" id="s2">
+    <div class="ob-viewport">
+      <div class="ob-track" id="obTrack">
+        <!-- Slide 1 -->
+        <div class="ob-slide" style="background:var(--co);">
+          <div class="ob-img"><svg width="150" viewBox="0 0 240 320"><use href="#z-gr"/></svg></div>
+          <div class="ob-body">
+            <span class="ob-chip">Découvre</span>
+            <h2>Toute ta<br>culture ici</h2>
+            <p>Concerts, festivals, expos — tous les événements de Cotonou et au-delà.</p>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="ob-slide" style="background:var(--co);">
+          <div class="ob-img"><svg width="180" viewBox="0 0 320 320"><use href="#z-cry"/></svg></div>
+          <div class="ob-body">
+            <span class="ob-chip">Achète</span>
+            <h2>Ton billet<br>en 2 min</h2>
+            <p>Paiement Mobile Money, MTN, Moov ou Orange. Simple, rapide, certifié.</p>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="ob-slide" style="background:var(--co);">
+          <div class="ob-img"><svg width="150" viewBox="0 0 240 320"><use href="#z-oc"/></svg></div>
+          <div class="ob-body">
+            <span class="ob-chip">Vis</span>
+            <h2>QR garanti<br>anti-fraude</h2>
+            <p>Ton QR est émis quelques heures avant le show. Dispo même sans connexion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ob-dots" id="obDots">
+      <div class="ob-dot active"></div>
+      <div class="ob-dot"></div>
+      <div class="ob-dot"></div>
+    </div>
+    <div class="ob-footer">
+      <button class="btn-p" id="obBtn" onclick="obNext()">Suivant</button>
+      <button class="btn-s" onclick="nav('s3')">Passer</button>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       S3 — RÔLE
+  ==================================================== -->
+  <div class="screen" id="s3">
+    <div class="role-eyebrow">Bienvenue</div>
+    <h2 style="font-family:var(--fd);font-size:36px;line-height:.95;color:var(--cr);margin-bottom:36px;">Tu es<br><em style="font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);">qui,</em> toi&nbsp;?</h2>
+    <div class="role-card" onclick="nav('s4')">
+      <div class="role-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--oc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div><div class="role-title">Acheteur</div><div class="role-desc">Je cherche des événements et j'achète mes billets.</div></div>
+      <div class="role-arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </div>
+    <div class="role-card" onclick="nav('s4')">
+      <div class="role-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--oc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+      </div>
+      <div><div class="role-title">Organisateur</div><div class="role-desc">Je publie des événements et gère mes billets vendus.</div></div>
+      <div class="role-arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+    </div>
+    <p style="font-size:12px;color:rgba(245,236,215,.3);text-align:center;margin-top:20px;line-height:1.6;">Tu pourras changer ça dans tes paramètres.</p>
+  </div>
+
+  <!-- ====================================================
+       S4 — AUTH
+  ==================================================== -->
+  <div class="screen" id="s4">
+    <button class="back-btn" onclick="nav('s3')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Retour
+    </button>
+    <div class="auth-head">
+      <h2>Ton<br>numéro</h2>
+      <p>On t'envoie un code pour confirmer que c'est bien toi.</p>
+    </div>
+    <div class="phone-row">
+      <button class="flag-btn">🇧🇯 +229</button>
+      <input type="tel" class="txt-input" placeholder="97 00 00 00" inputmode="numeric">
+    </div>
+    <p class="input-note">Tes données sont protégées. On ne partage rien.</p>
+    <div class="btn-push">
+      <button class="btn-p" onclick="nav('s5')">Recevoir le code</button>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       S5 — OTP
+  ==================================================== -->
+  <div class="screen" id="s5">
+    <button class="back-btn" onclick="nav('s4')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Retour
+    </button>
+    <div class="auth-head">
+      <h2>Code reçu ?</h2>
+      <p>On a envoyé un SMS au <strong style="color:var(--cr);font-weight:600;">+229 97 00 00 00</strong></p>
+    </div>
+    <div class="otp-grid">
+      <input type="text" class="otp-box" maxlength="1" inputmode="numeric" id="otp1">
+      <input type="text" class="otp-box" maxlength="1" inputmode="numeric" id="otp2">
+      <input type="text" class="otp-box" maxlength="1" inputmode="numeric" id="otp3">
+      <input type="text" class="otp-box" maxlength="1" inputmode="numeric" id="otp4">
+    </div>
+    <p class="otp-resend">Pas reçu ? <span onclick="void(0)">Renvoyer le code</span> (30s)</p>
+    <div class="btn-push">
+      <button class="btn-p" onclick="nav('s6')">Confirmer</button>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       S6 — ACCUEIL
+  ==================================================== -->
+  <div class="screen" id="s6">
+    <div class="home-top">
+      <div class="home-topbar">
+        <div class="logo-pill">
+          <svg width="90" height="14" viewBox="0 0 1320 200" color="var(--cr)"><use href="#wm"/></svg>
+          <div class="logo-dot"></div>
+        </div>
+        <div class="avatar">KK</div>
+      </div>
+      <div class="greet">Bonsoir, <strong>Kofi</strong> 👋</div>
+      <div class="greet-sub">Cotonou · Vendredi 5 Juin</div>
+      <div class="search-bar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(245,236,215,.35)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" placeholder="Artiste, lieu, événement…">
+      </div>
+      <div class="chips">
+        <button class="chip on">Tout</button>
+        <button class="chip off">Musique</button>
+        <button class="chip off">Théâtre</button>
+        <button class="chip off">Expo</button>
+        <button class="chip off">Festival</button>
+        <button class="chip off">Danse</button>
+      </div>
+    </div>
+    <div class="home-scroll">
+      <div class="sec-label">À la une</div>
+      <div class="ev-card" onclick="nav('s7')">
+        <div class="ev-img" style="background:linear-gradient(135deg,#3D1F0F 0%,#6B2F0A 100%);">
+          <svg width="90" viewBox="0 0 240 320" style="opacity:.35"><use href="#z-gr"/></svg>
+          <span class="ev-badge">Ce week-end</span>
+        </div>
+        <div class="ev-body">
+          <div class="ev-date">Sam 7 Juin · 20h00</div>
+          <div class="ev-title">VAUDOU NIGHTS — Édition Spéciale</div>
+          <div class="ev-foot">
+            <div class="ev-loc">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Champ de Foire, Cotonou
+            </div>
+            <div class="ev-price">2 500 XOF</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec-label">Prochainement</div>
+      <div class="ev-row" onclick="nav('s7')">
+        <div class="ev-row-img"><svg width="38" viewBox="0 0 240 320" style="opacity:.5"><use href="#z-oc"/></svg></div>
+        <div class="ev-row-body">
+          <div class="ev-row-date">Ven 13 Juin · 19h30</div>
+          <div class="ev-row-title">Jazz au Bénin — Orchestre National</div>
+          <div class="ev-row-price">Dès <span>1 500 XOF</span></div>
+        </div>
+        <div class="ev-row-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="ev-row" onclick="nav('s7')">
+        <div class="ev-row-img"><svg width="38" viewBox="0 0 240 320" style="opacity:.4"><use href="#z-gr"/></svg></div>
+        <div class="ev-row-body">
+          <div class="ev-row-date">Dim 15 Juin · 16h00</div>
+          <div class="ev-row-title">Expo Tissu — Art Textile Africain</div>
+          <div class="ev-row-price">Dès <span>500 XOF</span></div>
+        </div>
+        <div class="ev-row-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="ev-row" onclick="nav('s7')">
+        <div class="ev-row-img"><svg width="38" viewBox="0 0 240 320" style="opacity:.5"><use href="#z-oc"/></svg></div>
+        <div class="ev-row-body">
+          <div class="ev-row-date">Sam 21 Juin · 21h00</div>
+          <div class="ev-row-title">AfroBeats Fever — Open Air</div>
+          <div class="ev-row-price">Dès <span>3 000 XOF</span></div>
+        </div>
+        <div class="ev-row-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+    <div class="bnav">
+      <button class="bn-item on"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><span class="bn-lbl">Accueil</span></button>
+      <button class="bn-item" onclick="void(0)"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><span class="bn-lbl">Explorer</span></button>
+      <button class="bn-item" onclick="nav('s12')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div><span class="bn-lbl">Billets</span></button>
+      <button class="bn-item" onclick="void(0)"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="bn-lbl">Profil</span></button>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       S7 — ÉVÉNEMENT
+  ==================================================== -->
+  <div class="screen" id="s7">
+    <div class="ev-hero">
+      <svg width="110" viewBox="0 0 240 320" style="opacity:.28"><use href="#z-gr"/></svg>
+      <button class="hero-back" onclick="nav('s6')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="hero-share"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
+    </div>
+    <div class="ev-detail">
+      <div class="ev-cat">Musique · Traditionnel</div>
+      <div class="ev-name">VAUDOU NIGHTS<br>— Édition Spéciale</div>
+      <div class="ev-artist">
+        <div class="artist-av"><svg width="20" viewBox="0 0 240 320" style="opacity:.7"><use href="#z-oc"/></svg></div>
+        <div><div class="artist-name">Gangbé Brass Band</div><div class="artist-role">Artiste principal</div></div>
+      </div>
+      <div class="ev-grid">
+        <div class="ev-cell"><div class="k">Date</div><div class="v">Sam 7 Juin</div></div>
+        <div class="ev-cell"><div class="k">Heure</div><div class="v">20h00</div></div>
+        <div class="ev-cell"><div class="k">Lieu</div><div class="v">Champ de Foire</div></div>
+        <div class="ev-cell"><div class="k">Disponible</div><div class="v" style="color:var(--oc)">142 places</div></div>
+      </div>
+      <div class="ev-desc-text">Le Gangbé Brass Band revient pour une nuit exceptionnelle au cœur du patrimoine vodoun. Cuivres, percussions et chants traditionnels dans une mise en scène inédite. Une expérience sensorielle unique à ne pas manquer.</div>
+      <div class="tags"><span class="tag">MUSIQUE LIVE</span><span class="tag">VODOUN</span><span class="tag">BRASS BAND</span></div>
+    </div>
+    <div class="ev-cta-bar">
+      <div class="price-block"><div class="price-lbl">À partir de</div><div class="price-val">2 500 XOF</div></div>
+      <button class="btn-p" onclick="nav('s8')" style="flex:1;">Choisir mes billets</button>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       S8 — ACHAT
+  ==================================================== -->
+  <div class="screen" id="s8">
+    <div class="page-hd">
+      <button class="page-back" onclick="nav('s7')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="page-title">Mes billets</div>
+    </div>
+    <div class="eyebrow">VAUDOU NIGHTS · Sam 7 Juin</div>
+    <div class="tt-card sel" onclick="selTt(this)">
+      <div class="tt-head"><div class="tt-name">Standard</div><div class="tt-price">2 500 XOF</div></div>
+      <div class="tt-desc">Accès général, placement libre. Inclut l'entrée et le programme officiel.</div>
+      <div class="qty-row">
+        <button class="qty-btn" onclick="chgQty(event,-1,'q1',2500)">−</button>
+        <span class="qty-num" id="q1">1</span>
+        <button class="qty-btn" onclick="chgQty(event,1,'q1',2500)">+</button>
+        <span style="font-size:12px;color:rgba(245,236,215,.35);margin-left:6px;">max 4</span>
+      </div>
+    </div>
+    <div class="tt-card" onclick="selTt(this)">
+      <div class="tt-head"><div class="tt-name">VIP</div><div class="tt-price">6 000 XOF</div></div>
+      <div class="tt-desc">Accès zone VIP, placement prioritaire, boissons et snacks offerts.</div>
+      <div class="qty-row">
+        <button class="qty-btn" onclick="chgQty(event,-1,'q2',6000)">−</button>
+        <span class="qty-num" id="q2">0</span>
+        <button class="qty-btn" onclick="chgQty(event,1,'q2',6000)">+</button>
+      </div>
+    </div>
+    <div class="order-box">
+      <div class="order-row"><span>1× Standard</span><span>2 500 XOF</span></div>
+      <div class="order-row"><span>Frais de service</span><span>100 XOF</span></div>
+      <div class="order-row tot"><span>Total</span><span class="v" id="gtotal">2 600 XOF</span></div>
+    </div>
+    <button class="btn-p" onclick="nav('s9')">Passer au paiement</button>
+  </div>
+
+  <!-- ====================================================
+       S9 — PAIEMENT
+  ==================================================== -->
+  <div class="screen" id="s9">
+    <div class="page-hd">
+      <button class="page-back" onclick="nav('s8')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="page-title">Paiement</div>
+    </div>
+    <div class="eyebrow" style="margin-bottom:16px;">Choisis ton moyen de paiement</div>
+    <div class="pay-list">
+      <div class="pay-item sel" onclick="selPay(this)">
+        <div class="pay-ico" style="background:rgba(255,204,0,.1);">📱</div>
+        <div><div class="pay-name">MTN Mobile Money</div><div class="pay-sub">Paiement instantané</div></div>
+        <div class="pay-check"></div>
+      </div>
+      <div class="pay-item" onclick="selPay(this)">
+        <div class="pay-ico" style="background:rgba(0,133,66,.1);">📱</div>
+        <div><div class="pay-name">Moov Money</div><div class="pay-sub">Paiement instantané</div></div>
+        <div class="pay-check"></div>
+      </div>
+      <div class="pay-item" onclick="selPay(this)">
+        <div class="pay-ico" style="background:rgba(255,102,0,.1);">📱</div>
+        <div><div class="pay-name">Orange Money</div><div class="pay-sub">Paiement instantané</div></div>
+        <div class="pay-check"></div>
+      </div>
+      <div class="pay-item" onclick="selPay(this)">
+        <div class="pay-ico" style="background:rgba(30,100,200,.1);">💳</div>
+        <div><div class="pay-name">Carte Visa / Mastercard</div><div class="pay-sub">Débit ou crédit</div></div>
+        <div class="pay-check"></div>
+      </div>
+    </div>
+    <label class="pay-phone-lbl">Numéro MTN MoMo</label>
+    <input type="tel" class="txt-input" value="+229 97 00 00 00" style="margin-bottom:12px;" inputmode="numeric">
+    <div class="sec-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(245,236,215,.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Paiement sécurisé via KkiaPay. Tes données bancaires ne sont jamais stockées.
+    </div>
+    <div class="pay-total">
+      <span>Total à payer</span>
+      <span>2 600 XOF</span>
+    </div>
+    <button class="btn-p" onclick="nav('s10')">Payer maintenant</button>
+  </div>
+
+  <!-- ====================================================
+       S10 — TRAITEMENT
+  ==================================================== -->
+  <div class="screen" id="s10" style="background:var(--pp);">
+    <div class="proc-wrap" style="margin:auto;">
+      <div class="proc-zan">
+        <div class="proc-ring"></div>
+        <div class="proc-ring2"></div>
+        <svg width="100" viewBox="0 0 240 320"><use href="#z-gr"/></svg>
+      </div>
+      <div class="proc-title">Traitement en cours…</div>
+      <div class="proc-sub">Zan vérifie ton paiement.<br>Ça prend quelques secondes.</div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       S11 — CONFIRMATION
+  ==================================================== -->
+  <div class="screen" id="s11">
+    <div class="conf-bg"></div>
+    <div class="conf-inner" style="padding:52px 24px 40px;width:100%;">
+      <div class="conf-zan"><svg width="150" viewBox="0 0 320 320"><use href="#z-cry"/></svg></div>
+      <span class="conf-chip">✓ Paiement confirmé</span>
+      <div class="conf-title">C'est dans<br><em>ta poche !</em></div>
+      <p class="conf-sub">Ton billet est réservé. Le QR code sera disponible quelques heures avant l'événement.</p>
+      <div class="conf-info">
+        <div class="ci-row"><span class="ci-k">Événement</span><span class="ci-v">VAUDOU NIGHTS</span></div>
+        <div class="ci-row"><span class="ci-k">Date</span><span class="ci-v">Sam 7 Juin · 20h00</span></div>
+        <div class="ci-row"><span class="ci-k">Billet</span><span class="ci-v">1× Standard</span></div>
+        <div class="ci-row"><span class="ci-k">Montant</span><span class="ci-v">2 600 XOF</span></div>
+        <div class="ci-row"><span class="ci-k">Réf.</span><span class="ci-v">WMT-2026-4821</span></div>
+      </div>
+      <button class="btn-p" onclick="nav('s12')" style="margin-bottom:10px;width:100%;">Voir mes billets</button>
+      <button class="btn-s" onclick="nav('s6')" style="width:100%;">Retour à l'accueil</button>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       S12 — MES BILLETS
+  ==================================================== -->
+  <div class="screen" id="s12">
+    <div class="billets-top">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <svg width="34" viewBox="0 0 240 320"><use href="#z-oc"/></svg>
+        <div><h1>Mes billets</h1><div class="sub">Tes événements</div></div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn on" onclick="switchTab(this,'up')">À venir</button>
+      <button class="tab-btn" onclick="switchTab(this,'past')">Passés</button>
+    </div>
+    <div class="blist" id="listUp">
+      <div class="billet-row" onclick="nav('s13')">
+        <div class="br-stripe"></div>
+        <div class="br-body">
+          <div class="br-date">Sam 7 Juin · 20h00</div>
+          <div class="br-title">VAUDOU NIGHTS — Édition Spéciale</div>
+          <div class="br-foot">
+            <div class="br-type">1× Standard · Champ de Foire</div>
+            <div class="br-status live">QR dispo</div>
+          </div>
+        </div>
+        <div class="br-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+      <div class="billet-row" onclick="nav('s13')">
+        <div class="br-stripe"></div>
+        <div class="br-body">
+          <div class="br-date">Ven 13 Juin · 19h30</div>
+          <div class="br-title">Jazz au Bénin — Orchestre National</div>
+          <div class="br-foot">
+            <div class="br-type">2× Standard · Palais des Congrès</div>
+            <div class="br-status live" style="background:rgba(245,236,215,.07);color:rgba(245,236,215,.4);">Réservé</div>
+          </div>
+        </div>
+        <div class="br-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+    <div class="blist" id="listPast" style="display:none;">
+      <div class="billet-row past" onclick="nav('s14')">
+        <div class="br-stripe"></div>
+        <div class="br-body">
+          <div class="br-date">Sam 17 Mai · 21h00</div>
+          <div class="br-title">AfroFusion — Nuit de la Musique</div>
+          <div class="br-foot">
+            <div class="br-type">1× VIP · Fondation Zinsou</div>
+            <div class="br-status done">Terminé</div>
+          </div>
+        </div>
+        <div class="br-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    </div>
+    <div class="bnav">
+      <button class="bn-item" onclick="nav('s6')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><span class="bn-lbl">Accueil</span></button>
+      <button class="bn-item"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><span class="bn-lbl">Explorer</span></button>
+      <button class="bn-item on"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div><span class="bn-lbl">Billets</span></button>
+      <button class="bn-item"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="bn-lbl">Profil</span></button>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       S13 — BILLET QR
+  ==================================================== -->
+  <div class="screen" id="s13">
+    <div class="page-hd" style="margin-bottom:14px;">
+      <button class="page-back" onclick="nav('s12')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="page-title">Mon billet</div>
+    </div>
+    <div class="ticket-card">
+      <div class="t-top">
+        <div class="t-eyebrow">Wamiton · Billet Certifié</div>
+        <div class="t-name">VAUDOU NIGHTS</div>
+        <div class="t-sub">Édition Spéciale · Sam 7 Juin 2026</div>
+        <div class="t-zan-dec"><svg width="74" viewBox="0 0 240 320"><use href="#z-dk"/></svg></div>
+      </div>
+      <div class="t-sep"><div class="t-dash"></div></div>
+      <div class="t-mid">
+        <div class="t-fields">
+          <div class="t-field"><div class="tf-l">Heure</div><div class="tf-v">20h00</div></div>
+          <div class="t-field"><div class="tf-l">Lieu</div><div class="tf-v">Champ de Foire</div></div>
+          <div class="t-field"><div class="tf-l">Catégorie</div><div class="tf-v">Standard</div></div>
+        </div>
+        <div class="qr-area">
+          <div class="qr-lbl">Scanne à l'entrée</div>
+          <svg width="160" height="160" viewBox="0 0 160 160" style="border:3px solid var(--co);border-radius:10px;background:var(--cr2);">
+            <rect width="160" height="160" fill="#EFE3C5"/>
+            <rect x="10" y="10" width="44" height="44" rx="4" fill="#1A1208"/>
+            <rect x="14" y="14" width="36" height="36" rx="2" fill="#EFE3C5"/>
+            <rect x="18" y="18" width="28" height="28" rx="1" fill="#1A1208"/>
+            <rect x="106" y="10" width="44" height="44" rx="4" fill="#1A1208"/>
+            <rect x="110" y="14" width="36" height="36" rx="2" fill="#EFE3C5"/>
+            <rect x="114" y="18" width="28" height="28" rx="1" fill="#1A1208"/>
+            <rect x="10" y="106" width="44" height="44" rx="4" fill="#1A1208"/>
+            <rect x="14" y="110" width="36" height="36" rx="2" fill="#EFE3C5"/>
+            <rect x="18" y="114" width="28" height="28" rx="1" fill="#1A1208"/>
+            <rect x="64" y="10" width="8" height="8" fill="#1A1208"/><rect x="74" y="10" width="8" height="8" fill="#1A1208"/><rect x="84" y="10" width="8" height="8" fill="#1A1208"/>
+            <rect x="64" y="20" width="8" height="8" fill="#1A1208"/><rect x="84" y="20" width="8" height="8" fill="#1A1208"/>
+            <rect x="74" y="30" width="8" height="8" fill="#1A1208"/>
+            <rect x="64" y="40" width="8" height="8" fill="#1A1208"/><rect x="84" y="40" width="8" height="8" fill="#1A1208"/>
+            <rect x="10" y="64" width="8" height="8" fill="#1A1208"/><rect x="20" y="64" width="8" height="8" fill="#1A1208"/>
+            <rect x="30" y="74" width="8" height="8" fill="#1A1208"/><rect x="40" y="64" width="8" height="8" fill="#1A1208"/>
+            <rect x="10" y="84" width="8" height="8" fill="#1A1208"/><rect x="30" y="84" width="8" height="8" fill="#1A1208"/><rect x="40" y="74" width="8" height="8" fill="#1A1208"/>
+            <rect x="64" y="64" width="8" height="8" fill="#1A1208"/><rect x="74" y="74" width="8" height="8" fill="#1A1208"/><rect x="84" y="64" width="8" height="8" fill="#1A1208"/>
+            <rect x="64" y="84" width="8" height="8" fill="#1A1208"/><rect x="84" y="84" width="8" height="8" fill="#1A1208"/>
+            <rect x="94" y="64" width="8" height="8" fill="#1A1208"/><rect x="94" y="84" width="8" height="8" fill="#1A1208"/>
+            <rect x="106" y="64" width="8" height="8" fill="#1A1208"/><rect x="116" y="74" width="8" height="8" fill="#1A1208"/><rect x="126" y="64" width="8" height="8" fill="#1A1208"/>
+            <rect x="136" y="74" width="8" height="8" fill="#1A1208"/><rect x="106" y="84" width="8" height="8" fill="#1A1208"/><rect x="126" y="84" width="8" height="8" fill="#1A1208"/>
+            <rect x="64" y="94" width="8" height="8" fill="#1A1208"/><rect x="84" y="94" width="8" height="8" fill="#1A1208"/>
+            <rect x="74" y="104" width="8" height="8" fill="#1A1208"/><rect x="64" y="114" width="8" height="8" fill="#1A1208"/><rect x="84" y="114" width="8" height="8" fill="#1A1208"/>
+            <rect x="64" y="124" width="8" height="8" fill="#1A1208"/><rect x="74" y="124" width="8" height="8" fill="#1A1208"/><rect x="84" y="134" width="8" height="8" fill="#1A1208"/>
+            <rect x="94" y="94" width="8" height="8" fill="#1A1208"/><rect x="104" y="104" width="8" height="8" fill="#1A1208"/><rect x="114" y="94" width="8" height="8" fill="#1A1208"/>
+            <rect x="124" y="104" width="8" height="8" fill="#1A1208"/><rect x="134" y="94" width="8" height="8" fill="#1A1208"/><rect x="144" y="104" width="8" height="8" fill="#1A1208"/>
+            <rect x="104" y="114" width="8" height="8" fill="#1A1208"/><rect x="124" y="114" width="8" height="8" fill="#1A1208"/>
+            <rect x="134" y="124" width="8" height="8" fill="#1A1208"/><rect x="144" y="134" width="8" height="8" fill="#1A1208"/>
+            <rect x="70" y="70" width="20" height="20" rx="3" fill="rgba(193,125,60,.35)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="t-bot">
+        <div class="t-bot-brand">Vérifié par <span>Wamiton</span></div>
+        <div class="t-offline"><div class="offline-dot"></div>Hors connexion</div>
+      </div>
+    </div>
+    <div class="ref-tag">WMT-2026-4821 · 1× Standard</div>
+  </div>
+
+  <!-- ====================================================
+       S14 — BILLET PASSÉ
+  ==================================================== -->
+  <div class="screen" id="s14">
+    <div class="page-hd" style="margin-bottom:14px;">
+      <button class="page-back" onclick="nav('s12')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="page-title">Billet passé</div>
+    </div>
+    <div class="ticket-card">
+      <div class="t-top" style="background:rgba(245,236,215,.1);">
+        <div class="t-eyebrow" style="color:rgba(245,236,215,.3);">Wamiton · Billet Certifié</div>
+        <div class="t-name" style="color:rgba(245,236,215,.3);">AFROFUSION</div>
+        <div class="t-sub" style="color:rgba(245,236,215,.2);">Nuit de la Musique · Sam 17 Mai 2026</div>
+      </div>
+      <div class="t-sep" style="background:rgba(239,227,197,.15);"><div class="t-dash" style="border-color:rgba(245,236,215,.1);"></div></div>
+      <div class="t-mid" style="background:rgba(239,227,197,.12);position:relative;">
+        <div class="t-fields">
+          <div class="t-field"><div class="tf-l" style="color:rgba(245,236,215,.25);">Heure</div><div class="tf-v" style="color:rgba(245,236,215,.3);">21h00</div></div>
+          <div class="t-field"><div class="tf-l" style="color:rgba(245,236,215,.25);">Lieu</div><div class="tf-v" style="color:rgba(245,236,215,.3);">Fondation Zinsou</div></div>
+          <div class="t-field"><div class="tf-l" style="color:rgba(245,236,215,.25);">Catégorie</div><div class="tf-v" style="color:rgba(245,236,215,.3);">VIP</div></div>
+        </div>
+        <div class="qr-area">
+          <div class="qr-lbl" style="color:rgba(245,236,215,.25);">Événement terminé</div>
+          <div style="position:relative;">
+            <svg width="160" height="160" viewBox="0 0 160 160" style="border:3px solid rgba(245,236,215,.15);border-radius:10px;background:rgba(239,227,197,.15);opacity:.25;filter:grayscale(1);">
+              <rect x="10" y="10" width="44" height="44" rx="4" fill="#1A1208"/><rect x="106" y="10" width="44" height="44" rx="4" fill="#1A1208"/><rect x="10" y="106" width="44" height="44" rx="4" fill="#1A1208"/>
+            </svg>
+            <div class="past-stamp">UTILISÉ</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-bot">
+        <div class="t-bot-brand" style="color:rgba(245,236,215,.25);">Vérifié par <span style="color:rgba(245,236,215,.3);">Wamiton</span></div>
+        <div class="t-offline" style="color:rgba(245,236,215,.2);">
+          <div class="offline-dot" style="background:rgba(245,236,215,.2);box-shadow:none;"></div>Archivé
+        </div>
+      </div>
+    </div>
+    <div class="ref-tag" style="color:rgba(245,236,215,.2);">WMT-2026-3104 · 1× VIP</div>
+  </div>
+
+</div><!-- #device -->
 
 <script>
 /* ============================================================
-   NAVIGATION
+   NAVIGATION — uniquement par boutons/clics
 ============================================================ */
-const screens = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14'];
+const ALL = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14'];
 
-const panelData = {
-  s1:  { title: 'Splash Screen', desc: 'Écran d\'accueil animé. Zan flotte doucement. Un tap démarre l\'onboarding.', meta: 'Parcours · Acheteur\nÉtat · Onboarding\nScreen · S1 / 14' },
-  s2:  { title: 'Onboarding', desc: '3 slides swipables pour présenter la promesse Wamiton. Swipe ou bouton Suivant.', meta: 'Parcours · Acheteur\nÉtat · Onboarding\nScreen · S2 / 14' },
-  s3:  { title: 'Choix du rôle', desc: 'Acheteur ou Organisateur. Détermine le parcours. Modifiable dans les paramètres.', meta: 'Parcours · Acheteur\nÉtat · Auth\nScreen · S3 / 14' },
-  s4:  { title: 'Saisie téléphone', desc: 'Authentification par OTP SMS. Préfixe +229 Bénin par défaut.', meta: 'Parcours · Acheteur\nÉtat · Auth\nScreen · S4 / 14' },
-  s5:  { title: 'Code OTP', desc: '4 champs de saisie. Renvoi après 30s. Validation → accueil direct.', meta: 'Parcours · Acheteur\nÉtat · Auth\nScreen · S5 / 14' },
-  s6:  { title: 'Accueil', desc: 'Feed personnalisé avec filtres. À la une + événements à venir. Bottom nav.', meta: 'Parcours · Acheteur\nÉtat · Connecté\nScreen · S6 / 14' },
-  s7:  { title: 'Fiche événement', desc: 'Détail complet : artiste, date, lieu, description, catégories. CTA sticky en bas.', meta: 'Parcours · Acheteur\nÉtat · Exploration\nScreen · S7 / 14' },
-  s8:  { title: 'Sélection billet', desc: 'Types Standard / VIP avec quantités. Récap de commande dynamique.', meta: 'Parcours · Acheteur\nÉtat · Achat\nScreen · S8 / 14' },
-  s9:  { title: 'Paiement KkiaPay', desc: 'MTN, Moov, Orange Money ou carte. Saisie numéro mobile. Sécurité affichée.', meta: 'Parcours · Acheteur\nÉtat · Paiement\nScreen · S9 / 14' },
-  s10: { title: 'Traitement', desc: 'Spinner animé avec Zan. Zan vérifie le paiement en temps réel.', meta: 'Parcours · Acheteur\nÉtat · En attente\nScreen · S10 / 14' },
-  s11: { title: 'Confirmation', desc: 'Zan bras levés fête la réussite. Récap de commande + accès aux billets.', meta: 'Parcours · Acheteur\nÉtat · Succès\nScreen · S11 / 14' },
-  s12: { title: 'Mes billets', desc: 'Tabs À venir / Passés. Statut QR en temps réel. Accès direct billet.', meta: 'Parcours · Acheteur\nÉtat · Billets\nScreen · S12 / 14' },
-  s13: { title: 'Billet QR', desc: 'Billet physique brand book complet. QR SVG centré. Dispo hors connexion.', meta: 'Parcours · Acheteur\nÉtat · Billet actif\nScreen · S13 / 14' },
-  s14: { title: 'Billet passé', desc: 'Même structure que S13 mais grisé + tampon UTILISÉ. Archivé.', meta: 'Parcours · Acheteur\nÉtat · Archivé\nScreen · S14 / 14' },
-};
-
-function goTo(id) {
-  // hide all
-  screens.forEach(s => {
+function nav(id) {
+  ALL.forEach(s => {
     const el = document.getElementById(s);
-    if (el) el.classList.remove('active');
-    const nav = document.getElementById('nav-'+s);
-    if (nav) nav.classList.remove('active');
+    if (el) { el.classList.remove('active'); el.scrollTop = 0; }
+    const pb = document.getElementById('pb-' + s);
+    if (pb) pb.classList.remove('active');
   });
-  // show target
-  const target = document.getElementById(id);
-  if (target) {
-    target.classList.add('active');
-    target.scrollTop = 0;
-  }
-  const navTarget = document.getElementById('nav-'+id);
-  if (navTarget) navTarget.classList.add('active');
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
+  const pb = document.getElementById('pb-' + id);
+  if (pb) pb.classList.add('active');
 
-  // update info panel
-  if (panelData[id]) {
-    const d = panelData[id];
-    const t = document.getElementById('panelTitle');
-    const desc = document.getElementById('panelDesc');
-    const meta = document.getElementById('panelMeta');
-    if (t) t.textContent = d.title;
-    if (desc) desc.textContent = d.desc;
-    if (meta) meta.innerHTML = d.meta.replace(/\n/g,'<br>');
-  }
-
-  // scroll side nav item into view
-  const navEl = document.getElementById('nav-'+id);
-  if (navEl) navEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  // S10 auto-avance après 2.5s
+  if (id === 's10') setTimeout(() => { if (document.getElementById('s10').classList.contains('active')) nav('s11'); }, 2500);
 }
 
 /* ============================================================
    ONBOARDING SLIDER
 ============================================================ */
-let obIndex = 0;
-const obTotal = 3;
-
-function obNextSlide() {
-  obIndex++;
-  if (obIndex >= obTotal) {
-    goTo('s3');
-    obIndex = 0;
-    updateOb(0);
-    return;
-  }
-  updateOb(obIndex);
+let obIdx = 0;
+function obNext() {
+  obIdx++;
+  if (obIdx >= 3) { nav('s3'); obIdx = 0; updOb(0); return; }
+  updOb(obIdx);
 }
-
-function updateOb(i) {
-  const slider = document.getElementById('obSlider');
-  if (!slider) return;
-  const slides = slider.querySelectorAll('.ob-slide');
-  slides.forEach((s, idx) => {
-    s.style.transform = `translateX(${(idx - i) * 100}%)`;
-  });
-  const dots = document.querySelectorAll('.ob-dot');
-  dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
-  const btn = document.getElementById('obNext');
-  if (btn) btn.textContent = i === obTotal - 1 ? 'Commencer →' : 'Suivant';
+function updOb(i) {
+  document.getElementById('obTrack').style.transform = `translateX(${-i * (100/3)}%)`;
+  document.querySelectorAll('.ob-dot').forEach((d,j) => d.classList.toggle('active', j===i));
+  document.getElementById('obBtn').textContent = i === 2 ? 'Commencer →' : 'Suivant';
 }
-
-// init slider positions
-document.addEventListener('DOMContentLoaded', () => {
-  const slider = document.getElementById('obSlider');
-  if (slider) {
-    const slides = slider.querySelectorAll('.ob-slide');
-    slides.forEach((s, i) => {
-      s.style.transition = 'transform .4s cubic-bezier(.4,0,.2,1)';
-      s.style.position = 'absolute';
-      s.style.top = '0'; s.style.left = '0';
-      s.style.width = '100%'; s.style.height = '100%';
-      s.style.transform = `translateX(${i * 100}%)`;
-    });
-    slider.style.position = 'relative';
-  }
-});
 
 /* ============================================================
-   TABS (S12)
+   TABS S12
 ============================================================ */
 function switchTab(btn, which) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('upcomingList').style.display = which === 'upcoming' ? 'block' : 'none';
-  document.getElementById('pastList').style.display = which === 'past' ? 'block' : 'none';
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('listUp').style.display   = which === 'up'   ? 'block' : 'none';
+  document.getElementById('listPast').style.display = which === 'past' ? 'block' : 'none';
 }
 
 /* ============================================================
-   TICKET TYPE SELECTION (S8)
+   TICKET TYPE S8
 ============================================================ */
-function selectTicket(el) {
-  document.querySelectorAll('.ticket-type').forEach(t => t.classList.remove('selected'));
-  el.classList.add('selected');
+function selTt(el) {
+  document.querySelectorAll('.tt-card').forEach(c => c.classList.remove('sel'));
+  el.classList.add('sel');
 }
 
 /* ============================================================
-   QUANTITY (S8)
+   QTY S8
 ============================================================ */
-function changeQty(e, delta, qtyId, totalId, price) {
+function chgQty(e, d, id, price) {
   e.stopPropagation();
-  const el = document.getElementById(qtyId);
-  if (!el) return;
-  let val = parseInt(el.textContent) + delta;
-  val = Math.max(0, Math.min(4, val));
-  el.textContent = val;
-  updateTotal();
-}
-
-function updateTotal() {
-  const q1 = parseInt(document.getElementById('qty1')?.textContent || '0');
-  const q2 = parseInt(document.getElementById('qty2')?.textContent || '0');
-  const total = q1 * 2500 + q2 * 6000 + 100;
-  const el = document.getElementById('grandTotal');
-  if (el) el.textContent = total.toLocaleString('fr-FR') + ' XOF';
+  const el = document.getElementById(id);
+  let v = parseInt(el.textContent) + d;
+  v = Math.max(0, Math.min(4, v));
+  el.textContent = v;
+  const q1 = parseInt(document.getElementById('q1').textContent);
+  const q2 = parseInt(document.getElementById('q2').textContent);
+  const t = q1*2500 + q2*6000 + 100;
+  document.getElementById('gtotal').textContent = t.toLocaleString('fr-FR') + ' XOF';
 }
 
 /* ============================================================
-   PAYMENT SELECTION (S9)
+   PAYMENT S9
 ============================================================ */
-function selectPay(el) {
-  document.querySelectorAll('.pay-method').forEach(m => m.classList.remove('selected'));
-  el.classList.add('selected');
+function selPay(el) {
+  document.querySelectorAll('.pay-item').forEach(m => m.classList.remove('sel'));
+  el.classList.add('sel');
 }
 
 /* ============================================================
@@ -2937,37 +1456,16 @@ function selectPay(el) {
 ============================================================ */
 document.querySelectorAll('.otp-box').forEach((box, i, boxes) => {
   box.addEventListener('input', () => {
-    if (box.value.length === 1 && i < boxes.length - 1) {
-      boxes[i+1].focus();
-    }
     box.classList.toggle('filled', box.value.length > 0);
+    if (box.value.length === 1 && i < boxes.length - 1) boxes[i+1].focus();
   });
-  box.addEventListener('keydown', (e) => {
-    if (e.key === 'Backspace' && !box.value && i > 0) {
-      boxes[i-1].focus();
-    }
+  box.addEventListener('keydown', e => {
+    if (e.key === 'Backspace' && !box.value && i > 0) boxes[i-1].focus();
   });
 });
 
-/* ============================================================
-   PWA — auto-processing redirect
-============================================================ */
-// S10 auto-advance after 2.5s for demo
-document.getElementById('s10').addEventListener('transitionend', () => {});
-function onS10Show() {
-  setTimeout(() => {
-    const s10 = document.getElementById('s10');
-    if (s10 && s10.classList.contains('active')) goTo('s11');
-  }, 2500);
-}
-// Observe s10
-const s10Observer = new MutationObserver((muts) => {
-  muts.forEach(m => {
-    if (m.target.classList.contains('active')) onS10Show();
-  });
-});
-const s10el = document.getElementById('s10');
-if (s10el) s10Observer.observe(s10el, { attributes: true, attributeFilter: ['class'] });
+// Init proto-bar active state
+document.getElementById('pb-s1').classList.add('active');
 </script>
 </body>
 </html>
