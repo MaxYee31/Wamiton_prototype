@@ -843,16 +843,18 @@ body {
   </div>
 
   <!-- S1 — SPLASH -->
-  <div class="screen active" id="s1" onclick="nav('s2')">
+  <div class="screen active" id="s1">
     <div class="splash-bg"></div>
     <div style="flex:1;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;">
       <div class="splash-zan">
         <svg width="240" viewBox="0 0 240 320"><use href="#z-gr"/></svg>
       </div>
     </div>
-    <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:14px;padding-bottom:52px;">
+    <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:20px;padding:0 40px 56px;width:100%;">
       <svg width="140" height="21" viewBox="0 0 1320 200" color="rgba(245,236,215,.65)"><use href="#wm"/></svg>
-      <div class="splash-tap" style="position:static;">Appuie pour commencer</div>
+      <div style="width:100%;max-width:180px;height:2px;background:rgba(245,236,215,.1);border-radius:2px;overflow:hidden;">
+        <div id="splashBar" style="height:100%;width:0%;background:var(--oc);border-radius:2px;"></div>
+      </div>
     </div>
   </div>
 
@@ -1466,6 +1468,26 @@ document.querySelectorAll('.otp-box').forEach((box, i, boxes) => {
 
 // Init proto-bar active state
 document.getElementById('pb-s1').classList.add('active');
+
+/* ============================================================
+   SPLASH — 20s auto-redirect vers S2 + barre de progression
+============================================================ */
+(function() {
+  const DURATION = 20000;
+  const bar = document.getElementById('splashBar');
+  const start = performance.now();
+  function tick(now) {
+    const elapsed = now - start;
+    const pct = Math.min((elapsed / DURATION) * 100, 100);
+    bar.style.width = pct + '%';
+    if (elapsed < DURATION) {
+      requestAnimationFrame(tick);
+    } else {
+      nav('s2');
+    }
+  }
+  requestAnimationFrame(tick);
+})();
 </script>
 </body>
 </html>
