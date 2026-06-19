@@ -8,337 +8,13 @@
 <title>Wamiton</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<style>/* latin-ext */
-@font-face {
-  font-family: 'Archivo Black';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("437bab35-c136-4f67-a33b-abdc574192fd") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Archivo Black';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("7dbaa3c1-b827-496d-b62f-dc7088af6d5b") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("c90d5e9a-d4fb-42e0-9b47-145142d67fe9") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("63667f7b-ed3c-452a-b08e-b3f8b204ec3a") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("3b124f48-bcc4-4e54-b4c6-71b881153019") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("f12ebaf8-78d9-4375-ab62-67ebfc3789d0") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* cyrillic-ext */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("28c266c5-e54f-4e85-ad39-94b74f4cd42f") format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("75a246dd-e77b-4971-bc24-903aed6a9d41") format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* greek */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("aff8682b-c56a-4066-88ce-6aefa7351cbf") format('woff2');
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("02020116-bd6b-4cb4-909f-0069ed468604") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("6e6b957b-e5ea-4f8f-bd18-b1f7eaff8470") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("6e698f7b-2fbf-4636-b937-7ab5de4cfeed") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* cyrillic-ext */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("28c266c5-e54f-4e85-ad39-94b74f4cd42f") format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("75a246dd-e77b-4971-bc24-903aed6a9d41") format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* greek */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("aff8682b-c56a-4066-88ce-6aefa7351cbf") format('woff2');
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("02020116-bd6b-4cb4-909f-0069ed468604") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("6e6b957b-e5ea-4f8f-bd18-b1f7eaff8470") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("6e698f7b-2fbf-4636-b937-7ab5de4cfeed") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("beee76d4-26a9-4a51-b24d-fa1249c0643b") format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("8e499ecb-134b-4006-a511-807fc1540439") format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* greek */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("e186c245-1f2b-4eb7-8a63-95d945b26e73") format('woff2');
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("75fab368-54ed-4284-9e1c-4aa7227c2857") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("265ec743-6e76-41ba-bc40-bbe7a22739f6") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("52c2959e-66b7-4b65-b015-51a4b2d7a132") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("beee76d4-26a9-4a51-b24d-fa1249c0643b") format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("8e499ecb-134b-4006-a511-807fc1540439") format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* greek */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("e186c245-1f2b-4eb7-8a63-95d945b26e73") format('woff2');
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("75fab368-54ed-4284-9e1c-4aa7227c2857") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("265ec743-6e76-41ba-bc40-bbe7a22739f6") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("52c2959e-66b7-4b65-b015-51a4b2d7a132") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("beee76d4-26a9-4a51-b24d-fa1249c0643b") format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("8e499ecb-134b-4006-a511-807fc1540439") format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* greek */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("e186c245-1f2b-4eb7-8a63-95d945b26e73") format('woff2');
-  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("75fab368-54ed-4284-9e1c-4aa7227c2857") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("265ec743-6e76-41ba-bc40-bbe7a22739f6") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("52c2959e-66b7-4b65-b015-51a4b2d7a132") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root {
   --oc:#C17D3C; --onac:#1A1208; --tc:#B5502A; --rd:#C8392B;
   --cr:#F5ECD7; --cr2:#EFE3C5;
-  --co:#1A1208; --co2:#241910; --pp:#0a0604;
-  --stage:#3D1F0F;
+  --co:#0d0d0d; --co2:#1a1a1a; --pp:#000000;
+  --stage:#1a1a1a;
   --fd:'Archivo Black',sans-serif;
   --fs:'Manrope',sans-serif;
   --fm:'JetBrains Mono',monospace;
@@ -376,7 +52,7 @@ html.static-shot .screen.active{animation:none;}
   body{
     min-height:100vh;
     display:flex;align-items:stretch;justify-content:center;
-    background:#0a0704;
+    background:#080808;
   }
 
   /* L'app s'affiche en colonne centrée, pleine hauteur, sans bordure ni encoche */
@@ -399,7 +75,7 @@ html.static-shot .screen.active{animation:none;}
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#0a0704;
+    background:#080808;
   }
 
   #device{
@@ -544,6 +220,10 @@ html.static-shot .screen.active{animation:none;}
 .pwd-wrap{position:relative;margin-bottom:6px;}
 .pwd-eye{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(245,236,215,.38);cursor:pointer;display:flex;padding:6px;-webkit-tap-highlight-color:transparent;}
 .pwd-eye.on{color:var(--oc);}
+.flag-btn::-webkit-outer-spin-button,.flag-btn::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+.flag-btn:focus{border-color:var(--oc);outline:none;}
+.flag-btn option{background:var(--co);color:var(--cr);padding:10px;}
+.flag-btn option:checked{background:var(--oc);color:var(--cr);}
 .input-error{font-size:12.5px;color:#E0937F;background:rgba(200,57,43,.1);border:1px solid rgba(200,57,43,.28);border-radius:10px;padding:10px 12px;margin-bottom:6px;line-height:1.4;}
 .auth-toggle{display:flex;background:var(--co2);border:1px solid rgba(245,236,215,.08);border-radius:12px;padding:3px;margin-bottom:18px;}
 .at-btn{flex:1;padding:10px;border:none;background:none;border-radius:9px;font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,236,215,.45);cursor:pointer;transition:all .18s;-webkit-tap-highlight-color:transparent;}
@@ -578,6 +258,31 @@ html.static-shot .screen.active{animation:none;}
 .chip.off{background:rgba(245,236,215,.06);border:1px solid rgba(245,236,215,.12);color:rgba(245,236,215,.55);}
 .home-scroll{flex:1;overflow-y:auto;padding:14px 20px 90px;scrollbar-width:none;}
 .home-scroll::-webkit-scrollbar{display:none;}
+
+/* ============================================================
+   FOOTER (Shotgun-style — apparaît en bas du fil d'accueil)
+============================================================ */
+.wm-footer{margin:44px -20px 0;padding:38px 20px 30px;border-top:1px solid rgba(245,236,215,.08);background:var(--co);font-family:var(--fs);}
+.wm-footer .wmf-logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:30px;}
+.wm-footer .wmf-zan{height:36px;width:auto;flex-shrink:0;}
+.wm-footer .wmf-wm{height:15px;width:auto;color:var(--cr);}
+.wm-footer .wmf-cols{display:grid;grid-template-columns:1fr 1fr;gap:30px 18px;margin-bottom:14px;}
+.wm-footer h4{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,236,215,.42);margin-bottom:14px;}
+.wm-footer ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.wm-footer .wmf-cols a{color:rgba(245,236,215,.72);text-decoration:none;font-size:13.5px;line-height:1.3;transition:color .2s;}
+.wm-footer .wmf-cols a:hover{color:var(--oc);}
+.wm-footer .wmf-divider{height:1px;background:rgba(245,236,215,.08);margin:28px 0;}
+.wm-footer .wmf-social{display:flex;gap:24px;flex-wrap:wrap;align-items:center;margin-bottom:30px;}
+.wm-footer .wmf-social a{display:inline-flex;color:var(--cr);transition:color .2s;}
+.wm-footer .wmf-social a:hover{color:var(--oc);}
+.wm-footer .wmf-social svg{width:26px;height:26px;fill:currentColor;display:block;}
+.wm-footer .wmf-legal{display:flex;flex-wrap:wrap;gap:9px 16px;margin-bottom:16px;}
+.wm-footer .wmf-legal a{font-family:var(--fm);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,236,215,.4);text-decoration:none;transition:color .2s;}
+.wm-footer .wmf-legal a:hover{color:var(--oc);}
+.wm-footer .wmf-copy{font-size:11.5px;color:rgba(245,236,215,.35);border-top:1px solid rgba(245,236,215,.07);padding-top:16px;}
+.wm-footer .wmf-recaptcha{font-size:11px;line-height:1.55;color:rgba(245,236,215,.3);margin-top:11px;}
+.wm-footer .wmf-recaptcha a{color:rgba(245,236,215,.52);text-decoration:underline;text-underline-offset:2px;transition:color .2s;}
+.wm-footer .wmf-recaptcha a:hover{color:var(--oc);}
 .sec-label{font-family:var(--fm);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,236,215,.4);margin-bottom:12px;margin-top:20px;}
 .sec-label:first-child{margin-top:0;}
 .ev-card{background:var(--co2);border-radius:16px;overflow:hidden;margin-bottom:12px;cursor:pointer;border:1px solid rgba(245,236,215,.05);transition:transform .15s;-webkit-tap-highlight-color:transparent;}
@@ -603,7 +308,7 @@ html.static-shot .screen.active{animation:none;}
 /* ============================================================
    BOTTOM NAV (S7, S8 profil, etc.)
 ============================================================ */
-.bnav{position:absolute;bottom:0;left:0;right:0;background:rgba(26,18,8,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(245,236,215,.07);display:flex;justify-content:space-around;padding:10px 0 max(14px,env(safe-area-inset-bottom));z-index:100;}
+.bnav{position:absolute;bottom:0;left:0;right:0;background:rgba(15,15,15,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(245,236,215,.07);display:flex;justify-content:space-around;padding:10px 0 max(14px,env(safe-area-inset-bottom));z-index:100;}
 .bn-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:4px 16px;border:none;background:none;-webkit-tap-highlight-color:transparent;}
 .bn-ico{color:rgba(245,236,215,.3);display:flex;align-items:center;}
 .bn-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,236,215,.3);}
@@ -650,7 +355,8 @@ html.static-shot .screen.active{animation:none;}
 .prof2-head{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:22px;}
 .prof2-av{position:relative;width:78px;height:78px;border-radius:50%;background:linear-gradient(150deg,rgba(193,125,60,.32),rgba(193,125,60,.1));border:2px solid rgba(193,125,60,.42);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:26px;color:var(--oc);margin-bottom:14px;}
 .prof2-verif{position:absolute;bottom:-2px;right:-2px;width:24px;height:24px;border-radius:50%;background:var(--oc);border:3px solid var(--co);display:flex;align-items:center;justify-content:center;}
-.prof2-name{font-family:var(--fd);font-size:23px;color:var(--cr);margin-bottom:5px;}
+.prof2-name{font-family:var(--fd);font-size:23px;color:var(--cr);margin-bottom:5px;display:flex;align-items:center;justify-content:center;gap:7px;}
+.prof2-badge{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#1d9bf0;flex-shrink:0;}
 .prof2-phone{font-family:var(--fm);font-size:12px;letter-spacing:.1em;color:rgba(245,236,215,.45);margin-bottom:12px;}
 .prof2-member{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--oc);background:rgba(193,125,60,.12);border:1px solid rgba(193,125,60,.28);padding:5px 12px;border-radius:99px;}
 .prof2-stats{display:flex;align-items:center;background:var(--co2);border:1px solid rgba(245,236,215,.06);border-radius:16px;padding:16px 8px;margin-bottom:26px;}
@@ -699,9 +405,41 @@ html.static-shot .screen.active{animation:none;}
 .ev-desc-text{font-size:14px;color:rgba(245,236,215,.65);line-height:1.75;margin-bottom:16px;font-weight:300;}
 .tags{display:flex;gap:8px;flex-wrap:wrap;}
 .tag{font-family:var(--fm);font-size:10px;letter-spacing:.12em;padding:5px 12px;border-radius:99px;background:rgba(245,236,215,.07);color:rgba(245,236,215,.5);}
-.ev-cta-bar{position:absolute;bottom:0;left:0;right:0;background:rgba(26,18,8,.96);backdrop-filter:blur(20px);border-top:1px solid rgba(245,236,215,.08);padding:16px 20px max(20px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:16px;z-index:100;}
+.ev-cta-bar{position:absolute;bottom:0;left:0;right:0;background:rgba(15,15,15,.96);backdrop-filter:blur(20px);border-top:1px solid rgba(245,236,215,.08);padding:16px 20px max(20px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:16px;z-index:100;}
 .price-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,236,215,.4);}
 .price-val{font-family:var(--fd);font-size:20px;color:var(--oc);}
+.ev-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.ev-hero-card{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:var(--stage);margin-bottom:20px;}
+.ev-hero-card .hero-btn{z-index:3;}
+.ev-actions{display:flex;gap:4px;margin:22px 0 6px;}
+.ev-act{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;color:var(--cr);font-family:var(--fs);font-size:11px;cursor:pointer;padding:6px 2px;-webkit-tap-highlight-color:transparent;transition:color .2s;}
+.ev-act:hover{color:var(--oc);}
+.ev-act.on{color:var(--oc);}
+.ev-act.on svg{fill:rgba(193,125,60,.18);}
+.ev-gallery{display:flex;gap:10px;overflow-x:auto;margin:22px 0 2px;scrollbar-width:none;padding-bottom:2px;}
+.ev-gallery::-webkit-scrollbar{display:none;}
+.ev-gallery img{width:208px;height:130px;object-fit:cover;border-radius:14px;flex-shrink:0;background:var(--stage);}
+.ev-block{margin-top:30px;}
+.ev-h{font-family:var(--fd);font-size:19px;color:var(--cr);margin-bottom:13px;}
+.ev-collapse{position:relative;max-height:112px;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1);}
+.ev-collapse.open{max-height:1600px;}
+.ev-collapse>p{font-size:14.5px;line-height:1.78;color:rgba(245,236,215,.62);font-weight:300;}
+.ev-fade{position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(rgba(13,13,13,0),var(--co));pointer-events:none;transition:opacity .3s;}
+.ev-collapse.open .ev-fade{opacity:0;}
+.ev-more{display:flex;align-items:center;justify-content:center;width:46px;height:34px;margin:4px auto 0;background:none;border:none;color:rgba(245,236,215,.55);cursor:pointer;transition:color .2s;-webkit-tap-highlight-color:transparent;}
+.ev-more:hover{color:var(--oc);}
+.ev-more svg{transition:transform .45s ease;}
+.ev-more.open svg{transform:rotate(180deg);}
+.ev-info-row{display:flex;align-items:flex-start;gap:13px;padding:11px 0;font-size:14px;color:rgba(245,236,215,.72);line-height:1.5;}
+.ev-info-row svg{flex-shrink:0;margin-top:1px;color:rgba(245,236,215,.42);}
+.ev-venue-card{display:flex;align-items:center;gap:13px;background:var(--co2);border:1px solid rgba(245,236,215,.08);border-radius:14px;padding:15px;margin:14px 0;}
+.ev-venue-card .vc-ic{width:42px;height:42px;border-radius:50%;background:rgba(245,236,215,.06);display:flex;align-items:center;justify-content:center;color:rgba(245,236,215,.5);flex-shrink:0;}
+.ev-venue-card .vc-name{font-size:15px;color:var(--cr);}
+.ev-addr{display:flex;align-items:flex-start;gap:11px;font-size:14px;color:rgba(245,236,215,.62);line-height:1.5;margin-top:4px;}
+.ev-addr svg{flex-shrink:0;margin-top:2px;color:var(--oc);}
+.ev-map{margin-top:15px;height:200px;border-radius:16px;overflow:hidden;border:1px solid rgba(245,236,215,.1);position:relative;}
+.ev-map iframe{width:100%;height:100%;border:0;display:block;filter:invert(1) hue-rotate(180deg) brightness(.92) contrast(.86) saturate(.7);}
+.ev-map-link{position:absolute;inset:0;z-index:2;}
 
 /* ============================================================
    S11 — ACHAT
@@ -1079,7 +817,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 .val-note svg{flex-shrink:0;color:#5FB878;}
 
 /* Footer wizard (nav) */
-.wz-foot{position:absolute;bottom:0;left:0;right:0;background:rgba(26,18,8,.96);backdrop-filter:blur(20px);border-top:1px solid rgba(245,236,215,.08);padding:14px 20px max(18px,env(safe-area-inset-bottom));display:flex;gap:10px;z-index:100;}
+.wz-foot{position:absolute;bottom:0;left:0;right:0;background:rgba(15,15,15,.96);backdrop-filter:blur(20px);border-top:1px solid rgba(245,236,215,.08);padding:14px 20px max(18px,env(safe-area-inset-bottom));display:flex;gap:10px;z-index:100;}
 .wz-foot .btn-back{flex:0 0 auto;width:54px;background:var(--co2);border:1.5px solid rgba(245,236,215,.12);border-radius:12px;color:var(--cr);display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 .wz-foot .btn-p{flex:1;}
 
@@ -1170,11 +908,11 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 #oonb,#ologin,#otier,#osignup,#odash,#oevent,#ocreate,#osubmit,#osales,#opayout,#oprofile,#oagents{
   --oc:#B5502A;          /* accent → terracotta */
   --onac:var(--cr);      /* texte sur accent → crème (pairing brand) */
-  --co:#14100a;          /* surface console, plus profonde que cocoa */
-  --co2:#201712;         /* carte surélevée */
-  --stage:#311a0d;
+  --co:#0f0f0f;          /* surface console noir */
+  --co2:#1a1a1a;         /* carte surélevée */
+  --stage:#1a1a1a;
 }
-.bnav-org{background:rgba(18,13,8,.96);}
+.bnav-org{background:rgba(12,12,12,.96);}
 #ocreate .wz-foot{background:rgba(18,13,8,.96);}
 /* glows & tints accent : ocre → terracotta (composants orga only) */
 .o-fab{box-shadow:0 10px 26px -8px rgba(181,80,42,.55);}
@@ -1214,16 +952,16 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 #conb,#cauth,#csync,#cscan,#cstats,#cteam{
   --oc:#5BA873;           /* accent → vert terrain (GO) */
   --onac:#0b0a06;         /* texte sur accent → presque noir */
-  --co:#0d0b06;           /* surface terrain, la plus profonde */
-  --co2:#16130c;          /* carte surélevée */
-  --stage:#0a0805;        /* viseur caméra */
+  --co:#0b0b0b;           /* surface terrain noir */
+  --co2:#161616;          /* carte surélevée */
+  --stage:#080808;        /* viseur caméra */
   --rd:#D2453A;           /* refus / stop */
 }
 .c-screen{background:var(--co);flex-direction:column;}
 .cterrain{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--oc);background:rgba(91,168,115,.16);border:1px solid rgba(91,168,115,.3);padding:3px 9px;border-radius:99px;white-space:nowrap;}
 .cterrain::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--oc);box-shadow:0 0 0 3px rgba(91,168,115,.18);}
 @media(prefers-reduced-motion:no-preference){.cterrain::before{animation:dotPulse 2s ease-in-out infinite;}}
-.bnav-c{background:rgba(13,11,6,.96);}
+.bnav-c{background:rgba(10,10,10,.96);}
 .bnav-c .bn-item.on .bn-ico,.bnav-c .bn-item.on .bn-lbl{color:var(--oc);}
 
 /* CONB — accès agent */
@@ -1659,7 +1397,23 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
       </div>
       <p class="input-hint">8 caractères minimum.</p>
       <label class="field-label">Téléphone <span class="opt">(optionnel)</span></label>
-      <input type="tel" class="txt-input" placeholder="+229 97 00 00 00" inputmode="tel">
+      <div class="phone-row">
+        <select id="suCountry" class="flag-btn" style="padding:12px 14px;border-radius:12px;background:var(--co2);border:1.5px solid rgba(245,236,215,.12);color:var(--cr);font-family:var(--fm);font-size:13px;cursor:pointer;">
+          <option value="+229">🇧🇯 Bénin (+229)</option>
+          <option value="+1">🇨🇦 Canada (+1)</option>
+          <option value="+225">🇨🇮 Côte d'Ivoire (+225)</option>
+          <option value="+1">🇺🇸 États-Unis (+1)</option>
+          <option value="+33">🇫🇷 France (+33)</option>
+          <option value="+233">🇬🇭 Ghana (+233)</option>
+          <option value="+223">🇲🇱 Mali (+223)</option>
+          <option value="+227">🇳🇪 Niger (+227)</option>
+          <option value="+234">🇳🇬 Nigéria (+234)</option>
+          <option value="+221">🇸🇳 Sénégal (+221)</option>
+          <option value="+228">🇹🇬 Togo (+228)</option>
+          <option value="+226">🇧🇫 Burkina Faso (+226)</option>
+        </select>
+        <input id="suPhone" type="tel" class="txt-input" placeholder="97 00 00 00" inputmode="tel" style="flex:1;">
+      </div>
       <div id="suErr" class="input-error" hidden=""></div>
     </div>
     <button class="btn-p" onclick="validateSignup()" style="margin-top:14px;">Créer mon compte</button>
@@ -1749,8 +1503,6 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
         </div>
         <div class="avatar" onclick="nav('s9')">KK</div>
       </div>
-      <div class="greet">Bonsoir, <strong>Kofi</strong> 👋</div>
-      <div class="greet-sub">Cotonou · Vendredi 5 Juin</div>
       <div class="search-bar">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(245,236,215,.35)" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         <input type="text" placeholder="Artiste, lieu, événement…">
@@ -1768,7 +1520,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
       <div class="sec-label">À la une</div>
       <div class="ev-card">
         <div class="ev-img" style="padding:0;">
-          <image-slot id="ev-vaudou" style="width:100%;height:100%;display:block;" shape="rect" placeholder="Photo de l'événement"></image-slot>
+          <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&amp;fit=crop&amp;w=800&amp;q=75" alt="VAUDOU NIGHTS" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;display:block;">
           <span class="ev-badge" style="z-index:2;">Ce week-end</span>
         </div>
         <div class="ev-body" onclick="nav('s10')" style="cursor:pointer;">
@@ -1783,7 +1535,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
       <div class="sec-label">Prochainement</div>
       <div class="ev-rows-grid">
       <div class="ev-row" onclick="nav('s10')">
-        <div class="ev-row-img"><svg width="36" viewBox="0 0 240 320" style="opacity:.5"><use href="#z-oc"></use></svg></div>
+        <div class="ev-row-img"><img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&amp;fit=crop&amp;w=300&amp;q=70" alt="Jazz au Bénin" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div class="ev-row-body">
           <div class="ev-row-date">Ven 13 Juin · 19h30</div>
           <div class="ev-row-title">Jazz au Bénin — Orchestre National</div>
@@ -1792,7 +1544,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
         <div class="ev-row-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
       </div>
       <div class="ev-row" onclick="nav('s10')">
-        <div class="ev-row-img"><svg width="36" viewBox="0 0 240 320" style="opacity:.4"><use href="#z-gr"></use></svg></div>
+        <div class="ev-row-img"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&amp;fit=crop&amp;w=300&amp;q=70" alt="Expo Tissu" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div class="ev-row-body">
           <div class="ev-row-date">Dim 15 Juin · 16h00</div>
           <div class="ev-row-title">Expo Tissu — Art Textile Africain</div>
@@ -1801,7 +1553,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
         <div class="ev-row-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
       </div>
       <div class="ev-row" onclick="nav('s10')">
-        <div class="ev-row-img"><svg width="36" viewBox="0 0 240 320" style="opacity:.5"><use href="#z-oc"></use></svg></div>
+        <div class="ev-row-img"><img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&amp;fit=crop&amp;w=300&amp;q=70" alt="AfroBeats Fever" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div class="ev-row-body">
           <div class="ev-row-date">Sam 21 Juin · 21h00</div>
           <div class="ev-row-title">AfroBeats Fever — Open Air</div>
@@ -1810,11 +1562,51 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
         <div class="ev-row-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
       </div>
       </div><!-- end ev-rows-grid -->
+      <footer class="wm-footer">
+        <a href="#" class="wmf-logo" onclick="nav('s7');return false;" aria-label="Wamiton">
+          <svg class="wmf-zan" viewBox="0 0 240 320" aria-hidden="true"><use href="#z-oc"></use></svg>
+          <svg class="wmf-wm" viewBox="0 0 1320 200" aria-hidden="true"><use href="#wm"></use></svg>
+        </a>
+        <div class="wmf-cols">
+          <div>
+            <h4>À propos</h4>
+            <ul>
+              <li><a href="#" onclick="nav('oonb');return false;">Je suis organisateur</a></li>
+              <li><a href="#" onclick="return false;">Kit presse</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#" onclick="return false;">Aide (FAQ)</a></li>
+              <li><a href="mailto:support@wamiton.com">Nous contacter</a></li>
+              <li><a href="#" onclick="return false;">Signaler un problème</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="wmf-divider"></div>
+        <h4>Sur les réseaux</h4>
+        <div class="wmf-social">
+          <a href="https://tiktok.com" target="_blank" rel="noopener" title="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.86 2.86 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.44-.05z"></path></svg></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" title="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg></a>
+          <a href="https://spotify.com" target="_blank" rel="noopener" title="Spotify"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.385-.66.5-1.02.28-2.78-1.7-6.28-2.08-10.4-1.14-.41.1-.82-.16-.92-.57-.1-.41.16-.82.57-.92 4.51-1.03 8.38-.59 11.5 1.31.36.22.47.7.27 1.04zm1.47-3.27c-.301.482-.921.633-1.4.332-3.18-1.954-8.03-2.52-11.79-1.38-.539.164-1.11-.139-1.27-.677-.16-.539.14-1.11.678-1.271 4.3-1.305 9.65-.674 13.3 1.573.48.301.633.921.332 1.4zm.129-3.403C15.24 8.4 8.82 8.182 5.16 9.293c-.646.196-1.33-.169-1.523-.815-.193-.646.168-1.33.814-1.523 4.21-1.278 11.3-1.033 15.76 1.612.581.345.771 1.094.426 1.674-.344.582-1.094.771-1.674.426z"></path></svg></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></a>
+        </div>
+        <div class="wmf-legal">
+          <a href="#" onclick="return false;">Conditions d'utilisation</a>
+          <a href="#" onclick="return false;">Politique données personnelles</a>
+          <a href="#" onclick="return false;">Informations du consommateur</a>
+          <a href="#" onclick="return false;">Politique cookies</a>
+        </div>
+        <div class="wmf-copy">© 2026 Wamiton SAS. Tous droits réservés.</div>
+        <p class="wmf-recaptcha">Ce site est protégé par reCAPTCHA et les <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Règles de Confidentialité</a> et <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Conditions d'Utilisation</a> de Google s'appliquent.</p>
+      </footer>
     </div>
     <div class="bnav">
       <button class="bn-item on" onclick="nav('s7')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div><span class="bn-lbl">Accueil</span></button>
       <button class="bn-item" onclick="nav('s8')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><span class="bn-lbl">Explorer</span></button>
-      <button class="bn-item" onclick="nav('s15')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg></div><span class="bn-lbl">Billets</span></button>
+      <button class="bn-item" onclick="nav('s15')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path><path d="M13 5v2"></path><path d="M13 11v2"></path><path d="M13 17v2"></path></svg></div><span class="bn-lbl">Billets</span></button>
       <button class="bn-item" onclick="nav('s9')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div><span class="bn-lbl">Profil</span></button>
     </div>
   </div>
@@ -1867,7 +1659,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
     <div class="bnav">
       <button class="bn-item" onclick="nav('s7')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div><span class="bn-lbl">Accueil</span></button>
       <button class="bn-item on" onclick="nav('s8')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><span class="bn-lbl">Explorer</span></button>
-      <button class="bn-item" onclick="nav('s15')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg></div><span class="bn-lbl">Billets</span></button>
+      <button class="bn-item" onclick="nav('s15')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path><path d="M13 5v2"></path><path d="M13 11v2"></path><path d="M13 17v2"></path></svg></div><span class="bn-lbl">Billets</span></button>
       <button class="bn-item" onclick="nav('s9')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div><span class="bn-lbl">Profil</span></button>
     </div>
   </div>
@@ -1876,33 +1668,20 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
   <div class="screen" id="s9">
     <div class="prof2-scroll">
       <div class="prof2-head">
-        <div class="prof2-av">KK<span class="prof2-verif"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1A1208" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span></div>
-        <div class="prof2-name">Kofi Koffi</div>
-        <div class="prof2-phone">+229 97 00 00 00</div>
+        <div class="prof2-av">KK</div>
+        <div class="prof2-name">Kofi Koffi<span class="prof2-badge" title="Membre vérifié"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span></div>
         <div class="prof2-member">Membre Wamiton</div>
-      </div>
-      <div class="prof2-stats">
-        <div class="ps-cell"><div class="ps-num">2</div><div class="ps-lbl">À venir</div></div>
-        <div class="ps-div"></div>
-        <div class="ps-cell"><div class="ps-num">1</div><div class="ps-lbl">Passé</div></div>
-        <div class="ps-div"></div>
-        <div class="ps-cell"><div class="ps-num">Cotonou</div><div class="ps-lbl">Ville</div></div>
       </div>
       <div class="prof2-group-lbl">Mon compte</div>
       <div class="prof2-card">
         <button class="prof2-row" onclick="nav('s15')">
-          <span class="p2-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg></span>
-          <span class="p2-txt"><span class="p2-label">Mes billets</span><span class="p2-sub">2 à venir · 1 passé</span></span>
+          <span class="p2-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path><path d="M13 5v2"></path><path d="M13 11v2"></path><path d="M13 17v2"></path></svg></span>
+          <span class="p2-txt"><span class="p2-label">Mes billets</span></span>
           <span class="p2-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
         </button>
         <button class="prof2-row">
           <span class="p2-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
           <span class="p2-txt"><span class="p2-label">Mes informations</span><span class="p2-sub">Nom, téléphone, langue</span></span>
-          <span class="p2-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
-        </button>
-        <button class="prof2-row">
-          <span class="p2-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></span>
-          <span class="p2-txt"><span class="p2-label">Notifications</span><span class="p2-sub">WhatsApp + SMS</span></span>
           <span class="p2-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
         </button>
       </div>
@@ -1914,19 +1693,19 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
     <div class="bnav">
       <button class="bn-item" onclick="nav('s7')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div><span class="bn-lbl">Accueil</span></button>
       <button class="bn-item" onclick="nav('s8')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><span class="bn-lbl">Explorer</span></button>
-      <button class="bn-item" onclick="nav('s15')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg></div><span class="bn-lbl">Billets</span></button>
+      <button class="bn-item" onclick="nav('s15')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path><path d="M13 5v2"></path><path d="M13 11v2"></path><path d="M13 17v2"></path></svg></div><span class="bn-lbl">Billets</span></button>
       <button class="bn-item on" onclick="nav('s9')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div><span class="bn-lbl">Profil</span></button>
     </div>
   </div>
 
   <!-- S10 ÉVÉNEMENT -->
   <div class="screen" id="s10">
-    <div class="ev-hero">
-      <image-slot id="ev-hero-vaudou" style="position:absolute;inset:0;width:100%;height:100%;display:block;" shape="rect" placeholder="Photo de l'événement"></image-slot>
-      <button class="hero-btn left" onclick="nav('s7')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-      <button class="hero-btn right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
-    </div>
     <div class="ev-detail">
+      <div class="ev-hero-card">
+        <img class="ev-hero-img" src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&amp;fit=crop&amp;w=1200&amp;q=75" alt="Ambiance concert" referrerpolicy="no-referrer">
+        <button class="hero-btn left" onclick="nav('s7')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <button class="hero-btn right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+      </div>
       <div class="ev-name-big">VAUDOU NIGHTS<br>— Édition Spéciale</div>
       <div class="ev-when">Sam 7 Juin · 20h00</div>
       <div class="ev-venue">Champ de Foire</div>
@@ -1938,8 +1717,49 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
         <div class="artist-av"><svg width="20" viewBox="0 0 240 320" style="opacity:.7"><use href="#z-oc"></use></svg></div>
         <div><div class="artist-name">Gangbé Brass Band</div><div class="artist-role">Artiste principal</div></div>
       </div>
-      <div class="ev-desc-text">Le Gangbé Brass Band revient pour une nuit exceptionnelle au cœur du patrimoine vodoun. Cuivres, percussions et chants traditionnels dans une mise en scène inédite.</div>
       <div class="tags"><span class="tag">MUSIQUE LIVE</span><span class="tag">VODOUN</span><span class="tag">BRASS BAND</span></div>
+
+      <div class="ev-gallery">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Concert" referrerpolicy="no-referrer">
+        <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Scène" referrerpolicy="no-referrer">
+        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Foule" referrerpolicy="no-referrer">
+      </div>
+
+      <div class="ev-block">
+        <h3 class="ev-h">À propos de Gangbé Brass Band</h3>
+        <div class="ev-collapse" id="evAbout">
+          <p>Né à Cotonou, le Gangbé Brass Band fusionne depuis plus de vingt ans les cuivres du jazz, les percussions vodoun et les chants en fon et en yoruba. Des scènes de Montreux à New York, le collectif béninois s'est imposé comme l'un des ambassadeurs les plus puissants de la musique ouest-africaine contemporaine. Pour cette Édition Spéciale, le groupe revisite son répertoire au cœur du patrimoine vodoun, dans une mise en scène inédite mêlant rituel, danse et improvisation.</p>
+          <div class="ev-fade"></div>
+        </div>
+        <button class="ev-more" onclick="toggleEv('evAbout',this)" aria-label="Lire la suite"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      </div>
+
+      <div class="ev-block">
+        <h3 class="ev-h">Informations sur l'événement</h3>
+        <div class="ev-collapse" id="evInfo">
+          <p>Les portes ouvrent à 19h00 pour un concert qui démarre à 20h00. L'événement se tient en plein air au Champ de Foire : prévois une tenue confortable. Restauration et buvette sur place toute la soirée. Les billets sont nominatifs ; un QR code unique te sera envoyé après l'achat — il suffit de le présenter à l'entrée. En cas de pluie, l'événement est maintenu sous chapiteau.</p>
+          <div class="ev-fade"></div>
+        </div>
+        <button class="ev-more" onclick="toggleEv('evInfo',this)" aria-label="Lire la suite"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+
+        <div class="ev-info-row"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg><span>Tout public · les enfants accompagnés sont les bienvenus</span></div>
+        <div class="ev-info-row"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg><span>Présenté par la Maison du Vodoun</span></div>
+        <div class="ev-info-row"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg><span>Billetterie sécurisée — remboursement possible jusqu'à 24h avant l'événement</span></div>
+      </div>
+
+      <div class="ev-block">
+        <h3 class="ev-h">Lieu</h3>
+        <div class="ev-info-row"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"></path><path d="M14 12h.01"></path></svg><span>Ouverture des portes à 19h00</span></div>
+        <div class="ev-venue-card">
+          <div class="vc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 21v-6h6v6"></path></svg></div>
+          <div class="vc-name">Champ de Foire</div>
+        </div>
+        <div class="ev-addr"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>Champ de Foire, Bd Saint-Michel, Cotonou, Bénin</span></div>
+        <div class="ev-map">
+          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=2.413%2C6.357%2C2.447%2C6.377&amp;layer=mapnik&amp;marker=6.366%2C2.430" loading="lazy" title="Carte — Champ de Foire, Cotonou"></iframe>
+          <a class="ev-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Champ%20de%20Foire%20Cotonou" target="_blank" rel="noopener" aria-label="Ouvrir dans Google Maps"></a>
+        </div>
+      </div>
     </div>
     <div class="ev-cta-bar">
       <div><div class="price-lbl">À partir de</div><div class="price-val">2 500 XOF</div></div>
@@ -2064,7 +1884,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
     <div class="bnav">
       <button class="bn-item" onclick="nav('s7')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div><span class="bn-lbl">Accueil</span></button>
       <button class="bn-item" onclick="nav('s8')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div><span class="bn-lbl">Explorer</span></button>
-      <button class="bn-item on" onclick="nav('s15')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg></div><span class="bn-lbl">Billets</span></button>
+      <button class="bn-item on" onclick="nav('s15')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path><path d="M13 5v2"></path><path d="M13 11v2"></path><path d="M13 17v2"></path></svg></div><span class="bn-lbl">Billets</span></button>
       <button class="bn-item" onclick="nav('s9')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div><span class="bn-lbl">Profil</span></button>
     </div>
   </div>
@@ -3194,7 +3014,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 
 </div><!-- #device -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const ALL=['s1','srole','s2','s3','s4','s5','s6','sforgot','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16','s17','oonb','ologin','otier','osignup','odash','oevent','ocreate','osubmit','osales','opayout','oprofile','oagents','conb','cauth','csync','cscan','cstats','cteam'];
 let prevScreen='s1';
 
@@ -3319,13 +3139,19 @@ function loginMethod(m){
 function validateSignup(){
   var email=(document.getElementById('suEmail').value||'').trim();
   var pwd=document.getElementById('suPwd').value||'';
+  var country=(document.getElementById('suCountry').value||'').trim();
+  var phone=(document.getElementById('suPhone').value||'').trim();
   var err=document.getElementById('suErr');
   function show(m){err.textContent=m;err.hidden=false;}
   if(!/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(email)){show('Entre une adresse email valide.');return;}
   if(email.toLowerCase()==='kofi@wamiton.bj'){show('Cet email est déjà utilisé. Connecte-toi.');return;}
   if(pwd.length<8){show('Le mot de passe doit comporter au moins 8 caractères.');return;}
+  if(phone && !/^\\d{8,}$/.test(phone.replace(/\\s/g,''))){show('Entre un numéro de téléphone valide.');return;}
   err.hidden=true;
   document.getElementById('confirmEmail').textContent=email;
+  if(phone){
+    document.getElementById('confirmPhone').textContent=country+' '+phone;
+  }
   nav('s6');
 }
 function openForgot(){
@@ -3634,9 +3460,7 @@ function cAuthMode(m){
 
 /* Déconnexion d'un agent de contrôle (accès temporaire) */
 function logoutAgent(){
-  if(confirm("Se déconnecter du contrôle ?\
-\
-Tes scans déjà synchronisés sont conservés. Tu devras ressaisir le code agent pour reprendre.")){
+  if(confirm("Se déconnecter du contrôle ?\n\nTes scans déjà synchronisés sont conservés. Tu devras ressaisir le code agent pour reprendre.")){
     cAuthMode('agent');
     nav('srole');
   }
@@ -3687,4 +3511,8 @@ applyOrgTier();
 
 
 
+<script>
+function toggleEv(id,btn){var el=document.getElementById(id);var o=el.classList.toggle('open');btn.classList.toggle('open',o);}
+</script>
+<script src="image-slot.js"></script>
 </body></html>
