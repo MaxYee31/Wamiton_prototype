@@ -1,7 +1,7 @@
 {
   "name": "wamiton-prototype",
   "version": "1.0.0",
-  "description": "Wamiton PWA Prototype — Parcours acheteur",
+  "description": "Wamiton — Prototype PWA du parcours acheteur (statique, sans build)",
   "private": true,
   "scripts": {
     "start": "npx serve ."
