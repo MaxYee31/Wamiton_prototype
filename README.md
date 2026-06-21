@@ -1,64 +1,65 @@
-# Wamiton — Prototype PWA
+[README.md](https://github.com/user-attachments/files/29174323/README.md)
+# Wamiton — Plateforme de billetterie & contrôle d'entrée
 
-Prototype interactif du parcours acheteur Wamiton · 14 écrans navigables.
+Billetterie en ligne + gestion des événements + scanner d'entrée hors-ligne pour le Bénin.
 
-## Déploiement sur Vercel (gratuit)
-
-### Option 1 — via GitHub (recommandé)
-
-1. Crée un repo GitHub (public ou privé)
-2. Upload les fichiers : `index.html`, `vercel.json`, `package.json`
-3. Va sur [vercel.com](https://vercel.com) → **New Project** → importe le repo
-4. Clique **Deploy** — c'est tout ✓
-
-### Option 2 — via Vercel CLI
+## 🚀 Installation & déploiement
 
 ```bash
-npm install -g vercel
-cd wamiton/
-vercel --prod
+# Cloner le dépôt
+git clone <repo>
+cd Wamiton
+
+# Installer les dépendances
+npm install
+
+# Déployer sur Vercel
+vercel deploy
 ```
 
-### Option 3 — drag & drop
+## 📁 Structure
 
-1. Va sur [vercel.com/new](https://vercel.com/new)
-2. Glisse le dossier `wamiton/` dans la zone de dépôt
-3. Deploy
+- **index.html** — Application complète (participant + organisateur + scan)
+- **image-slot.js** — Composant web pour upload de documents (CIP, IFU, RCCM)
+- **package.json** — Dépendances & scripts
+- **vercel.json** — Configuration Vercel
+
+## 🎯 Parcours
+
+### Je participe
+- Découverte d'événements
+- Achat de billets (catégories, panier, paiement MM)
+- Reçu & code QR
+- Historique & profil
+
+### J'organise
+- Onboarding (Niveau 1 CIP / Niveau 2 IFU-RCCM)
+- Création d'événements
+- Billetterie (quotas, prix, catégories)
+- Ventes en temps réel
+- Gestion des agents de contrôle
+- Profil & paramètres
+
+### Je contrôle (agents)
+- Authentification (code temporaire ou orga)
+- Synchronisation hors-ligne
+- Scanner QR instantané (valide / refusé)
+- Stats temps réel (affluence, par catégorie)
+- Équipe d'agents (activité live)
+
+## 🛠️ Techs
+
+- HTML5 + CSS3 + Vanilla JS
+- Web Components (`<image-slot>`)
+- Mobile-first (375px+)
+- Thèmes par surface (Participant orange, Orga terracotta, Contrôle vert)
+
+## 📱 Responsive
+
+- Mobile : 375px+
+- Tablet : 768px+
+- Desktop : 1920px+
 
 ---
 
-## Structure
-
-```
-wamiton/
-├── index.html      # Tout le prototype (HTML + CSS + JS inline)
-├── vercel.json     # Config Vercel static
-├── package.json    # Métadonnées
-└── README.md
-```
-
-## Écrans
-
-| # | Écran | Description |
-|---|-------|-------------|
-| S1 | Splash | Zan flottant + wordmark |
-| S2 | Onboarding | 3 slides swipables |
-| S3 | Rôle | Acheteur / Organisateur |
-| S4 | Auth | Saisie numéro +229 |
-| S5 | OTP | Code 4 chiffres |
-| S6 | Accueil | Feed événements + filtres |
-| S7 | Événement | Fiche détaillée |
-| S8 | Achat | Sélection billet + quantité |
-| S9 | Paiement | KkiaPay (MTN, Moov, Orange, Carte) |
-| S10 | Traitement | Spinner + auto-advance 2.5s |
-| S11 | Confirmation | Zan bras levés |
-| S12 | Mes billets | Tabs À venir / Passés |
-| S13 | Billet QR | Design billet physique complet |
-| S14 | Billet passé | Grisé + tampon UTILISÉ |
-
-## Stack
-
-- HTML/CSS/JS vanilla — 0 dépendances
-- Fonts Google : Archivo Black, Manrope, JetBrains Mono, Instrument Serif
-- SVG inline : Wordmark + Zan 4 variantes + motifs
-- Responsive : mobile-first + frame téléphone desktop + side-nav desktop
+Made with ❤️ for Benin.
