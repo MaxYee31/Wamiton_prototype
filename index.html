@@ -8,7 +8,7 @@
 <title>Wamiton</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
 :root {
   --oc:#C17D3C; --onac:#1A1208; --tc:#B5502A; --rd:#C8392B;
@@ -18,7 +18,7 @@
   --fd:'Archivo Black',sans-serif;
   --fs:'Manrope',sans-serif;
   --fm:'JetBrains Mono',monospace;
-  --fi:'Instrument Serif',serif;
+  --fi:'Pacifico',cursive;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;-webkit-font-smoothing:antialiased;}
@@ -130,7 +130,7 @@ html.static-shot .screen.active{animation:none;}
 .role-wrap{position:relative;z-index:2;width:100%;max-width:420px;margin:0 auto;}
 .role-head{margin-bottom:30px;}
 .role-title{font-family:var(--fd);font-size:34px;line-height:.95;letter-spacing:-.01em;color:var(--cr);margin-bottom:12px;}
-.role-title em{font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);}
+.role-title em{font-family:var(--fi);font-style:normal;font-weight:400;color:var(--oc);}
 .role-sub{font-size:14px;color:rgba(245,236,215,.55);line-height:1.6;max-width:34ch;}
 .role-cards{display:flex;flex-direction:column;gap:12px;}
 .role-card{display:flex;align-items:center;gap:15px;text-align:left;width:100%;background:var(--co2);border:1.5px solid rgba(245,236,215,.08);border-radius:18px;padding:18px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .2s,transform .12s,background .2s;}
@@ -175,7 +175,7 @@ html.static-shot .screen.active{animation:none;}
 #s3{background:var(--co);padding:0 24px max(40px,env(safe-area-inset-bottom));justify-content:flex-end;}
 .auth-zan{display:flex;justify-content:center;margin-bottom:0;flex:1;align-items:flex-end;}
 .auth-choice-title{font-family:var(--fd);font-size:30px;line-height:.95;color:var(--cr);margin-bottom:8px;}
-.auth-choice-title em{font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);display:block;}
+.auth-choice-title em{font-family:var(--fi);font-style:normal;font-weight:400;color:var(--oc);display:block;}
 .auth-choice-sub{font-size:14px;color:rgba(245,236,215,.5);line-height:1.6;margin-bottom:28px;}
 
 /* ============================================================
@@ -245,7 +245,7 @@ html.static-shot .screen.active{animation:none;}
 .logo-pill{display:flex;align-items:center;gap:8px;}
 .logo-dot{width:7px;height:7px;border-radius:50%;background:var(--oc);}
 .avatar{width:34px;height:34px;border-radius:50%;background:rgba(193,125,60,.15);border:1.5px solid rgba(193,125,60,.35);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:11px;color:var(--oc);cursor:pointer;}
-.greet{font-family:var(--fi);font-style:italic;font-size:26px;line-height:1.2;color:var(--cr);margin-bottom:3px;}
+.greet{font-family:var(--fi);font-style:normal;font-size:26px;line-height:1.2;color:var(--cr);margin-bottom:3px;}
 .greet strong{font-family:var(--fd);font-style:normal;color:var(--oc);}
 .greet-sub{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,236,215,.35);margin-bottom:16px;}
 .search-bar{display:flex;align-items:center;gap:10px;background:var(--co2);border:1.5px solid rgba(245,236,215,.08);border-radius:12px;padding:12px 16px;margin-bottom:14px;}
@@ -258,6 +258,27 @@ html.static-shot .screen.active{animation:none;}
 .chip.off{background:rgba(245,236,215,.06);border:1px solid rgba(245,236,215,.12);color:rgba(245,236,215,.55);}
 .home-scroll{flex:1;overflow-y:auto;padding:14px 20px 90px;scrollbar-width:none;}
 .home-scroll::-webkit-scrollbar{display:none;}
+/* Mode invité (consultation anonyme) */
+#device:not(.guest) .guest-only{display:none!important;}
+#device.guest .auth-only{display:none!important;}
+.signin-pill{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--onac);background:var(--oc);border:none;border-radius:99px;padding:9px 15px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.guest-cta{display:flex;align-items:center;gap:12px;background:rgba(193,125,60,.08);border:1px solid rgba(193,125,60,.28);border-radius:14px;padding:13px 15px;margin-bottom:14px;}
+.guest-cta .gc-tx{flex:1;min-width:0;}
+.guest-cta .gc-t{font-family:var(--fd);font-size:14px;color:var(--cr);margin-bottom:3px;}
+.guest-cta .gc-s{font-size:11.5px;color:rgba(245,236,215,.5);line-height:1.4;}
+.guest-cta .gc-btn{flex-shrink:0;font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--onac);background:var(--oc);border:none;border-radius:99px;padding:9px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+#device.guest .bnav{display:none!important;}
+.explore-back{width:36px;height:36px;border-radius:10px;background:var(--co2);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;color:var(--cr);margin-bottom:12px;-webkit-tap-highlight-color:transparent;}
+.explore-back:active{background:rgba(193,125,60,.15);}
+.role-close{position:absolute;top:max(20px,env(safe-area-inset-top));left:20px;z-index:5;width:38px;height:38px;border-radius:50%;background:var(--co2);border:1px solid rgba(245,236,215,.1);display:flex;align-items:center;justify-content:center;color:var(--cr);cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.auth-prompt{position:absolute;inset:0;z-index:500;display:none;align-items:center;justify-content:center;padding:24px;}
+.auth-prompt.open{display:flex;}
+.auth-prompt .ap-back{position:absolute;inset:0;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);}
+.auth-prompt .ap-card{position:relative;z-index:2;background:var(--co2);border:1px solid rgba(245,236,215,.1);border-radius:20px;padding:26px 22px;width:100%;max-width:330px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.6);animation:popIn .32s cubic-bezier(.34,1.56,.64,1);}
+.auth-prompt .ap-ic{width:56px;height:56px;border-radius:16px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;background:rgba(193,125,60,.14);border:1px solid rgba(193,125,60,.28);color:var(--oc);}
+.auth-prompt .ap-t{font-family:var(--fd);font-size:19px;color:var(--cr);margin-bottom:9px;line-height:1.1;}
+.auth-prompt .ap-s{font-size:13.5px;color:rgba(245,236,215,.6);line-height:1.55;margin-bottom:20px;}
+.auth-prompt .btn-p{margin-bottom:10px;}
 
 /* ============================================================
    FOOTER (Shotgun-style — apparaît en bas du fil d'accueil)
@@ -332,6 +353,60 @@ html.static-shot .screen.active{animation:none;}
 .cat-ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,transparent);border:1px solid color-mix(in srgb,var(--acc) 24%,transparent);}
 .cat-name{font-family:var(--fd);font-size:15px;color:var(--cr);margin-bottom:4px;}
 .cat-count{font-family:var(--fm);font-size:10px;letter-spacing:.06em;color:rgba(245,236,215,.42);}
+
+/* Explorer — filtres fonctionnels (US-001 → US-005) */
+.exp-clearbtn{flex-shrink:0;width:20px;height:20px;border-radius:50%;border:none;background:rgba(245,236,215,.1);color:rgba(245,236,215,.6);display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.exp-clearbtn[hidden]{display:none;}
+.exp-tools{display:flex;align-items:center;gap:8px;margin-top:12px;}
+.exp-fchips{display:flex;gap:7px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch;}
+.exp-fchips::-webkit-scrollbar{display:none;}
+.fchip{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:8px 13px;border-radius:99px;cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s,color .15s;background:rgba(245,236,215,.06);border:1px solid rgba(245,236,215,.12);color:rgba(245,236,215,.6);-webkit-tap-highlight-color:transparent;}
+.fchip .fc-n{font-size:9px;opacity:.55;font-weight:700;}
+.fchip.on{background:var(--oc);border-color:var(--oc);color:var(--onac);}
+.fchip.on .fc-n{opacity:.7;}
+.btn-filtres{flex-shrink:0;position:relative;display:inline-flex;align-items:center;gap:7px;font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:8px 13px;border-radius:99px;cursor:pointer;background:rgba(245,236,215,.06);border:1px solid rgba(245,236,215,.12);color:var(--cr);-webkit-tap-highlight-color:transparent;transition:border-color .15s,color .15s;}
+.btn-filtres.act{border-color:var(--oc);color:var(--oc);}
+.btn-filtres .fbadge{position:absolute;top:-6px;right:-6px;min-width:17px;height:17px;border-radius:99px;background:var(--oc);color:var(--onac);font-family:var(--fm);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px;}
+.btn-filtres .fbadge[hidden]{display:none;}
+.exp-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 14px;min-height:18px;}
+.exp-count{font-family:var(--fm);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,236,215,.4);}
+.exp-reset{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--oc);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent;flex-shrink:0;}
+.exp-reset[hidden]{display:none;}
+.ev-row-img{position:relative;}
+.ro-complet{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(13,13,13,.5);}
+.ro-complet span{font-family:var(--fm);font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rd);border:1px solid var(--rd);background:rgba(13,13,13,.65);padding:3px 6px;border-radius:99px;}
+.ev-row.soldout{opacity:.7;}
+.ev-row-loc{font-size:11px;color:rgba(245,236,215,.42);display:flex;align-items:center;gap:4px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ev-row-loc svg{flex-shrink:0;color:rgba(245,236,215,.3);}
+.ev-row-meta{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:9px;padding-right:14px;flex-shrink:0;}
+.ev-row-price2{font-family:var(--fd);font-size:13px;color:var(--oc);white-space:nowrap;}
+.ev-row.soldout .ev-row-price2{color:rgba(245,236,215,.4);}
+.ev-row-meta svg{color:rgba(245,236,215,.2);}
+.exp-empty{text-align:center;padding:46px 24px 30px;}
+.exp-empty .ee-ic{width:54px;height:54px;border-radius:16px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;background:rgba(245,236,215,.05);border:1px solid rgba(245,236,215,.1);color:rgba(245,236,215,.4);}
+.exp-empty h3{font-family:var(--fd);font-size:17px;color:var(--cr);margin-bottom:8px;}
+.exp-empty p{font-size:13px;color:rgba(245,236,215,.45);line-height:1.5;max-width:240px;margin:0 auto 18px;}
+.exp-empty button{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--oc);background:none;border:1px solid rgba(193,125,60,.45);border-radius:99px;padding:9px 16px;cursor:pointer;}
+/* Bottom sheet filtres */
+.fsheet-back{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .25s;z-index:200;}
+.fsheet-back.open{opacity:1;pointer-events:auto;}
+.fsheet{position:absolute;left:0;right:0;bottom:0;background:var(--co2);border-top:1px solid rgba(245,236,215,.1);border-radius:22px 22px 0 0;padding:8px 20px max(24px,env(safe-area-inset-bottom));transform:translateY(101%);transition:transform .32s cubic-bezier(.32,.72,0,1);z-index:201;max-height:88%;overflow-y:auto;scrollbar-width:none;}
+.fsheet::-webkit-scrollbar{display:none;}
+.fsheet.open{transform:translateY(0);}
+.fsheet-grab{width:38px;height:4px;border-radius:99px;background:rgba(245,236,215,.18);margin:8px auto 14px;}
+.fsheet h2{font-family:var(--fd);font-size:21px;color:var(--cr);margin-bottom:2px;}
+.fs-section{margin-top:22px;}
+.fs-label{font-family:var(--fm);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,236,215,.4);margin-bottom:12px;}
+.fs-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.fs-opt{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;border-radius:99px;background:rgba(245,236,215,.06);border:1px solid rgba(245,236,215,.12);color:rgba(245,236,215,.62);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s,border-color .15s,color .15s;}
+.fs-opt.on{background:var(--oc);border-color:var(--oc);color:var(--onac);}
+.fs-dates{display:flex;gap:10px;margin-top:12px;}
+.fs-date{flex:1;}
+.fs-date label{display:block;font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,236,215,.35);margin-bottom:6px;}
+.fs-date input{width:100%;background:var(--co);border:1px solid rgba(245,236,215,.12);border-radius:10px;padding:11px 12px;color:var(--cr);font-family:var(--fm);font-size:12px;color-scheme:dark;-webkit-tap-highlight-color:transparent;}
+.fs-foot{display:flex;gap:10px;margin-top:28px;}
+.fs-foot .btn-reset2{flex:0 0 auto;padding:0 18px;border-radius:12px;background:rgba(245,236,215,.06);border:1px solid rgba(245,236,215,.14);color:var(--cr);font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.fs-foot .btn-apply{flex:1;padding:15px;border-radius:12px;background:var(--oc);border:none;color:var(--onac);font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent;}
 
 /* ============================================================
    S9 — PROFIL
@@ -510,7 +585,7 @@ html.static-shot .screen.active{animation:none;}
 .conf-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;padding:52px 24px max(36px,env(safe-area-inset-bottom));}
 .conf-chip{display:inline-block;font-family:var(--fm);font-size:9px;letter-spacing:.22em;text-transform:uppercase;background:rgba(193,125,60,.14);color:var(--oc);border:1px solid rgba(193,125,60,.3);padding:6px 14px;border-radius:99px;margin-bottom:14px;}
 .conf-title{font-family:var(--fd);font-size:32px;line-height:.95;color:var(--cr);margin-bottom:8px;}
-.conf-title em{font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);display:block;}
+.conf-title em{font-family:var(--fi);font-style:normal;font-weight:400;color:var(--oc);display:block;}
 .conf-sub{font-size:14px;color:rgba(245,236,215,.6);line-height:1.65;max-width:26ch;margin-bottom:22px;}
 .conf-info{background:var(--co2);border-radius:14px;padding:14px 18px;width:100%;margin-bottom:22px;text-align:left;}
 .ci-row{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(245,236,215,.06);}
@@ -524,7 +599,7 @@ html.static-shot .screen.active{animation:none;}
 #s15{background:var(--co);flex-direction:column;}
 .billets-top{padding:52px 20px 12px;flex-shrink:0;}
 .billets-top h1{font-family:var(--fd);font-size:28px;color:var(--cr);margin-bottom:4px;}
-.billets-top .sub{font-family:var(--fi);font-style:italic;font-size:17px;color:rgba(245,236,215,.45);}
+.billets-top .sub{font-family:var(--fi);font-style:normal;font-size:17px;color:rgba(245,236,215,.45);}
 .tabs{display:flex;margin:12px 20px 0;background:var(--co2);border-radius:10px;padding:3px;flex-shrink:0;}
 .tab-btn{flex:1;padding:9px;text-align:center;font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,236,215,.4);border-radius:8px;cursor:pointer;transition:all .2s;border:none;background:none;-webkit-tap-highlight-color:transparent;}
 .tab-btn.on{background:var(--oc);color:var(--co);}
@@ -586,6 +661,14 @@ html.static-shot .screen.active{animation:none;}
 
 /* Billet — code dynamique (remplace le QR) */
 .code-area{display:flex;flex-direction:column;align-items:center;}
+.qr-pending{display:flex;flex-direction:column;align-items:center;text-align:center;padding:16px 8px 8px;}
+.qrp-ic{width:64px;height:64px;border-radius:50%;background:rgba(193,125,60,.16);display:flex;align-items:center;justify-content:center;color:#9a5a23;margin-bottom:16px;}
+.qrp-title{font-family:var(--fd);font-size:18px;color:#1a1208;margin-bottom:10px;line-height:1.1;}
+.qrp-text{font-size:13.5px;line-height:1.6;color:rgba(26,18,8,.62);max-width:32ch;margin-bottom:16px;}
+.qrp-text strong{color:#1a1208;}
+.qr-activate{width:100%;max-width:300px;display:flex;flex-direction:column;align-items:center;gap:4px;background:rgba(193,125,60,.16);border:1px solid rgba(193,125,60,.34);color:#9a5a23;border-radius:14px;padding:13px 16px;cursor:not-allowed;-webkit-tap-highlight-color:transparent;}
+.qra-main{display:flex;align-items:center;gap:7px;font-family:var(--fd);font-size:14px;line-height:1;}
+.qra-when{font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}
 .code-ring{position:relative;width:142px;height:142px;margin-top:2px;}
 .ring-svg{width:142px;height:142px;transform:rotate(-90deg);}
 .ring-bg{fill:none;stroke:rgba(26,18,8,.12);stroke-width:5;}
@@ -601,12 +684,111 @@ html.static-shot .screen.active{animation:none;}
   .ring-fg{animation:ringCount 10s linear infinite;}
   @keyframes ringCount{from{stroke-dashoffset:0;}to{stroke-dashoffset:339.29;}}
 }
+/* Billet émis — QR à usage unique (US-018/042) */
+.qr-box{background:#fff;border-radius:14px;padding:13px;margin-top:4px;box-shadow:0 5px 16px rgba(26,18,8,.14);}
+.qr-code{width:168px;height:168px;display:block;}
+.qr-code svg{display:block;width:100%;height:100%;}
+.qr-cap{font-family:var(--fm);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(26,18,8,.42);margin-top:13px;}
+.qr-once{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#9a5a23;background:rgba(193,125,60,.16);border:1px solid rgba(193,125,60,.32);padding:5px 11px;border-radius:99px;margin-top:11px;}
+.qr-once svg{flex-shrink:0;}
+/* Billets gratuits — création + parcours acheteur */
+.free-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6fbf73;background:rgba(76,175,80,.14);border:1px solid rgba(76,175,80,.3);padding:5px 12px;border-radius:99px;}
+.free-pill svg{flex-shrink:0;}
+.tk-free-btn{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,236,215,.5);background:rgba(245,236,215,.06);border:1px solid rgba(245,236,215,.14);border-radius:99px;padding:6px 11px;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;transition:all .15s;}
+.tk-free-btn.on{background:rgba(76,175,80,.16);border-color:rgba(76,175,80,.35);color:#6fbf73;}
+#sfev{background:var(--co);flex-direction:column;}
+#sfres{background:var(--co);padding:56px 20px max(24px,env(safe-area-inset-bottom));overflow-y:auto;}
+#sfconf{background:var(--co);align-items:center;justify-content:center;text-align:center;overflow-y:auto;}
+#sfbillet{background:var(--co);overflow-y:auto;padding:52px 20px 40px;}
+#sfbillet > *{flex-shrink:0;}
+/* Ajout au wallet (billet émis) */
+.wallet-row{display:flex;gap:9px;margin-top:9px;}
+.wallet-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:9px;background:#000;border:1px solid rgba(245,236,215,.16);border-radius:12px;padding:10px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .1s,border-color .15s;}
+.wallet-btn:active{transform:scale(.97);}
+.wallet-btn:hover{border-color:rgba(245,236,215,.3);}
+.wallet-btn svg{flex-shrink:0;color:var(--cr);}
+.wallet-btn .wl-tx{display:flex;flex-direction:column;align-items:flex-start;line-height:1.12;}
+.wallet-btn .wl-s{font-family:var(--fm);font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,236,215,.5);}
+.wallet-btn .wl-b{font-family:var(--fd);font-size:12.5px;color:var(--cr);}
 
 /* ============================================================
    S17 — BILLET PASSÉ
 ============================================================ */
 #s17{background:var(--co);overflow-y:auto;padding:52px 20px 40px;}
 .past-stamp{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-16deg);font-family:var(--fd);font-size:26px;color:rgba(200,57,43,.55);border:3px solid rgba(200,57,43,.4);border-radius:8px;padding:4px 14px;letter-spacing:.1em;white-space:nowrap;pointer-events:none;}
+
+/* ============================================================
+   GESTION DES BILLETS — statuts, parcours, cession, commandes
+   (US-018 / 019 / 020 / 021 / 038 / 039 / 042)
+============================================================ */
+/* Statuts canoniques (US-019) — réutilisés billets + commandes */
+.br-status.emis{background:rgba(76,175,80,.16);color:#6fbf73;}
+.br-status.wait{background:rgba(217,162,60,.16);color:#D9A23C;}
+.br-status.cede{background:rgba(125,150,205,.18);color:#9fb4de;}
+.br-status.fail{background:rgba(200,57,43,.16);color:#e07a70;}
+/* Badge statut sur l'en-tête du billet */
+.t-status{position:absolute;top:15px;right:14px;font-family:var(--fm);font-size:8px;letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;border-radius:99px;background:rgba(26,18,8,.18);color:rgba(26,18,8,.72);z-index:3;}
+/* Détenteur actuel (US-018) */
+.t-holder{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(26,18,8,.06);border:1px solid rgba(26,18,8,.1);border-radius:10px;padding:9px 13px;margin-bottom:14px;}
+.t-holder .th-l{font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,18,8,.45);}
+.t-holder .th-v{font-family:var(--fd);font-size:13px;color:var(--co);}
+/* Actions billet (PDF US-042) */
+.tk-actions{display:flex;gap:9px;margin-top:14px;}
+.tk-actions .btn-s{margin:0;flex:1;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--fm);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:13px;}
+.tk-actions .btn-s svg{flex-shrink:0;}
+/* Bandeau hors connexion (US-021) */
+.offline-banner{display:flex;align-items:center;gap:9px;font-size:12.5px;color:rgba(245,236,215,.55);background:rgba(76,175,80,.06);border:1px solid rgba(76,175,80,.18);border-radius:11px;padding:11px 13px;margin-top:12px;line-height:1.45;}
+.offline-banner svg{color:#6fbf73;flex-shrink:0;}
+/* Parcours du billet — historique des mouvements (US-039) */
+.mv-block{margin-top:16px;background:var(--co2);border:1px solid rgba(245,236,215,.06);border-radius:14px;padding:15px 16px;}
+.mv-h{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,236,215,.4);margin-bottom:15px;}
+.mv-row{display:flex;gap:12px;position:relative;padding-bottom:15px;}
+.mv-row:last-child{padding-bottom:0;}
+.mv-row::before{content:'';position:absolute;left:5.5px;top:13px;bottom:-2px;width:1.5px;background:rgba(245,236,215,.1);}
+.mv-row:last-child::before{display:none;}
+.mv-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:1px;background:rgba(245,236,215,.22);}
+.mv-row.cur .mv-dot{background:var(--oc);box-shadow:0 0 0 4px rgba(193,125,60,.16);}
+.mv-tx{flex:1;min-width:0;}
+.mv-act{font-size:13px;color:var(--cr);line-height:1.3;}
+.mv-act b{font-family:var(--fd);font-weight:400;color:var(--cr);}
+.mv-meta{font-family:var(--fm);font-size:10px;color:rgba(245,236,215,.4);margin-top:3px;word-break:break-word;}
+.mv-date{font-family:var(--fm);font-size:9.5px;letter-spacing:.06em;color:rgba(245,236,215,.35);white-space:nowrap;flex-shrink:0;}
+.mv-note{font-size:11.5px;color:rgba(245,236,215,.42);margin-top:13px;padding-top:13px;border-top:1px solid rgba(245,236,215,.07);display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+.mv-note svg{flex-shrink:0;margin-top:1px;color:var(--oc);}
+/* Écran Céder un billet (US-038) */
+#s19,#s20{background:var(--co);overflow-y:auto;padding:52px 20px max(40px,env(safe-area-inset-bottom));flex-direction:column;}
+#s21{background:var(--co);overflow-y:auto;padding:52px 20px max(28px,env(safe-area-inset-bottom));flex-direction:column;}
+.cede-mini{display:flex;flex-direction:column;background:var(--co2);border:1px solid rgba(245,236,215,.07);border-left:4px solid var(--oc);border-radius:12px;padding:13px 15px;margin-bottom:8px;}
+.cede-mini .cm-d{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--oc);margin-bottom:4px;}
+.cede-mini .cm-t{font-family:var(--fd);font-size:15px;color:var(--cr);line-height:1.15;}
+.cede-mini .cm-s{font-family:var(--fm);font-size:10px;letter-spacing:.06em;color:rgba(245,236,215,.4);margin-top:5px;}
+.cede-found{display:flex;align-items:center;gap:12px;background:rgba(76,175,80,.07);border:1px solid rgba(76,175,80,.22);border-radius:12px;padding:12px 14px;margin-top:12px;}
+.cede-found[hidden]{display:none;}
+.cf-av{width:40px;height:40px;border-radius:50%;background:rgba(193,125,60,.16);border:1.5px solid rgba(193,125,60,.35);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:13px;color:var(--oc);flex-shrink:0;}
+.cf-n{font-family:var(--fd);font-size:15px;color:var(--cr);}
+.cf-c{font-family:var(--fm);font-size:11px;color:rgba(245,236,215,.45);margin-top:2px;word-break:break-word;}
+.cf-ok{margin-left:auto;color:#6fbf73;flex-shrink:0;}
+.cede-empty{font-size:12.5px;color:rgba(245,236,215,.4);margin-top:10px;padding:0 2px;line-height:1.5;}
+.cede-empty[hidden]{display:none;}
+.cede-notes{margin:18px 0 4px;display:flex;flex-direction:column;gap:12px;}
+.cede-note{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:rgba(245,236,215,.6);line-height:1.5;}
+.cede-note svg{flex-shrink:0;margin-top:2px;color:var(--oc);}
+.cede-done{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:18px;}
+/* Toast (US-018/042 — confirmations d'envoi) */
+.toast{position:absolute;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--co2);border:1px solid rgba(245,236,215,.14);border-radius:12px;padding:13px 16px;display:flex;align-items:center;gap:10px;font-size:12.5px;line-height:1.4;color:var(--cr);box-shadow:0 12px 32px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:400;max-width:90%;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast svg{color:#6fbf73;flex-shrink:0;}
+/* Historique des commandes (US-020) */
+.ord-row{display:flex;gap:13px;align-items:center;background:var(--co2);border:1px solid rgba(245,236,215,.05);border-radius:14px;padding:14px 15px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .15s;}
+.ord-row:active{transform:scale(.98);}
+.ord-tx{flex:1;min-width:0;}
+.ord-ev{font-family:var(--fd);font-size:15px;color:var(--cr);margin-bottom:4px;line-height:1.15;}
+.ord-meta{font-family:var(--fm);font-size:10px;letter-spacing:.04em;color:rgba(245,236,215,.4);}
+.ord-right{text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.ord-amt{font-family:var(--fd);font-size:14px;color:var(--cr);white-space:nowrap;}
+.ord-amt.muted{color:rgba(245,236,215,.35);text-decoration:line-through;}
+/* Empêche l'effondrement des cartes billet (flex-column + overflow:hidden) */
+#s16 > *,#s17 > *,#s18 > *{flex-shrink:0;}
 
 /* ============================================================
    BOUTONS GLOBAUX
@@ -634,8 +816,8 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 .o-top{padding:52px 20px 14px;flex-shrink:0;}
 .o-eyebrow{font-family:var(--fm);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--oc);margin-bottom:8px;}
 .o-h1{font-family:var(--fd);font-size:27px;line-height:1;color:var(--cr);}
-.o-h1 em{font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);}
-.o-sub{font-family:var(--fi);font-style:italic;font-size:16px;color:rgba(245,236,215,.45);margin-top:5px;}
+.o-h1 em{font-family:var(--fi);font-style:normal;font-weight:400;color:var(--oc);}
+.o-sub{font-family:var(--fi);font-style:normal;font-size:16px;color:rgba(245,236,215,.45);margin-top:5px;}
 .o-scroll{flex:1;overflow-y:auto;padding:14px 20px 96px;scrollbar-width:none;}
 .o-scroll::-webkit-scrollbar{display:none;}
 .o-screen{background:var(--co);flex-direction:column;}
@@ -644,7 +826,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 #oonb{background:var(--co);padding:54px 24px max(28px,env(safe-area-inset-bottom));overflow-y:auto;}
 .oo-zan{display:flex;justify-content:center;margin-bottom:8px;}
 .oo-head h2{font-family:var(--fd);font-size:28px;line-height:.98;color:var(--cr);margin-bottom:10px;}
-.oo-head h2 em{font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);}
+.oo-head h2 em{font-family:var(--fi);font-style:normal;font-weight:400;color:var(--oc);}
 .oo-head p{font-size:14px;color:rgba(245,236,215,.55);line-height:1.6;margin-bottom:22px;max-width:34ch;}
 .oo-perks{display:flex;flex-direction:column;gap:9px;margin-bottom:22px;}
 .oo-perk{display:flex;align-items:center;gap:12px;background:var(--co2);border:1px solid rgba(245,236,215,.06);border-radius:13px;padding:13px 14px;}
@@ -768,6 +950,10 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 .tk-mini-l{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,236,215,.4);margin-bottom:6px;display:block;}
 .tk-mini-in{width:100%;background:var(--co);border:1.5px solid rgba(245,236,215,.1);border-radius:10px;padding:11px 12px;font-family:var(--fm);font-size:14px;color:var(--cr);outline:none;transition:border-color .2s;}
 .tk-mini-in:focus{border-color:var(--oc);}
+.tk-desc-in{width:100%;background:var(--co);border:1.5px solid rgba(245,236,215,.1);border-radius:10px;padding:11px 12px;font-family:var(--fs);font-size:13px;color:var(--cr);outline:none;transition:border-color .15s;}
+.tk-desc-in:focus{border-color:var(--oc);}
+.tk-desc-in::placeholder{color:rgba(245,236,215,.3);}
+.opt2{font-family:var(--fm);font-size:9px;letter-spacing:.06em;text-transform:none;color:rgba(245,236,215,.32);font-weight:400;margin-left:6px;}
 .tk-add{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:rgba(193,125,60,.07);border:1.5px dashed rgba(193,125,60,.35);border-radius:13px;padding:14px;cursor:pointer;font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--oc);-webkit-tap-highlight-color:transparent;margin-bottom:18px;transition:background .15s;}
 .tk-add:active{background:rgba(193,125,60,.14);}
 .tk-add.off{opacity:.4;pointer-events:none;}
@@ -826,7 +1012,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 .os-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;padding:52px 26px max(36px,env(safe-area-inset-bottom));}
 .os-ic{width:84px;height:84px;border-radius:50%;background:rgba(217,162,60,.12);border:1px solid rgba(217,162,60,.3);display:flex;align-items:center;justify-content:center;color:#D9A23C;margin-bottom:20px;}
 .os-title{font-family:var(--fd);font-size:28px;line-height:1;color:var(--cr);margin-bottom:10px;}
-.os-title em{font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);}
+.os-title em{font-family:var(--fi);font-style:normal;font-weight:400;color:var(--oc);}
 .os-sub{font-size:14px;color:rgba(245,236,215,.6);line-height:1.65;max-width:30ch;margin-bottom:22px;}
 .os-tl{width:100%;background:var(--co2);border-radius:14px;padding:16px 18px;text-align:left;margin-bottom:24px;}
 .os-tl-row{display:flex;gap:13px;padding:8px 0;}
@@ -991,7 +1177,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 .sync-pct{font-family:var(--fd);font-size:30px;color:var(--cr);line-height:1;}
 .sync-state{font-family:var(--fm);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,236,215,.45);}
 .sync-h{font-family:var(--fd);font-size:25px;line-height:1.04;color:var(--cr);margin-bottom:10px;}
-.sync-h em{font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);}
+.sync-h em{font-family:var(--fi);font-style:normal;font-weight:400;color:var(--oc);}
 .sync-p{font-size:13.5px;color:rgba(245,236,215,.5);line-height:1.6;max-width:32ch;margin-bottom:24px;}
 .sync-meta{width:100%;max-width:340px;background:var(--co2);border:1px solid rgba(245,236,215,.07);border-radius:14px;padding:4px 16px;margin-bottom:22px;}
 .sync-mrow{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(245,236,215,.06);}
@@ -1096,7 +1282,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 #ologin,#osignup{background:var(--co);padding:56px 24px max(34px,env(safe-area-inset-bottom));}
 #otier{background:var(--co);padding:54px 24px max(28px,env(safe-area-inset-bottom));overflow-y:auto;}
 .tier-head h2{font-family:var(--fd);font-size:26px;line-height:1;color:var(--cr);margin-bottom:10px;}
-.tier-head h2 em{font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);}
+.tier-head h2 em{font-family:var(--fi);font-style:normal;font-weight:400;color:var(--oc);}
 .tier-head p{font-size:13.5px;color:rgba(245,236,215,.55);line-height:1.6;margin-bottom:22px;max-width:36ch;}
 .tier-card{display:block;width:100%;text-align:left;background:var(--co2);border:1.5px solid rgba(245,236,215,.08);border-radius:18px;padding:18px;margin-bottom:13px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .18s,background .18s,transform .12s;}
 .tier-card:active{transform:scale(.99);}
@@ -1286,6 +1472,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
 
   <!-- SROLE — CHOIX DU PARCOURS -->
   <div class="screen" id="srole">
+    <button class="role-close guest-only" onclick="backToBrowse()" aria-label="Retour à l'exploration"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
     <div class="role-wrap">
       <div class="role-head">
         <svg width="46" viewBox="0 0 240 320" style="margin-bottom:18px;"><use href="#z-oc"></use></svg>
@@ -1293,7 +1480,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
         <p class="role-sub">Choisis ton espace pour commencer. Tu pourras basculer quand tu veux.</p>
       </div>
       <div class="role-cards">
-        <button class="role-card" onclick="nav('s2')">
+        <button class="role-card" onclick="nav('s3')">
           <div class="rc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M13 5v2"></path><path d="M13 11v2"></path><path d="M13 17v2"></path></svg></div>
           <div class="rc-txt">
             <div class="rc-name">Je participe</div>
@@ -1356,7 +1543,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
     </div>
     <div class="ob-footer">
       <button class="btn-p" id="obBtn" onclick="obNext()">Suivant</button>
-      <button class="btn-s" onclick="nav('s3')">Passer</button>
+      <button class="btn-s" onclick="nav('s7')">Passer</button>
     </div>
   </div>
 
@@ -1366,7 +1553,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
       <svg width="160" viewBox="0 0 240 320"><use href="#z-gr"></use></svg>
     </div>
     <div style="padding:0 24px max(40px,env(safe-area-inset-bottom));">
-      <div class="auth-choice-title">Bienvenue<br><em style="font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);">sur Wamiton</em></div>
+      <div class="auth-choice-title">Bienvenue<br><em style="font-family:var(--fi);font-style:normal;font-weight:400;color:var(--oc);">sur Wamiton</em></div>
       <p class="auth-choice-sub">Trouve, achète et vis ta culture. Crée ton compte ou connecte-toi pour commencer.</p>
       <button class="btn-p" onclick="nav('s4')" style="margin-bottom:10px;">S'inscrire</button>
       <button class="btn-s" onclick="nav('s5')">J'ai déjà un compte</button>
@@ -1449,7 +1636,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
     </div>
     <button class="forgot-link" onclick="openForgot()">Mot de passe oublié ?</button>
     <p class="input-note">Tu resteras connecté 30 jours sur cet appareil.</p>
-    <button class="btn-p" onclick="nav('s7')" style="margin-top:auto;">Se connecter</button>
+    <button class="btn-p" onclick="doLogin()" style="margin-top:auto;">Se connecter</button>
     <div class="switch-link">Pas encore de compte ? <span onclick="nav('s4')">S'inscrire</span></div>
   </div>
 
@@ -1465,7 +1652,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
       <p class="confirm-p">On a envoyé un lien de confirmation à <strong id="confirmEmail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2c47434a456c49414d4540024f4341">[email&#160;protected]</a></strong>. Clique dessus pour activer ton compte.</p>
       <div class="confirm-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Le lien expire dans 24 heures</div>
     </div>
-    <button class="btn-p" onclick="nav('s7')">J'ai confirmé mon email</button>
+    <button class="btn-p" onclick="doLogin()">J'ai confirmé mon email</button>
     <button class="btn-s" onclick="this.textContent='Lien renvoyé ✓'" style="margin-top:10px;">Renvoyer le lien</button>
   </div>
 
@@ -1501,22 +1688,27 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
           <svg width="88" height="13" viewBox="0 0 1320 200" color="var(--cr)"><use href="#wm"></use></svg>
           <div class="logo-dot"></div>
         </div>
-        <div class="avatar" onclick="nav('s9')">KK</div>
+        <div class="avatar auth-only" onclick="nav('s9')">KK</div>
+        <button class="signin-pill guest-only" onclick="nav('srole')">Se connecter</button>
       </div>
-      <div class="search-bar">
+      <div class="search-bar" onclick="expFromHome(null,true)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(245,236,215,.35)" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" placeholder="Artiste, lieu, événement…">
+        <input type="text" placeholder="Artiste, lieu, événement…" readonly>
       </div>
       <div class="chips">
-        <button class="chip on">Tout</button>
-        <button class="chip off">Musique</button>
-        <button class="chip off">Théâtre</button>
-        <button class="chip off">Expo</button>
-        <button class="chip off">Festival</button>
-        <button class="chip off">Danse</button>
+        <button class="chip on" onclick="expFromHome(null)">Tout</button>
+        <button class="chip off" onclick="expFromHome('Musique')">Musique</button>
+        <button class="chip off" onclick="expFromHome('Théâtre')">Théâtre</button>
+        <button class="chip off" onclick="expFromHome('Expo')">Expo</button>
+        <button class="chip off" onclick="expFromHome('Festival')">Festival</button>
+        <button class="chip off" onclick="expFromHome('Danse')">Danse</button>
       </div>
     </div>
     <div class="home-scroll">
+      <div class="guest-cta guest-only">
+        <div class="gc-tx"><div class="gc-t">Tu explores en invité</div><div class="gc-s">Crée ton compte pour acheter et retrouver tes billets.</div></div>
+        <button class="gc-btn" onclick="nav('srole')">S'inscrire</button>
+      </div>
       <div class="sec-label">À la une</div>
       <div class="ev-card">
         <div class="ev-img" style="padding:0;">
@@ -1571,6 +1763,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
           <div>
             <h4>À propos</h4>
             <ul>
+              <li class="guest-only"><a href="#" onclick="nav('s3');return false;">Je veux acheter des billets</a></li>
               <li><a href="#" onclick="nav('oonb');return false;">Je suis organisateur</a></li>
               <li><a href="#" onclick="return false;">Kit presse</a></li>
             </ul>
@@ -1614,46 +1807,52 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
   <!-- S8 EXPLORER -->
   <div class="screen" id="s8">
     <div class="explore-top">
+      <button class="explore-back guest-only" onclick="nav('s7')" aria-label="Retour à l'accueil"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
       <h1>Explorer</h1>
       <div class="search-bar">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(245,236,215,.35)" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" placeholder="Artiste, lieu, événement…">
+        <input id="expSearch" type="text" placeholder="Artiste, lieu, événement…" autocomplete="off">
+        <button class="exp-clearbtn" id="expClear" hidden onclick="expClearSearch()" aria-label="Effacer la recherche"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+      <div class="exp-tools">
+        <div class="exp-fchips" id="expChips"></div>
+        <button class="btn-filtres" id="expFiltres" onclick="expOpenSheet()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="7" y1="12" x2="17" y2="12"></line><line x1="10" y1="18" x2="14" y2="18"></line></svg>
+          Filtres
+          <span class="fbadge" id="expBadge" hidden>0</span>
+        </button>
       </div>
     </div>
     <div class="explore-scroll">
-      <div class="sec-label">Toutes les catégories</div>
-      <div class="cat-grid">
-        <button class="cat-card" onclick="nav('s10')" style="--acc:#C17D3C;">
-          <span class="cat-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></span>
-          <span class="cat-name">Musique</span>
-          <span class="cat-count">12 événements</span>
-        </button>
-        <button class="cat-card" onclick="nav('s10')" style="--acc:#BE6E4C;">
-          <span class="cat-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12a5 5 0 0 0 5 5 8 8 0 0 1 5 2 8 8 0 0 1 5-2 5 5 0 0 0 5-5V7h-4a8 8 0 0 0-5 2 8 8 0 0 0-5-2H2z"></path><path d="M6 11c1.5 0 3 .5 3 2-2 0-3 0-3-2z"></path><path d="M18 11c-1.5 0-3 .5-3 2 2 0 3 0 3-2z"></path></svg></span>
-          <span class="cat-name">Théâtre</span>
-          <span class="cat-count">4 événements</span>
-        </button>
-        <button class="cat-card" onclick="nav('s10')" style="--acc:#A98B3E;">
-          <span class="cat-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-5-5L5 21"></path></svg></span>
-          <span class="cat-name">Expo</span>
-          <span class="cat-count">7 événements</span>
-        </button>
-        <button class="cat-card" onclick="nav('s10')" style="--acc:#CFA23E;">
-          <span class="cat-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 21 14 3"></path><path d="M20.5 21 10 3"></path><path d="M15.5 21 12 15l-3.5 6"></path><path d="M2 21h20"></path></svg></span>
-          <span class="cat-name">Festival</span>
-          <span class="cat-count">3 événements</span>
-        </button>
+      <div class="exp-meta">
+        <span class="exp-count" id="expCount">—</span>
+        <button class="exp-reset" id="expReset" hidden onclick="expResetAll()"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.5 15a9 9 0 1 0 .5-8.5L1 10"></path></svg> Réinitialiser</button>
       </div>
-      <div class="sec-label">Tous les événements</div>
-      <div class="ev-row" onclick="nav('s10')">
-        <div class="ev-row-img"><svg width="36" viewBox="0 0 240 320" style="opacity:.4"><use href="#z-gr"></use></svg></div>
-        <div class="ev-row-body"><div class="ev-row-date">Sam 7 Juin · 20h00</div><div class="ev-row-title">VAUDOU NIGHTS</div><div class="ev-row-price">Dès <span>2 500 XOF</span></div></div>
-        <div class="ev-row-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+      <div id="expResults"></div>
+    </div>
+    <div class="fsheet-back" id="expSheetBack" onclick="expCloseSheet()"></div>
+    <div class="fsheet" id="expSheet" role="dialog" aria-label="Filtres">
+      <div class="fsheet-grab"></div>
+      <h2>Filtres</h2>
+      <div class="fs-section">
+        <div class="fs-label">Ville</div>
+        <div class="fs-chips" id="expCityChips"></div>
       </div>
-      <div class="ev-row" onclick="nav('s10')">
-        <div class="ev-row-img"><svg width="36" viewBox="0 0 240 320" style="opacity:.5"><use href="#z-oc"></use></svg></div>
-        <div class="ev-row-body"><div class="ev-row-date">Ven 13 Juin · 19h30</div><div class="ev-row-title">Jazz au Bénin</div><div class="ev-row-price">Dès <span>1 500 XOF</span></div></div>
-        <div class="ev-row-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+      <div class="fs-section">
+        <div class="fs-label">Quand</div>
+        <div class="fs-chips" id="expDateChips">
+          <button class="fs-opt" data-preset="weekend" onclick="expPickPreset(this)">Ce week-end</button>
+          <button class="fs-opt" data-preset="semaine" onclick="expPickPreset(this)">Cette semaine</button>
+          <button class="fs-opt" data-preset="mois" onclick="expPickPreset(this)">Ce mois</button>
+        </div>
+        <div class="fs-dates">
+          <div class="fs-date"><label>Du</label><input type="date" id="expDStart" onchange="expCustomDate()"></div>
+          <div class="fs-date"><label>Au</label><input type="date" id="expDEnd" onchange="expCustomDate()"></div>
+        </div>
+      </div>
+      <div class="fs-foot">
+        <button class="btn-reset2" onclick="expResetAll()">Tout effacer</button>
+        <button class="btn-apply" id="expApply" onclick="expCloseSheet()">Voir les résultats</button>
       </div>
     </div>
     <div class="bnav">
@@ -1677,6 +1876,11 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
         <button class="prof2-row" onclick="nav('s15')">
           <span class="p2-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path><path d="M13 5v2"></path><path d="M13 11v2"></path><path d="M13 17v2"></path></svg></span>
           <span class="p2-txt"><span class="p2-label">Mes billets</span></span>
+          <span class="p2-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+        </button>
+        <button class="prof2-row" onclick="nav('s19')">
+          <span class="p2-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></span>
+          <span class="p2-txt"><span class="p2-label">Mes commandes</span><span class="p2-sub">Historique des achats</span></span>
           <span class="p2-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
         </button>
         <button class="prof2-row">
@@ -1849,13 +2053,14 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
       <svg width="150" viewBox="0 0 320 320" style="margin-bottom:4px;animation:popIn .5s cubic-bezier(.34,1.56,.64,1);"><use href="#z-cry"></use></svg>
       <span class="conf-chip">✓ Paiement confirmé</span>
       <div class="conf-title">C'est dans<br><em>ta poche !</em></div>
-      <p class="conf-sub">Ton billet est réservé. Le QR sera disponible quelques heures avant l'événement.</p>
+      <p class="conf-sub">Ton billet est réservé — <strong style="color:var(--cr);">en attente d'émission</strong>. Le QR code unique te sera envoyé par email et WhatsApp 24h avant l'événement.</p>
       <div class="conf-info">
         <div class="ci-row"><span class="ci-k">Événement</span><span class="ci-v">VAUDOU NIGHTS</span></div>
         <div class="ci-row"><span class="ci-k">Date</span><span class="ci-v">Sam 7 Juin · 20h00</span></div>
         <div class="ci-row"><span class="ci-k">Billet</span><span class="ci-v" id="confBillet">1× Standard</span></div>
+        <div class="ci-row"><span class="ci-k">Statut</span><span class="ci-v" style="color:#D9A23C;">En attente d'émission</span></div>
         <div class="ci-row"><span class="ci-k">Montant</span><span class="ci-v" id="confMontant">2 600 XOF</span></div>
-        <div class="ci-row"><span class="ci-k">Réf.</span><span class="ci-v">WMT-2026-4821</span></div>
+        <div class="ci-row"><span class="ci-k">N° commande</span><span class="ci-v">WMT-2026-4821</span></div>
       </div>
       <button class="btn-p" onclick="nav('s15')" style="margin-bottom:10px;width:100%;">Voir mes billets</button>
       <button class="btn-s" onclick="nav('s7')" style="width:100%;">Retour à l'accueil</button>
@@ -1875,11 +2080,12 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
       <button class="tab-btn" onclick="switchTab(this,'past')">Passés</button>
     </div>
     <div class="blist" id="listUp">
-      <div class="billet-row" onclick="nav('s16')"><div class="br-stripe"></div><div class="br-body"><div class="br-date">Sam 7 Juin · 20h00</div><div class="br-title">VAUDOU NIGHTS — Édition Spéciale</div><div class="br-foot"><div class="br-type">1× Standard · Champ de Foire</div><div class="br-status live">QR dispo</div></div></div><div class="br-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
-      <div class="billet-row" onclick="nav('s16')"><div class="br-stripe"></div><div class="br-body"><div class="br-date">Ven 13 Juin · 19h30</div><div class="br-title">Jazz au Bénin — Orchestre National</div><div class="br-foot"><div class="br-type">2× Standard · Palais des Congrès</div><div class="br-status live" style="background:rgba(245,236,215,.07);color:rgba(245,236,215,.4);">Réservé</div></div></div><div class="br-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
+      <div class="billet-row" onclick="nav('s16')"><div class="br-stripe"></div><div class="br-body"><div class="br-date">Sam 7 Juin · 20h00</div><div class="br-title">VAUDOU NIGHTS — Édition Spéciale</div><div class="br-foot"><div class="br-type">1× Standard · Champ de Foire</div><div class="br-status emis">Émis</div></div></div><div class="br-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
+      <div class="billet-row" onclick="nav('s18')"><div class="br-stripe" style="background:#D9A23C;"></div><div class="br-body"><div class="br-date">Ven 13 Juin · 19h30</div><div class="br-title">Jazz au Bénin — Orchestre National</div><div class="br-foot"><div class="br-type">2× Standard · Palais des Congrès</div><div class="br-status wait">En attente d'émission</div></div></div><div class="br-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
+      <div class="billet-row" onclick="nav('sfbillet')"><div class="br-stripe" style="background:#6fbf73;"></div><div class="br-body"><div class="br-date">Jeu 18 Juin · 10h00</div><div class="br-title">Regards — Photographie Béninoise</div><div class="br-foot"><div class="br-type">1× Accès libre · Gratuit</div><div class="br-status emis">Émis</div></div></div><div class="br-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
     </div>
     <div class="blist" id="listPast" style="display:none;">
-      <div class="billet-row past" onclick="nav('s17')"><div class="br-stripe"></div><div class="br-body"><div class="br-date">Sam 17 Mai · 21h00</div><div class="br-title">AfroFusion — Nuit de la Musique</div><div class="br-foot"><div class="br-type">1× VIP · Fondation Zinsou</div><div class="br-status done">Terminé</div></div></div><div class="br-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
+      <div class="billet-row past" onclick="nav('s17')"><div class="br-stripe"></div><div class="br-body"><div class="br-date">Sam 17 Mai · 21h00</div><div class="br-title">AfroFusion — Nuit de la Musique</div><div class="br-foot"><div class="br-type">1× VIP · Fondation Zinsou</div><div class="br-status done">Utilisé</div></div></div><div class="br-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
     </div>
     <div class="bnav">
       <button class="bn-item" onclick="nav('s7')"><div class="bn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div><span class="bn-lbl">Accueil</span></button>
@@ -1893,29 +2099,69 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
   <div class="screen" id="s16">
     <div class="page-hd" style="margin-bottom:14px;"><button class="page-back" onclick="nav('s15')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button><div class="page-title">Mon billet</div></div>
     <div class="ticket-card">
-      <div class="t-top"><div class="t-eyebrow">Wamiton · Billet Certifié</div><div class="t-name">VAUDOU NIGHTS</div><div class="t-sub">Édition Spéciale · Sam 7 Juin 2026</div><div class="t-zan-dec"><svg width="72" viewBox="0 0 240 320"><use href="#z-dk"></use></svg></div></div>
+      <div class="t-top"><div class="t-eyebrow">Wamiton · Billet Certifié</div><div class="t-name">VAUDOU NIGHTS</div><div class="t-sub">Édition Spéciale · Sam 7 Juin 2026</div><div class="t-status">Émis</div><div class="t-zan-dec"><svg width="72" viewBox="0 0 240 320"><use href="#z-dk"></use></svg></div></div>
       <div class="t-sep"><div class="t-dash"></div></div>
       <div class="t-mid">
         <div class="t-fields"><div class="t-field"><div class="tf-l">Heure</div><div class="tf-v">20h00</div></div><div class="t-field"><div class="tf-l">Lieu</div><div class="tf-v">Champ de Foire</div></div><div class="t-field"><div class="tf-l">Catégorie</div><div class="tf-v">Standard</div></div></div>
+        <div class="t-holder"><span class="th-l">Détenteur</span><span class="th-v">Kofi Koffi</span></div>
                 <div class="code-area">
-          <div class="code-ring">
-            <svg class="ring-svg" viewBox="0 0 120 120" aria-hidden="true">
-              <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
-              <circle class="ring-fg" cx="60" cy="60" r="54"></circle>
-            </svg>
-            <div class="code-center">
-              <div class="code-val" id="ticketCode">418 207</div>
-              <div class="code-unit">code live</div>
-            </div>
-          </div>
-          <div class="code-lbl">Se régénère en continu · impossible à capturer</div>
-          <div class="barcode" aria-hidden="true"></div>
+          <div class="qr-box"><div class="qr-code" id="qrVaudou"></div></div>
+          <div class="qr-cap">Présente ce QR à l'entrée</div>
+          <div class="qr-once"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>Valable une seule fois · nominatif</div>
           <div class="barcode-ref">WMT-2026-4821</div>
         </div>
       </div>
       <div class="t-bot"><div class="t-bot-brand">Vérifié par <span>Wamiton</span></div><div class="t-offline"><div class="offline-dot"></div>Hors connexion</div></div>
     </div>
+    <div class="tk-actions">
+      <button class="btn-s" onclick="dlPdf()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>Télécharger le billet (PDF)</button>
+    </div>
+    <div class="wallet-row">
+      <button class="wallet-btn" onclick="toast('Billet ajouté à Apple Wallet')"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2.5"></rect><path d="M2 10h20"></path><path d="M15.5 15h2.5"></path></svg><span class="wl-tx"><span class="wl-s">Ajouter à</span><span class="wl-b">Apple Wallet</span></span></button>
+      <button class="wallet-btn" onclick="toast('Billet ajouté à Google Wallet')"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2.5"></rect><path d="M2 10h20"></path><path d="M15.5 15h2.5"></path></svg><span class="wl-tx"><span class="wl-s">Ajouter à</span><span class="wl-b">Google Wallet</span></span></button>
+    </div>
+    <div class="offline-banner"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>Disponible hors connexion — ton billet et son QR restent valables même sans réseau le jour J.</div>
+    <div class="mv-block">
+      <div class="mv-h">Parcours du billet</div>
+      <div class="mv-row cur"><div class="mv-dot"></div><div class="mv-tx"><div class="mv-act"><b>Émis</b> à ton nom · QR + PDF envoyés par email et WhatsApp</div><div class="mv-meta">Kofi Koffi · kofi.koffi@email.com</div></div><div class="mv-date">6 Juin</div></div>
+      <div class="mv-row"><div class="mv-dot"></div><div class="mv-tx"><div class="mv-act"><b>Acheté</b> sur Wamiton</div><div class="mv-meta">Kofi Koffi · kofi.koffi@email.com</div></div><div class="mv-date">3 Juin</div></div>
+      <div class="mv-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Billet nominatif. Le QR n'est valable qu'une seule fois — la cession n'est plus possible après émission.</div>
+    </div>
     <div class="ref-tag">WMT-2026-4821 · 1× Standard</div>
+  </div>
+
+  <!-- S18 BILLET — QR À VENIR (événement encore lointain) -->
+  <div class="screen" id="s18">
+    <div class="page-hd" style="margin-bottom:14px;"><button class="page-back" onclick="nav('s15')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button><div class="page-title">Mon billet</div></div>
+    <div class="ticket-card">
+      <div class="t-top"><div class="t-eyebrow">Wamiton · Billet Certifié</div><div class="t-name">JAZZ AU BÉNIN</div><div class="t-sub">Orchestre National · Ven 13 Juin 2026</div><div class="t-status">En attente</div><div class="t-zan-dec"><svg width="72" viewBox="0 0 240 320"><use href="#z-dk"></use></svg></div></div>
+      <div class="t-sep"><div class="t-dash"></div></div>
+      <div class="t-mid">
+        <div class="t-fields"><div class="t-field"><div class="tf-l">Heure</div><div class="tf-v">19h30</div></div><div class="t-field"><div class="tf-l">Lieu</div><div class="tf-v">Palais des Congrès</div></div><div class="t-field"><div class="tf-l">Catégorie</div><div class="tf-v">Standard</div></div></div>
+        <div class="t-holder"><span class="th-l">Détenteur</span><span class="th-v">Kofi Koffi</span></div>
+        <div class="qr-pending">
+          <div class="qrp-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+          <div class="qrp-title">QR code bientôt disponible</div>
+          <div class="qrp-text">Pas d'inquiétude — ta place est bien réservée. Ton QR code unique sera émis et envoyé par email et WhatsApp <strong>24h avant</strong> le début de l'événement.</div>
+          <button class="qr-activate" disabled>
+            <span class="qra-main"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Activer le QR Code</span>
+            <span class="qra-when">Émission prévue le jeu. 12 Juin · 19h30</span>
+          </button>
+        </div>
+      </div>
+      <div class="t-bot"><div class="t-bot-brand">Vérifié par <span>Wamiton</span></div><div class="t-offline"><div class="offline-dot" style="background:var(--oc);"></div>Réservé</div></div>
+    </div>
+    <div class="tk-actions">
+      <button class="btn-s" onclick="toast('Récapitulatif PDF téléchargé · ton billet avec QR arrivera 24h avant')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>Récap PDF</button>
+      <button class="btn-s" onclick="cedeOpen()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>Céder</button>
+    </div>
+    <div class="offline-banner" style="background:rgba(193,125,60,.06);border-color:rgba(193,125,60,.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--oc)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>Tu peux exporter un récapitulatif dès maintenant. Le billet définitif avec QR code te sera envoyé à l'émission, 24h avant l'événement.</div>
+    <div class="mv-block">
+      <div class="mv-h">Parcours du billet</div>
+      <div class="mv-row cur"><div class="mv-dot"></div><div class="mv-tx"><div class="mv-act"><b>Acheté</b> sur Wamiton · en attente d'émission</div><div class="mv-meta">Kofi Koffi · kofi.koffi@email.com</div></div><div class="mv-date">4 Juin</div></div>
+      <div class="mv-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline></svg>Cession gratuite, possible tant que le billet n'est pas émis et avant la limite fixée par l'organisateur (jeu. 12 Juin · 17h30). Un billet ne peut être cédé qu'une seule fois.</div>
+    </div>
+    <div class="ref-tag">WMT-2026-7732 · 1× Standard</div>
   </div>
 
   <!-- S17 BILLET PASSÉ -->
@@ -1937,6 +2183,193 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
       <div class="t-bot"><div class="t-bot-brand" style="color:rgba(245,236,215,.2);">Vérifié par <span style="color:rgba(245,236,215,.25);">Wamiton</span></div><div class="t-offline" style="color:rgba(245,236,215,.2);"><div class="offline-dot" style="background:rgba(245,236,215,.15);box-shadow:none;"></div>Archivé</div></div>
     </div>
     <div class="ref-tag" style="color:rgba(245,236,215,.2);">WMT-2026-3104 · 1× VIP</div>
+  </div>
+
+  <!-- S19 HISTORIQUE DES COMMANDES (US-020) -->
+  <div class="screen" id="s19">
+    <div class="page-hd"><button class="page-back" onclick="nav('s9')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button><div class="page-title">Mes commandes</div></div>
+    <div class="ord-row" onclick="openOrder('vaudou')">
+      <div class="ord-tx"><div class="ord-ev">VAUDOU NIGHTS — Édition Spéciale</div><div class="ord-meta">3 Juin 2026 · N° WMT-2026-4821</div></div>
+      <div class="ord-right"><div class="ord-amt">2 600 XOF</div><div class="br-status emis">Émis</div></div>
+    </div>
+    <div class="ord-row" onclick="openOrder('jazz')">
+      <div class="ord-tx"><div class="ord-ev">Jazz au Bénin — Orchestre National</div><div class="ord-meta">4 Juin 2026 · N° WMT-2026-7732</div></div>
+      <div class="ord-right"><div class="ord-amt">3 100 XOF</div><div class="br-status wait">En attente</div></div>
+    </div>
+    <div class="ord-row" onclick="openOrder('afro')">
+      <div class="ord-tx"><div class="ord-ev">AfroFusion — Nuit de la Musique</div><div class="ord-meta">12 Mai 2026 · N° WMT-2026-3104</div></div>
+      <div class="ord-right"><div class="ord-amt">6 100 XOF</div><div class="br-status done">Utilisé</div></div>
+    </div>
+    <div class="ord-row" onclick="openOrder('nokoue')">
+      <div class="ord-tx"><div class="ord-ev">Festival Nokoué</div><div class="ord-meta">28 Mai 2026 · N° WMT-2026-2980</div></div>
+      <div class="ord-right"><div class="ord-amt muted">5 100 XOF</div><div class="br-status fail">Échouée</div></div>
+    </div>
+  </div>
+
+  <!-- S20 DÉTAIL D'UNE COMMANDE (US-020) -->
+  <div class="screen" id="s20">
+    <div class="page-hd"><button class="page-back" onclick="nav('s19')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button><div class="page-title">Détail commande</div></div>
+    <div id="o20Body"></div>
+  </div>
+
+  <!-- S21 CÉDER UN BILLET (US-038) -->
+  <div class="screen" id="s21">
+    <div id="cedeForm">
+      <div class="page-hd"><button class="page-back" onclick="nav('s18')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button><div class="page-title">Céder mon billet</div></div>
+      <div class="cede-mini">
+        <div class="cm-d">Billet à céder</div>
+        <div class="cm-t">Jazz au Bénin — Orchestre National</div>
+        <div class="cm-s">Ven 13 Juin · 19h30 · 1× Standard · En attente d'émission</div>
+      </div>
+      <label class="field-label">Destinataire</label>
+      <input class="txt-input" id="cedeInput" placeholder="Email ou téléphone du membre Wamiton" autocomplete="off" oninput="cedeSearch()" style="margin-bottom:0;">
+      <div class="cede-empty" id="cedeEmpty" hidden>Aucun compte Wamiton trouvé pour ce contact. Le destinataire doit posséder un compte actif pour recevoir le billet.</div>
+      <div class="cede-found" id="cedeFound" hidden>
+        <div class="cf-av" id="cfAv">AD</div>
+        <div><div class="cf-n" id="cfName">Aline Dossou</div><div class="cf-c" id="cfContact">aline.dossou@email.com</div></div>
+        <div class="cf-ok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      </div>
+      <div class="cede-notes">
+        <div class="cede-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>La cession est <strong style="color:var(--cr);">gratuite</strong> — aucun frais supplémentaire.</div>
+        <div class="cede-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>Tu perds l'accès au billet <strong style="color:var(--cr);">immédiatement</strong> après confirmation.</div>
+        <div class="cede-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Possible une seule fois, avant émission et avant la limite (jeu. 12 Juin · 17h30).</div>
+      </div>
+      <button class="btn-p" id="cedeBtn" onclick="cedeConfirm()" style="opacity:.4;pointer-events:none;">Confirmer la cession</button>
+      <button class="btn-s" onclick="nav('s18')" style="margin-top:10px;">Annuler</button>
+    </div>
+    <div id="cedeDone" class="cede-done" hidden>
+      <svg width="120" viewBox="0 0 320 320" style="margin-bottom:6px;"><use href="#z-cry"></use></svg>
+      <span class="conf-chip">✓ Billet cédé</span>
+      <div class="conf-title">Billet<br><em>cédé</em></div>
+      <p class="conf-sub">Le billet a quitté ton compte. Il apparaît désormais chez <span id="cdName">le destinataire</span> avec le statut « En attente d'émission ».</p>
+      <div class="conf-info">
+        <div class="ci-row"><span class="ci-k">Billet</span><span class="ci-v">Jazz au Bénin · 1× Standard</span></div>
+        <div class="ci-row"><span class="ci-k">Cédé à</span><span class="ci-v" id="cdContact">—</span></div>
+        <div class="ci-row"><span class="ci-k">Statut</span><span class="ci-v" style="color:#9fb4de;">Cédé</span></div>
+      </div>
+      <div class="mv-block" style="width:100%;text-align:left;">
+        <div class="mv-h">Parcours du billet</div>
+        <div class="mv-row cur"><div class="mv-dot"></div><div class="mv-tx"><div class="mv-act"><b>Cédé</b> à <span id="cdName2">le destinataire</span></div><div class="mv-meta" id="cdContact2">—</div></div><div class="mv-date">Auj.</div></div>
+        <div class="mv-row"><div class="mv-dot"></div><div class="mv-tx"><div class="mv-act"><b>Acheté</b> sur Wamiton</div><div class="mv-meta">Kofi Koffi · kofi.koffi@email.com</div></div><div class="mv-date">4 Juin</div></div>
+        <div class="mv-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>Ce billet a atteint sa limite de cession (1 maximum) et ne pourra plus être cédé.</div>
+      </div>
+      <button class="btn-p" onclick="nav('s15')" style="width:100%;margin-top:4px;">Voir mes billets</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PARCOURS BILLET GRATUIT (acheteur)
+  ============================================================ -->
+
+  <!-- SFEV — DÉTAIL ÉVÉNEMENT GRATUIT -->
+  <div class="screen" id="sfev">
+    <div class="ev-detail">
+      <div class="ev-hero-card">
+        <img class="ev-hero-img" src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&amp;fit=crop&amp;w=1200&amp;q=75" alt="Exposition photo" referrerpolicy="no-referrer">
+        <button class="hero-btn left" onclick="nav('s8')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <button class="hero-btn right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+      </div>
+      <div class="ev-name-big">Regards<br>— Photographie Béninoise</div>
+      <div class="ev-when">Jeu 18 Juin · 10h00</div>
+      <div class="ev-venue">Fondation Zinsou</div>
+      <div class="ev-meta-row">
+        <span class="ev-meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-5-5L5 21"></path></svg>Exposition · Photographie</span>
+        <span class="ev-meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Cotonou</span>
+      </div>
+      <div style="margin:6px 0 2px;"><span class="free-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Entrée gratuite</span></div>
+      <div class="tags"><span class="tag">PHOTO</span><span class="tag">PATRIMOINE</span><span class="tag">ENTRÉE LIBRE</span></div>
+      <div class="ev-block">
+        <h3 class="ev-h">À propos</h3>
+        <div class="ev-collapse" id="sfAbout">
+          <p>La Fondation Zinsou ouvre gratuitement ses portes pour « Regards », une exposition consacrée à la jeune photographie béninoise. Une trentaine de tirages explorent la ville, le vodoun et le quotidien à Cotonou. Médiation et visites guidées sur place tout au long de la journée.</p>
+          <div class="ev-fade"></div>
+        </div>
+        <button class="ev-more" onclick="toggleEv('sfAbout',this)" aria-label="Lire la suite"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+      </div>
+      <div class="ev-block">
+        <h3 class="ev-h">Informations</h3>
+        <div class="ev-info-row"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg><span>Entrée libre dans la limite des places disponibles</span></div>
+        <div class="ev-info-row"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span>Réservation conseillée — 2 billets gratuits maximum par personne</span></div>
+        <div class="ev-info-row"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg><span>Billet nominatif avec QR code — même sécurité qu'un billet payant</span></div>
+      </div>
+    </div>
+    <div class="ev-cta-bar">
+      <div><div class="price-lbl">Tarif</div><div class="price-val" style="color:#6fbf73;">Gratuit</div></div>
+      <button class="btn-p" onclick="freeReserveOpen()" style="flex:1;">Réserver — Gratuit</button>
+    </div>
+  </div>
+
+  <!-- SFRES — RÉSERVATION GRATUITE -->
+  <div class="screen" id="sfres">
+    <div class="page-hd"><button class="page-back" onclick="nav('sfev')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button><div class="page-title">Ma réservation</div></div>
+    <div class="eyebrow">Regards — Photographie · Jeu 18 Juin</div>
+    <div class="tt-card sel">
+      <div class="tt-head"><div class="tt-name">Accès libre</div><div class="tt-price" style="color:#6fbf73;">Gratuit</div></div>
+      <div class="tt-desc">Entrée gratuite à l'exposition. Billet nominatif avec QR à présenter à l'entrée.</div>
+      <div class="qty-row">
+        <button class="qty-btn" onclick="fchgQty(-1)">−</button>
+        <span class="qty-num" id="fqty">1</span>
+        <button class="qty-btn" onclick="fchgQty(1)">+</button>
+        <span style="font-size:12px;color:rgba(245,236,215,.35);margin-left:6px;">max 2</span>
+      </div>
+    </div>
+    <div class="order-box">
+      <div class="order-row"><span id="fqLabel">1× Accès libre</span><span style="color:#6fbf73;">Gratuit</span></div>
+      <div class="order-row"><span>Frais de service</span><span>Aucun</span></div>
+      <div class="order-row tot"><span>Total</span><span class="v" style="color:#6fbf73;">Gratuit</span></div>
+    </div>
+    <div class="sec-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(245,236,215,.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Événement gratuit — aucun paiement requis. Ta réservation bloque ta place.</div>
+    <button class="btn-p" onclick="nav('sfconf')">Confirmer la réservation</button>
+  </div>
+
+  <!-- SFCONF — CONFIRMATION RÉSERVATION GRATUITE -->
+  <div class="screen" id="sfconf">
+    <div class="conf-bg" style="background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(76,175,80,.16) 0%,transparent 70%);"></div>
+    <div class="conf-inner">
+      <svg width="150" viewBox="0 0 320 320" style="margin-bottom:4px;animation:popIn .5s cubic-bezier(.34,1.56,.64,1);"><use href="#z-cry"></use></svg>
+      <span class="conf-chip" style="background:rgba(76,175,80,.14);color:#6fbf73;border-color:rgba(76,175,80,.3);">✓ Réservation confirmée</span>
+      <div class="conf-title">C'est<br><em>réservé !</em></div>
+      <p class="conf-sub">Ta place est bloquée. Le QR de ton billet gratuit sera émis et envoyé par email et WhatsApp 24h avant l'événement.</p>
+      <div class="conf-info">
+        <div class="ci-row"><span class="ci-k">Événement</span><span class="ci-v">Regards — Photographie</span></div>
+        <div class="ci-row"><span class="ci-k">Date</span><span class="ci-v">Jeu 18 Juin · 10h00</span></div>
+        <div class="ci-row"><span class="ci-k">Billet</span><span class="ci-v" id="fconfBillet">1× Accès libre</span></div>
+        <div class="ci-row"><span class="ci-k">Statut</span><span class="ci-v" style="color:#D9A23C;">En attente d'émission</span></div>
+        <div class="ci-row"><span class="ci-k">Montant</span><span class="ci-v" style="color:#6fbf73;">Gratuit</span></div>
+        <div class="ci-row"><span class="ci-k">N° commande</span><span class="ci-v">WMT-2026-5190</span></div>
+      </div>
+      <button class="btn-p" onclick="nav('sfbillet')" style="margin-bottom:10px;width:100%;">Voir mon billet</button>
+      <button class="btn-s" onclick="nav('s7')" style="width:100%;">Retour à l'accueil</button>
+    </div>
+  </div>
+
+  <!-- SFBILLET — BILLET GRATUIT ÉMIS (exemple) -->
+  <div class="screen" id="sfbillet">
+    <div class="page-hd" style="margin-bottom:14px;"><button class="page-back" onclick="nav('s15')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button><div class="page-title">Mon billet</div></div>
+    <div class="ticket-card">
+      <div class="t-top"><div class="t-eyebrow">Wamiton · Billet Certifié</div><div class="t-name">REGARDS</div><div class="t-sub">Photographie Béninoise · Jeu 18 Juin 2026</div><div class="t-status">Émis</div><div class="t-zan-dec"><svg width="72" viewBox="0 0 240 320"><use href="#z-dk"></use></svg></div></div>
+      <div class="t-sep"><div class="t-dash"></div></div>
+      <div class="t-mid">
+        <div class="t-fields"><div class="t-field"><div class="tf-l">Heure</div><div class="tf-v">10h00</div></div><div class="t-field"><div class="tf-l">Lieu</div><div class="tf-v">Fondation Zinsou</div></div><div class="t-field"><div class="tf-l">Tarif</div><div class="tf-v" style="color:#3f8a43;">Gratuit</div></div></div>
+        <div class="t-holder"><span class="th-l">Détenteur</span><span class="th-v">Kofi Koffi</span></div>
+        <div class="code-area">
+          <div class="qr-box"><div class="qr-code" id="qrRegards"></div></div>
+          <div class="qr-cap">Présente ce QR à l'entrée</div>
+          <div class="qr-once"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>Valable une seule fois · nominatif</div>
+          <div class="barcode-ref">WMT-2026-5190</div>
+        </div>
+      </div>
+      <div class="t-bot"><div class="t-bot-brand">Vérifié par <span>Wamiton</span></div><div class="t-offline"><div class="offline-dot"></div>Hors connexion</div></div>
+    </div>
+    <div class="ref-tag">WMT-2026-5190 · 1× Accès libre · Gratuit</div>
+    <div class="tk-actions">
+      <button class="btn-s" onclick="dlPdf()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>Télécharger le billet (PDF)</button>
+    </div>
+    <div class="wallet-row">
+      <button class="wallet-btn" onclick="toast('Billet ajouté à Apple Wallet')"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2.5"></rect><path d="M2 10h20"></path><path d="M15.5 15h2.5"></path></svg><span class="wl-tx"><span class="wl-s">Ajouter à</span><span class="wl-b">Apple Wallet</span></span></button>
+      <button class="wallet-btn" onclick="toast('Billet ajouté à Google Wallet')"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2.5"></rect><path d="M2 10h20"></path><path d="M15.5 15h2.5"></path></svg><span class="wl-tx"><span class="wl-s">Ajouter à</span><span class="wl-b">Google Wallet</span></span></button>
+    </div>
+    <div class="offline-banner"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>Disponible hors connexion — même un billet gratuit garde son QR à usage unique, valable sans réseau.</div>
   </div>
 
   <!-- ============================================================
@@ -2328,55 +2761,89 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
       <!-- STEP 1 — INFOS -->
       <div class="wz-step on" data-step="1">
         <div class="wz-sec-h">Décris ton événement</div>
-        <div class="wz-sec-p">Les infos essentielles que verront les acheteurs.</div>
+        <div class="wz-sec-p">Tout ce que verront les acheteurs sur la page de vente : présentation, infos pratiques et lieu.</div>
+
         <label class="field-label">Nom de l'événement</label>
         <input type="text" class="txt-input" id="cName" value="VAUDOU NIGHTS — Édition Spéciale" oninput="syncRecap()">
+
         <label class="field-label">Catégorie</label>
         <div class="cat-pick">
           <button class="cat-opt on" onclick="pickCat(this)">Musique</button>
           <button class="cat-opt" onclick="pickCat(this)">Théâtre</button>
           <button class="cat-opt" onclick="pickCat(this)">Expo</button>
           <button class="cat-opt" onclick="pickCat(this)">Festival</button>
+          <button class="cat-opt" onclick="pickCat(this)">Sport</button>
           <button class="cat-opt" onclick="pickCat(this)">Danse</button>
+          <button class="cat-opt" onclick="pickCat(this)">Autre</button>
         </div>
-        <label class="field-label">Description</label>
-        <textarea class="txt-area" oninput="syncRecap()">Le Gangbé Brass Band revient pour une nuit exceptionnelle au cœur du patrimoine vodoun. Cuivres, percussions et chants traditionnels dans une mise en scène inédite.</textarea>
+
+        <label class="field-label">Sous-catégorie / genre</label>
+        <input type="text" class="txt-input" id="cGenre" value="Traditionnel" placeholder="ex. Jazz, Afrobeats, Vodoun…" oninput="syncRecap()">
+
+        <label class="field-label">Tête d'affiche / artiste principal</label>
+        <input type="text" class="txt-input" id="cArtist" value="Gangbé Brass Band" placeholder="Nom de l'artiste ou du collectif" oninput="syncRecap()">
+
+        <label class="field-label">Mots-clés <span class="opt2">séparés par une virgule</span></label>
+        <input type="text" class="txt-input" id="cTags" value="Musique live, Vodoun, Brass band" placeholder="ex. Live, Afro, Plein air" oninput="syncRecap()">
+
+        <label class="field-label">À propos <span class="opt2">présentation longue</span></label>
+        <textarea class="txt-area" id="cAbout" oninput="syncRecap()">Né à Cotonou, le Gangbé Brass Band fusionne depuis plus de vingt ans les cuivres du jazz, les percussions vodoun et les chants en fon et en yoruba. Pour cette Édition Spéciale, le groupe revisite son répertoire au cœur du patrimoine vodoun, dans une mise en scène inédite mêlant rituel, danse et improvisation.</textarea>
+
+        <label class="field-label">Informations pratiques <span class="opt2">portes, restauration, météo…</span></label>
+        <textarea class="txt-area" id="cInfos" oninput="syncRecap()">Les portes ouvrent à 19h00 pour un concert qui démarre à 20h00. Événement en plein air : prévois une tenue confortable. Restauration et buvette sur place. Billets nominatifs avec QR code unique. En cas de pluie, l'événement est maintenu sous chapiteau.</textarea>
+
+        <label class="field-label">Présenté par <span class="opt2">facultatif</span></label>
+        <input type="text" class="txt-input" id="cPresenter" value="Maison du Vodoun" placeholder="Structure ou partenaire" oninput="syncRecap()">
+
+        <label class="field-label">Public</label>
+        <input type="text" class="txt-input" id="cAudience" value="Tout public" placeholder="ex. Tout public, +18, Famille" oninput="syncRecap()">
+
+        <div class="o-eyebrow" style="margin:24px 0 12px;">Date & lieu</div>
+
         <div class="wz-grid2">
           <div><label class="field-label">Date</label><input type="text" class="txt-input" id="cDate" value="07/06/2026" oninput="syncRecap();syncDates()"></div>
           <div><label class="field-label">Heure</label><input type="text" class="txt-input" id="cTime" value="20:00" oninput="syncRecap();syncDates()"></div>
         </div>
+        <label class="field-label">Ouverture des portes</label>
+        <input type="text" class="txt-input" id="cDoors" value="19:00" placeholder="ex. 19:00" oninput="syncRecap()">
         <label class="field-label">Ville</label>
-        <input type="text" class="txt-input" value="Cotonou" oninput="syncRecap()">
+        <input type="text" class="txt-input" id="cCity" value="Cotonou" oninput="syncRecap()">
         <label class="field-label">Lieu — nom</label>
         <input type="text" class="txt-input" id="cVenue" value="Champ de Foire" oninput="syncRecap()">
         <label class="field-label">Lieu — adresse</label>
-        <input type="text" class="txt-input" value="Bd Saint-Michel, Cotonou" style="margin-bottom:0;">
+        <input type="text" class="txt-input" id="cAddr" value="Bd Saint-Michel, Cotonou, Bénin" style="margin-bottom:0;" oninput="syncRecap()">
       </div>
 
       <!-- STEP 2 — BILLETTERIE -->
       <div class="wz-step" data-step="2">
         <div class="wz-sec-h">Catégories de billets</div>
-        <div class="wz-sec-p">Jusqu'à 5 catégories. La capacité totale est la somme des places.</div>
+        <div class="wz-sec-p">Jusqu'à 5 catégories. La capacité totale est la somme des places. Mets le prix à <strong>0</strong> (ou « Gratuit ») pour une entrée libre, sans frais.</div>
         <div id="tkList">
           <div class="tk-cat">
             <div class="tk-cat-top">
               <input class="tk-name-in" value="Standard" placeholder="Nom de la catégorie" oninput="syncRecap()">
+              <button class="tk-free-btn" onclick="setFree(this)">Gratuit</button>
               <button class="tk-del" onclick="delCat(this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
             </div>
             <div class="tk-fields">
               <div><label class="tk-mini-l">Prix (XOF)</label><input class="tk-mini-in tk-price" inputmode="numeric" value="2500" oninput="recalc()"></div>
               <div><label class="tk-mini-l">Places</label><input class="tk-mini-in tk-qty" inputmode="numeric" value="380" oninput="recalc()"></div>
             </div>
+            <label class="tk-mini-l" style="margin-top:11px;">Description — visible à l'achat</label>
+            <input class="tk-desc-in" placeholder="Ce que comprend ce billet…" value="Accès général, placement libre. Inclut l'entrée et le programme officiel." oninput="syncRecap()">
           </div>
           <div class="tk-cat">
             <div class="tk-cat-top">
               <input class="tk-name-in" value="VIP" placeholder="Nom de la catégorie" oninput="syncRecap()">
+              <button class="tk-free-btn" onclick="setFree(this)">Gratuit</button>
               <button class="tk-del" onclick="delCat(this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
             </div>
             <div class="tk-fields">
               <div><label class="tk-mini-l">Prix (XOF)</label><input class="tk-mini-in tk-price" inputmode="numeric" value="6000" oninput="recalc()"></div>
               <div><label class="tk-mini-l">Places</label><input class="tk-mini-in tk-qty" inputmode="numeric" value="120" oninput="recalc()"></div>
             </div>
+            <label class="tk-mini-l" style="margin-top:11px;">Description — visible à l'achat</label>
+            <input class="tk-desc-in" placeholder="Ce que comprend ce billet…" value="Accès zone VIP, placement prioritaire, boissons et snacks offerts." oninput="syncRecap()">
           </div>
         </div>
         <button class="tk-add" id="tkAdd" onclick="addCat()">
@@ -2457,6 +2924,8 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
           <div class="recap-hd">Événement <span class="edit" onclick="goStep(1)">Modifier</span></div>
           <div class="recap-row"><span class="recap-k">Nom</span><span class="recap-v" id="rcName">VAUDOU NIGHTS — Édition Spéciale</span></div>
           <div class="recap-row"><span class="recap-k">Catégorie</span><span class="recap-v" id="rcCat">Musique</span></div>
+          <div class="recap-row"><span class="recap-k">Genre</span><span class="recap-v" id="rcGenre">Traditionnel</span></div>
+          <div class="recap-row"><span class="recap-k">Tête d'affiche</span><span class="recap-v" id="rcArtist">Gangbé Brass Band</span></div>
           <div class="recap-row"><span class="recap-k">Quand</span><span class="recap-v" id="rcWhen">07/06/2026 · 20:00</span></div>
           <div class="recap-row"><span class="recap-k">Lieu</span><span class="recap-v" id="rcVenue">Champ de Foire · Cotonou</span></div>
         </div>
@@ -2633,7 +3102,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
         </button>
       </div>
       <div class="prof2-group-lbl">Espace</div>
-      <button class="opr-switch" onclick="nav('s7')">
+      <button class="opr-switch" onclick="doLogin()">
         <span class="sw-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"></path><path d="M20 7H4"></path><path d="m8 21-4-4 4-4"></path><path d="M4 17h16"></path></svg></span>
         <span class="sw-tx"><span class="sw-l">Passer en mode participant</span><span class="sw-s">Découvrir et acheter des billets</span></span>
         <span class="act-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
@@ -2745,7 +3214,7 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
       <div class="conb-glyph"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 14h3v3"></path><path d="M21 14v.01"></path><path d="M14 21h.01"></path><path d="M21 17v4"></path></svg></div>
     </div>
     <div class="oo-head" style="text-align:center;">
-      <h2 style="font-family:var(--fd);font-size:28px;line-height:.98;color:var(--cr);margin-bottom:8px;">Contrôle des<br><em style="font-family:var(--fi);font-style:italic;font-weight:400;color:var(--oc);">entrées</em></h2>
+      <h2 style="font-family:var(--fd);font-size:28px;line-height:.98;color:var(--cr);margin-bottom:8px;">Contrôle des<br><em style="font-family:var(--fi);font-style:normal;font-weight:400;color:var(--oc);">entrées</em></h2>
       <p style="font-size:13.5px;color:rgba(245,236,215,.5);line-height:1.6;max-width:32ch;margin:0 auto 22px;">Valide les billets à l'entrée avec ton smartphone. Rapide, fiable, même sans réseau.</p>
     </div>
     <div class="oo-perks">
@@ -3012,13 +3481,36 @@ image-slot::part(ring){border-color:rgba(245,236,215,.16);}
     </div>
   </div>
 
+  <div class="auth-prompt" id="authPrompt">
+    <div class="ap-back" onclick="closeAuthPrompt()"></div>
+    <div class="ap-card">
+      <div class="ap-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+      <div class="ap-t">Crée un compte pour continuer</div>
+      <div class="ap-s">Pour acheter ou réserver un billet, il te faut un compte Wamiton. Ça prend moins d'une minute — tu reprends ensuite là où tu t'étais arrêté.</div>
+      <button class="btn-p" onclick="goSignup()">Créer un compte / Se connecter</button>
+      <button class="btn-s" onclick="closeAuthPrompt()">Continuer à explorer</button>
+    </div>
+  </div>
+
 </div><!-- #device -->
 
 <script>
-const ALL=['s1','srole','s2','s3','s4','s5','s6','sforgot','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16','s17','oonb','ologin','otier','osignup','odash','oevent','ocreate','osubmit','osales','opayout','oprofile','oagents','conb','cauth','csync','cscan','cstats','cteam'];
+const ALL=['s1','srole','s2','s3','s4','s5','s6','sforgot','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16','s17','s18','s19','s20','s21','sfev','sfres','sfconf','sfbillet','oonb','ologin','otier','osignup','odash','oevent','ocreate','osubmit','osales','opayout','oprofile','oagents','conb','cauth','csync','cscan','cstats','cteam'];
 let prevScreen='s1';
 
+/* Mode invité (consultation anonyme — US-001) */
+let isGuest=true,pendingNav=null,lastGuestScreen='s7';
+const GUEST_GATED=['s9','s11','s12','s13','s14','s15','s16','s17','s18','s19','s20','s21','sfres','sfconf','sfbillet'];
+const GUEST_BROWSE=['s7','s8','s10','sfev'];
+function doLogin(){isGuest=false;var d=document.getElementById('device');if(d)d.classList.remove('guest');var t=pendingNav;pendingNav=null;nav(t||'s7');}
+function openAuthPrompt(target){pendingNav=target;document.getElementById('authPrompt').classList.add('open');}
+function closeAuthPrompt(){document.getElementById('authPrompt').classList.remove('open');}
+function goSignup(){closeAuthPrompt();nav('srole');}
+function backToBrowse(){nav(lastGuestScreen||'s7');}
+
 function nav(id){
+  if(isGuest && GUEST_GATED.indexOf(id)>-1){openAuthPrompt(id);return;}
+  closeAuthPrompt();
   prevScreen=document.querySelector('.screen.active')?.id||'s1';
   ALL.forEach(s=>{
     const el=document.getElementById(s);
@@ -3026,6 +3518,7 @@ function nav(id){
   });
   const el=document.getElementById(id);
   if(el)el.classList.add('active');
+  if(isGuest && GUEST_BROWSE.indexOf(id)>-1)lastGuestScreen=id;
   if(id==='s13')setTimeout(()=>{if(document.getElementById('s13').classList.contains('active'))nav('s14');},2500);
 }
 
@@ -3037,9 +3530,11 @@ function history_back(){nav(prevScreen);}
   var deep=(location.search.match(/[?&]s=([a-z0-9]+)/i)||[])[1];
   if(deep && document.getElementById(deep)){
     document.documentElement.classList.add('static-shot');
+    isGuest=false;
     nav(deep);
     return;
   }
+  document.getElementById('device').classList.add('guest');
   const bar=document.getElementById('splashBar');
   const DURATION=2400;
   const start=performance.now();
@@ -3047,7 +3542,7 @@ function history_back(){nav(prevScreen);}
     const p=Math.min((now-start)/DURATION*100,100);
     bar.style.width=p+'%';
     if(p<100)requestAnimationFrame(tick);
-    else nav('srole');
+    else nav('s2');
   }
   requestAnimationFrame(tick);
 })();
@@ -3056,7 +3551,7 @@ function history_back(){nav(prevScreen);}
 let obIdx=0;
 function obNext(){
   obIdx++;
-  if(obIdx>=3){nav('s3');obIdx=0;updOb(0);return;}
+  if(obIdx>=3){nav('s7');obIdx=0;updOb(0);return;}
   updOb(obIdx);
 }
 function updOb(i){
@@ -3232,9 +3727,10 @@ function goStep(n){setStep(n);}
 function nextStep(){if(wzStep>=5){nav('osubmit');return;}setStep(wzStep+1);}
 function prevStep(){if(wzStep>1)setStep(wzStep-1);}
 
-const TK_TPL=`<div class="tk-cat"><div class="tk-cat-top"><input class="tk-name-in" placeholder="Nom de la catégorie" oninput="syncRecap()"><button class="tk-del" onclick="delCat(this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div><div class="tk-fields"><div><label class="tk-mini-l">Prix (XOF)</label><input class="tk-mini-in tk-price" inputmode="numeric" value="0" oninput="recalc()"></div><div><label class="tk-mini-l">Places</label><input class="tk-mini-in tk-qty" inputmode="numeric" value="50" oninput="recalc()"></div></div></div>`;
+const TK_TPL=`<div class="tk-cat"><div class="tk-cat-top"><input class="tk-name-in" placeholder="Nom de la catégorie" oninput="syncRecap()"><button class="tk-free-btn" onclick="setFree(this)">Gratuit</button><button class="tk-del" onclick="delCat(this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div><div class="tk-fields"><div><label class="tk-mini-l">Prix (XOF)</label><input class="tk-mini-in tk-price" inputmode="numeric" value="0" oninput="recalc()"></div><div><label class="tk-mini-l">Places</label><input class="tk-mini-in tk-qty" inputmode="numeric" value="50" oninput="recalc()"></div></div><label class="tk-mini-l" style="margin-top:11px;">Description — visible à l'achat</label><input class="tk-desc-in" placeholder="Ce que comprend ce billet…" oninput="syncRecap()"></div>`;
 function addCat(){const list=document.getElementById('tkList');if(list.children.length>=5)return;const w=document.createElement('div');w.innerHTML=TK_TPL;list.appendChild(w.firstChild);recalc();}
 function delCat(btn){const list=document.getElementById('tkList');if(list.children.length<=1)return;btn.closest('.tk-cat').remove();recalc();}
+function setFree(btn){const c=btn.closest('.tk-cat');const p=c.querySelector('.tk-price');if(p){p.value='0';}recalc();}
 function recalc(){
   let cap=0;
   document.querySelectorAll('#tkList .tk-qty').forEach(q=>cap+=parseInt(q.value)||0);
@@ -3249,8 +3745,9 @@ function recalc(){
     document.getElementById('simCat').textContent=nm;
     document.getElementById('simPrice').textContent=price===0?'Gratuit':fmt(price);
     document.getElementById('simFee').textContent=price===0?'− 0 XOF':'− '+fmt(fee);
-    document.getElementById('simNet').textContent=fmt(net);
+    document.getElementById('simNet').textContent=price===0?'Gratuit':fmt(net);
   }
+  document.querySelectorAll('#tkList .tk-cat').forEach(c=>{const p=parseInt(c.querySelector('.tk-price').value)||0;const fb=c.querySelector('.tk-free-btn');if(fb)fb.classList.toggle('on',p===0);});
   const add=document.getElementById('tkAdd');if(add)add.classList.toggle('off',document.querySelectorAll('#tkList .tk-cat').length>=5);
   syncRecap();
 }
@@ -3260,7 +3757,9 @@ function syncRecap(){
   const catOn=document.querySelector('#ocreate .wz-step[data-step="1"] .cat-pick .cat-opt.on');
   if(g('rcCat'))g('rcCat').textContent=catOn?catOn.textContent:'—';
   if(g('rcWhen')&&g('cDate')&&g('cTime'))g('rcWhen').textContent=g('cDate').value+' · '+g('cTime').value;
-  if(g('rcVenue')&&g('cVenue'))g('rcVenue').textContent=(g('cVenue').value||'—')+' · Cotonou';
+  if(g('rcGenre')&&g('cGenre'))g('rcGenre').textContent=g('cGenre').value||'—';
+  if(g('rcArtist')&&g('cArtist'))g('rcArtist').textContent=g('cArtist').value||'—';
+  if(g('rcVenue')&&g('cVenue'))g('rcVenue').textContent=(g('cVenue').value||'—')+' · '+((g('cCity')&&g('cCity').value)||'Cotonou');
   const rt=g('rcTickets');
   if(rt){let html='';document.querySelectorAll('#tkList .tk-cat').forEach(c=>{const nm=c.querySelector('.tk-name-in').value||'Catégorie';const pr=parseInt(c.querySelector('.tk-price').value)||0;const qt=parseInt(c.querySelector('.tk-qty').value)||0;html+=`<div class="recap-row"><span class="recap-k">${nm}</span><span class="recap-v">${pr===0?'Gratuit':fmt(pr)} · ${qt} pl.</span></div>`;});rt.innerHTML=html;}
 }
@@ -3509,7 +4008,296 @@ function applyOrgTier(){
 applyOrgTier();
 </script>
 
+<script>
+/* ============================================================
+   EXPLORER — recherche + filtres combinables (US-001 → US-005)
+============================================================ */
+(function(){
+  const NOW=new Date(2026,5,5,12,0); // référence "aujourd'hui" du proto
+  const I=id=>'https://images.unsplash.com/photo-'+id+'?auto=format&fit=crop&w=320&q=70';
+  // dataset démo — événements à venir
+  const EV=[
+    {name:"VAUDOU NIGHTS — Édition Spéciale",artist:"Vaudou All Stars",cat:"Musique",city:"Cotonou",venue:"Champ de Foire",date:new Date(2026,5,7,20,0),price:2500,sold:false,img:I('1459749411175-04bf5292ceea')},
+    {name:"Slam Session — Scène Ouverte",artist:"Collectif Plume Noire",cat:"Musique",city:"Cotonou",venue:"La Voix du Cœur",date:new Date(2026,5,12,20,0),price:1000,sold:false,img:I('1514525253161-7a46d19cd819')},
+    {name:"Jazz au Bénin — Orchestre National",artist:"Orchestre National",cat:"Musique",city:"Cotonou",venue:"Institut Français",date:new Date(2026,5,13,19,30),price:1500,sold:false,img:I('1493225457124-a3eb161ffa5f')},
+    {name:"Kondo le Requin",artist:"Cie Goho Théâtre",cat:"Théâtre",city:"Abomey",venue:"Place Goho",date:new Date(2026,5,14,19,0),price:1000,sold:false,img:I('1503095396549-807759245b35')},
+    {name:"Expo Tissu — Art Textile Africain",artist:"Wax & Co",cat:"Expo",city:"Porto-Novo",venue:"Musée Honmé",date:new Date(2026,5,15,16,0),price:500,sold:false,img:I('1460723237483-7a6dc9d0b212')},
+    {name:"Regards — Photographie Béninoise",artist:"Fondation Zinsou",cat:"Expo",city:"Cotonou",venue:"Fondation Zinsou",date:new Date(2026,5,18,10,0),price:0,sold:false,det:'sfev',img:I('1531058020387-3be344556be6')},
+    {name:"AfroBeats Fever — Open Air",artist:"DJ Kael · Sessime",cat:"Musique",city:"Cotonou",venue:"Plage de Fidjrossè",date:new Date(2026,5,21,21,0),price:3000,sold:false,img:I('1501386761578-eac5c94b800a')},
+    {name:"Danse Gèlèdè — Tradition Vivante",artist:"Troupe de Ketou",cat:"Danse",city:"Porto-Novo",venue:"Centre Culturel",date:new Date(2026,5,22,17,0),price:800,sold:false,img:I('1547153760-18fc86324498')},
+    {name:"Improv Battle",artist:"Les Sans-Filtre",cat:"Théâtre",city:"Cotonou",venue:"Institut Français",date:new Date(2026,5,27,20,30),price:1200,sold:false,img:I('1516450360452-9312f5e86fc7')},
+    {name:"Festival Nokoué",artist:"30+ artistes",cat:"Festival",city:"Cotonou",venue:"Stade Charles de Gaulle",date:new Date(2026,5,28,18,0),price:5000,sold:true,img:I('1492684223066-81342ee5ff30')},
+    {name:"Gazelle FC — Match d'ouverture",artist:"Championnat Régional",cat:"Sport",city:"Parakou",venue:"Stade Municipal",date:new Date(2026,5,29,16,0),price:1500,sold:false,img:I('1574391884720-bbc3740c59d1')},
+    {name:"Festival des Masques",artist:"Patrimoine Ouidah",cat:"Festival",city:"Ouidah",venue:"Fort Portugais",date:new Date(2026,6,5,18,0),price:4000,sold:false,img:I('1470229722913-7c0e2dbbafd3')},
+    {name:"Nuit Gospel",artist:"Chœur Espérance",cat:"Musique",city:"Cotonou",venue:"Palais des Congrès",date:new Date(2026,6,6,19,0),price:2000,sold:true,img:I('1508700929628-666bc8bd84ea')},
+    {name:"Marché des Arts",artist:"Artisans du Bénin",cat:"Autre",city:"Cotonou",venue:"Place de l'Étoile Rouge",date:new Date(2026,6,12,9,0),price:0,sold:false,img:I('1481437156560-3205f6a55735')}
+  ];
+  const CATS=["Musique","Théâtre","Expo","Festival","Sport","Danse","Autre"];
+  const DAYS=["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"];
+  const MON=["Janv","Févr","Mars","Avr","Mai","Juin","Juil","Août","Sept","Oct","Nov","Déc"];
+  const state={q:"",cats:new Set(),city:"",preset:"",dStart:"",dEnd:""};
 
+  const $=id=>document.getElementById(id);
+  const pad=n=>String(n).padStart(2,"0");
+  const fmtDate=d=>`${DAYS[d.getDay()]} ${d.getDate()} ${MON[d.getMonth()]} · ${pad(d.getHours())}h${pad(d.getMinutes())}`;
+  const price=ev=>ev.price===0?"Gratuit":"Dès "+ev.price.toLocaleString("fr-FR")+" XOF";
+  const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;const dp=Array.from({length:m+1},(_,i)=>i);for(let j=1;j<=n;j++){let prev=dp[0];dp[0]=j;for(let i=1;i<=m;i++){const t=dp[i];dp[i]=Math.min(dp[i]+1,dp[i-1]+1,prev+(a[i-1]===b[j-1]?0:1));prev=t;}}return dp[m];}
+  function matchSearch(ev){
+    const q=norm(state.q.trim());if(!q)return true;
+    const hay=norm(ev.name+" "+ev.artist+" "+ev.venue+" "+ev.city);
+    if(hay.includes(q))return true;                       // sous-chaîne, insensible casse/accents
+    const max=q.length>=5?2:1;                            // tolérance fautes mineures
+    return hay.split(/[\s—·]+/).some(w=>w&&lev(w,q)<=max);
+  }
+  function presetRange(p){
+    if(p==="weekend"){const d=NOW.getDay(),off=(6-d+7)%7;const sat=new Date(NOW);sat.setDate(NOW.getDate()+off);sat.setHours(0,0,0,0);const sun=new Date(sat);sun.setDate(sat.getDate()+1);sun.setHours(23,59,59,999);return[sat<NOW?NOW:sat,sun];}
+    if(p==="semaine"){const e=new Date(NOW);e.setDate(NOW.getDate()+7);e.setHours(23,59,59,999);return[new Date(NOW),e];}
+    if(p==="mois"){return[new Date(NOW),new Date(NOW.getFullYear(),NOW.getMonth()+1,0,23,59,59,999)];}
+    return null;
+  }
+  function dateRange(){
+    if(state.dStart||state.dEnd)return[state.dStart?new Date(state.dStart+"T00:00:00"):null,state.dEnd?new Date(state.dEnd+"T23:59:59"):null];
+    if(state.preset)return presetRange(state.preset);
+    return null;
+  }
+  function filtered(){
+    const r=dateRange();
+    return EV.filter(ev=>ev.date>=NOW)                    // US-001 : pas d'événements passés
+      .filter(ev=>!state.cats.size||state.cats.has(ev.cat)) // US-003
+      .filter(ev=>!state.city||ev.city===state.city)       // US-004
+      .filter(ev=>!r||((!r[0]||ev.date>=r[0])&&(!r[1]||ev.date<=r[1]))) // US-005
+      .filter(matchSearch)                                 // US-002
+      .sort((a,b)=>a.date-b.date);                         // US-001 : chrono
+  }
+  const anyFilter=()=>state.q||state.cats.size||state.city||state.preset||state.dStart||state.dEnd;
+  const advCount=()=>(state.city?1:0)+((state.preset||state.dStart||state.dEnd)?1:0);
+
+  function rowHTML(ev){
+    return `<div class="ev-row${ev.sold?" soldout":""}" onclick="nav('${ev.det||'s10'}')">
+      <div class="ev-row-img"><img src="${ev.img}" alt="${ev.name}" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;display:block;">${ev.sold?'<div class="ro-complet"><span>Complet</span></div>':""}</div>
+      <div class="ev-row-body">
+        <div class="ev-row-date">${fmtDate(ev.date)}</div>
+        <div class="ev-row-title">${ev.name}</div>
+        <div class="ev-row-loc"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>${ev.venue} · ${ev.city}</div>
+      </div>
+      <div class="ev-row-meta"><div class="ev-row-price2">${ev.sold?"Complet":price(ev)}</div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+    </div>`;
+  }
+  function render(){
+    const list=filtered(),n=list.length;
+    const res=$("expResults");
+    if(n===0){
+      res.innerHTML=`<div class="exp-empty">
+        <div class="ee-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+        <h3>Aucun événement trouvé</h3>
+        <p>Aucun résultat pour ces critères. Élargis ta recherche ou réinitialise les filtres.</p>
+        <button onclick="expResetAll()">Réinitialiser les filtres</button>
+      </div>`;
+    } else {
+      res.innerHTML=list.map(rowHTML).join("");
+    }
+    $("expCount").textContent=n+" événement"+(n>1?"s":"");
+    const reset=$("expReset");reset.hidden=!anyFilter();
+    const adv=advCount(),badge=$("expBadge");
+    badge.hidden=adv===0;badge.textContent=adv;
+    $("expFiltres").classList.toggle("act",adv>0);
+    $("expApply").textContent="Voir les résultats ("+n+")";
+    // états des chips catégorie
+    document.querySelectorAll("#expChips .fchip").forEach(c=>{
+      const v=c.dataset.cat;
+      c.classList.toggle("on", v?state.cats.has(v):state.cats.size===0);
+    });
+  }
+
+  function buildChips(){
+    const future=EV.filter(e=>e.date>=NOW);
+    const count=c=>future.filter(e=>e.cat===c).length;
+    let html=`<button class="fchip" data-cat="">Tout</button>`;
+    CATS.forEach(c=>{const n=count(c);if(n)html+=`<button class="fchip" data-cat="${c}">${c}<span class="fc-n">${n}</span></button>`;});
+    const box=$("expChips");box.innerHTML=html;
+    box.querySelectorAll(".fchip").forEach(c=>c.addEventListener("click",()=>{
+      const v=c.dataset.cat;
+      if(!v){state.cats.clear();}                          // "Tout"
+      else if(state.cats.has(v))state.cats.delete(v);
+      else state.cats.add(v);                              // multi-sélection
+      render();
+    }));
+    // villes
+    const cities=[...new Set(future.map(e=>e.city))].sort();
+    let ch=`<button class="fs-opt" data-city="">Toutes</button>`;
+    cities.forEach(c=>ch+=`<button class="fs-opt" data-city="${c}">${c}</button>`);
+    const cbox=$("expCityChips");cbox.innerHTML=ch;
+    cbox.querySelectorAll(".fs-opt").forEach(c=>c.addEventListener("click",()=>{
+      const v=c.dataset.city;
+      state.city=(v&&state.city!==v)?v:"";
+      syncSheet();render();
+    }));
+  }
+  function syncSheet(){
+    document.querySelectorAll("#expCityChips .fs-opt").forEach(c=>c.classList.toggle("on",(c.dataset.city||"")===state.city));
+    document.querySelectorAll("#expDateChips .fs-opt").forEach(c=>c.classList.toggle("on",c.dataset.preset===state.preset));
+    $("expDStart").value=state.dStart;$("expDEnd").value=state.dEnd;
+  }
+
+  // API globale (onclick)
+  window.expOpenSheet=()=>{syncSheet();$("expSheetBack").classList.add("open");$("expSheet").classList.add("open");};
+  window.expCloseSheet=()=>{$("expSheetBack").classList.remove("open");$("expSheet").classList.remove("open");};
+  window.expPickPreset=el=>{
+    const p=el.dataset.preset;
+    state.preset=state.preset===p?"":p;
+    state.dStart="";state.dEnd="";
+    syncSheet();render();
+  };
+  window.expCustomDate=()=>{
+    state.dStart=$("expDStart").value;state.dEnd=$("expDEnd").value;
+    if(state.dStart||state.dEnd)state.preset="";
+    syncSheet();render();
+  };
+  window.expClearSearch=()=>{state.q="";$("expSearch").value="";$("expClear").hidden=true;render();};
+  window.expResetAll=()=>{
+    state.q="";state.cats.clear();state.city="";state.preset="";state.dStart="";state.dEnd="";
+    $("expSearch").value="";$("expClear").hidden=true;
+    syncSheet();render();
+  };
+  window.expFromHome=(cat,focus)=>{
+    nav("s8");
+    state.cats.clear();if(cat)state.cats.add(cat);
+    render();
+    if(focus)setTimeout(()=>$("expSearch").focus(),60);
+  };
+
+  // init
+  buildChips();
+  $("expSearch").addEventListener("input",e=>{
+    state.q=e.target.value;$("expClear").hidden=!state.q;render();
+  });
+  render();
+})();
+</script>
+
+<script>
+/* ============================================================
+   GESTION DES BILLETS ACHETEUR (US-018/020/038/039/042)
+============================================================ */
+/* Toast générique */
+let wmToastT;
+function toast(msg){
+  let t=document.getElementById('wmToast');
+  if(!t){t=document.createElement('div');t.id='wmToast';t.className='toast';document.getElementById('device').appendChild(t);}
+  t.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>'+msg+'</span>';
+  t.classList.add('show');
+  clearTimeout(wmToastT);wmToastT=setTimeout(()=>t.classList.remove('show'),2800);
+}
+/* US-042 — téléchargement PDF (billet émis) */
+function dlPdf(){toast('Billet PDF généré · envoyé par email et WhatsApp');}
+
+/* QR à usage unique — placeholder déterministe (matrice + repères) */
+function genQR(el,seed){
+  if(!el)return;
+  const N=25,cell=100/N;let rng=seed||1;
+  const rand=()=>{rng=(rng*1103515245+12345)&0x7fffffff;return rng/0x7fffffff;};
+  const fnd=(r,c)=>{const f=(R,C)=>R<7&&C<7;return f(r,c)||f(r,N-1-c)||f(N-1-r,c);};
+  let m='';
+  for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+    if(fnd(r,c))continue;
+    if(rand()<0.46)m+='<rect x="'+(c*cell).toFixed(2)+'" y="'+(r*cell).toFixed(2)+'" width="'+cell.toFixed(2)+'" height="'+cell.toFixed(2)+'"/>';
+  }
+  const finder=(or,oc)=>{const x=oc*cell,y=or*cell;
+    return '<rect x="'+x.toFixed(2)+'" y="'+y.toFixed(2)+'" width="'+(7*cell).toFixed(2)+'" height="'+(7*cell).toFixed(2)+'"/>'+
+      '<rect x="'+(x+cell).toFixed(2)+'" y="'+(y+cell).toFixed(2)+'" width="'+(5*cell).toFixed(2)+'" height="'+(5*cell).toFixed(2)+'" fill="#fff"/>'+
+      '<rect x="'+(x+2*cell).toFixed(2)+'" y="'+(y+2*cell).toFixed(2)+'" width="'+(3*cell).toFixed(2)+'" height="'+(3*cell).toFixed(2)+'" fill="#1a1208"/>';};
+  el.innerHTML='<svg viewBox="0 0 100 100" shape-rendering="crispEdges" fill="#1a1208" xmlns="http://www.w3.org/2000/svg">'+m+finder(0,0)+finder(0,N-7)+finder(N-7,0)+'</svg>';
+}
+genQR(document.getElementById('qrVaudou'),4821);
+genQR(document.getElementById('qrRegards'),5190);
+
+/* Parcours billet gratuit */
+let fQty=1;
+function fchgQty(d){
+  fQty=Math.max(1,Math.min(2,fQty+d));
+  document.getElementById('fqty').textContent=fQty;
+  const lbl=fQty+'× Accès libre';
+  const l1=document.getElementById('fqLabel');if(l1)l1.textContent=lbl;
+  const cb=document.getElementById('fconfBillet');if(cb)cb.textContent=lbl;
+}
+function freeReserveOpen(){fQty=1;fchgQty(0);nav('sfres');}
+
+/* US-038/039 — céder un billet */
+const CEDE_DIR=[
+  {name:'Aline Dossou',av:'AD',email:'aline.dossou@email.com',phone:'+229 97 45 12 08'},
+  {name:'Séfa Mensah',av:'SM',email:'sefa.mensah@email.com',phone:'+229 96 33 70 21'}
+];
+let cedePick=null;
+function cedeNorm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'');}
+function cedeSearch(){
+  const q=cedeNorm(document.getElementById('cedeInput').value);
+  const found=document.getElementById('cedeFound'),empty=document.getElementById('cedeEmpty'),btn=document.getElementById('cedeBtn');
+  cedePick=null;
+  if(q.length<3){found.hidden=true;empty.hidden=true;btn.style.opacity='.4';btn.style.pointerEvents='none';return;}
+  const m=CEDE_DIR.find(u=>cedeNorm(u.email).includes(q)||cedeNorm(u.phone).includes(q)||cedeNorm(u.name).includes(q));
+  if(m){
+    cedePick=m;
+    document.getElementById('cfAv').textContent=m.av;
+    document.getElementById('cfName').textContent=m.name;
+    document.getElementById('cfContact').textContent=m.email+' · '+m.phone;
+    found.hidden=false;empty.hidden=true;
+    btn.style.opacity='1';btn.style.pointerEvents='auto';
+  }else{
+    found.hidden=true;empty.hidden=false;
+    btn.style.opacity='.4';btn.style.pointerEvents='none';
+  }
+}
+function cedeOpen(){
+  document.getElementById('cedeInput').value='';
+  cedeSearch();
+  document.getElementById('cedeForm').hidden=false;
+  document.getElementById('cedeDone').hidden=true;
+  nav('s21');
+}
+function cedeConfirm(){
+  if(!cedePick)return;
+  document.getElementById('cdName').textContent=cedePick.name;
+  document.getElementById('cdName2').textContent=cedePick.name;
+  document.getElementById('cdContact').textContent=cedePick.name+' · '+cedePick.email;
+  document.getElementById('cdContact2').textContent=cedePick.email+' · '+cedePick.phone;
+  document.getElementById('cedeForm').hidden=true;
+  document.getElementById('cedeDone').hidden=false;
+  document.getElementById('s21').scrollTop=0;
+  toast('Cession confirmée · '+cedePick.name+' a été notifié');
+}
+
+/* US-020 — détail d'une commande */
+const ORDERS={
+  vaudou:{ev:'VAUDOU NIGHTS — Édition Spéciale',date:'Sam 7 Juin · 20h00',venue:'Champ de Foire · Cotonou',ref:'WMT-2026-4821',bought:'3 Juin 2026',pay:'MTN MoMo · +229 97 12 34 56',status:{t:'Émis',c:'emis'},items:[['1× Standard','2 500 XOF']],fee:'100 XOF',total:'2 600 XOF',cta:{label:'Voir le billet',scr:'s16'}},
+  jazz:{ev:'Jazz au Bénin — Orchestre National',date:'Ven 13 Juin · 19h30',venue:'Palais des Congrès · Cotonou',ref:'WMT-2026-7732',bought:'4 Juin 2026',pay:'MTN MoMo · +229 97 12 34 56',status:{t:"En attente d'émission",c:'wait'},items:[['2× Standard','3 000 XOF']],fee:'100 XOF',total:'3 100 XOF',cta:{label:'Voir le billet',scr:'s18'}},
+  afro:{ev:'AfroFusion — Nuit de la Musique',date:'Sam 17 Mai · 21h00',venue:'Fondation Zinsou · Cotonou',ref:'WMT-2026-3104',bought:'12 Mai 2026',pay:'Moov Money · +229 96 00 11 22',status:{t:'Utilisé',c:'done'},items:[['1× VIP','6 000 XOF']],fee:'100 XOF',total:'6 100 XOF',cta:{label:'Voir le billet',scr:'s17'}},
+  nokoue:{ev:'Festival Nokué',date:'Sam 28 Juin · 18h00',venue:'Stade Charles de Gaulle · Cotonou',ref:'WMT-2026-2980',bought:'28 Mai 2026',pay:'Carte Visa',status:{t:'Paiement échoué',c:'fail'},items:[['1× Standard','5 000 XOF']],fee:'100 XOF',total:'5 100 XOF',failed:true}
+};
+function openOrder(key){
+  const o=ORDERS[key];if(!o)return;
+  let html='<div class="eyebrow">N° '+o.ref+'</div>';
+  html+='<div class="conf-info" style="margin-bottom:18px;">'+
+    '<div class="ci-row"><span class="ci-k">Événement</span><span class="ci-v">'+o.ev+'</span></div>'+
+    '<div class="ci-row"><span class="ci-k">Date</span><span class="ci-v">'+o.date+'</span></div>'+
+    '<div class="ci-row"><span class="ci-k">Lieu</span><span class="ci-v">'+o.venue+'</span></div>'+
+    '<div class="ci-row"><span class="ci-k">Achetée le</span><span class="ci-v">'+o.bought+'</span></div>'+
+    '<div class="ci-row"><span class="ci-k">Paiement</span><span class="ci-v">'+o.pay+'</span></div>'+
+    '<div class="ci-row"><span class="ci-k">Statut</span><span class="ci-v"><span class="br-status '+o.status.c+'">'+o.status.t+'</span></span></div>'+
+  '</div>';
+  let rows=o.items.map(it=>'<div class="order-row"><span>'+it[0]+'</span><span>'+it[1]+'</span></div>').join('');
+  rows+='<div class="order-row"><span>Frais de service</span><span>'+o.fee+'</span></div>';
+  rows+='<div class="order-row tot"><span>'+(o.failed?'Montant (non débité)':'Total payé')+'</span><span class="v">'+o.total+'</span></div>';
+  html+='<div class="o-eyebrow" style="margin-bottom:8px;">Billets</div><div class="order-box">'+rows+'</div>';
+  if(o.failed){
+    html+='<div class="offline-banner" style="background:rgba(200,57,43,.06);border-color:rgba(200,57,43,.2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e07a70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>Paiement non abouti — aucun montant n\'a été débité. Tu peux relancer l\'achat depuis la page de l\'événement.</div>';
+  }else if(o.cta){
+    html+='<button class="btn-p" onclick="nav(\''+o.cta.scr+'\')" style="margin-top:6px;">'+o.cta.label+'</button>';
+  }
+  document.getElementById('o20Body').innerHTML=html;
+  nav('s20');
+}
+</script>
 
 <script>
 function toggleEv(id,btn){var el=document.getElementById(id);var o=el.classList.toggle('open');btn.classList.toggle('open',o);}
